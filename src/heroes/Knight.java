@@ -5,6 +5,6 @@ import common.Constants;
 public class Knight extends Hero {
 
     Knight(int x, int y) {
-        super(x, y, Constants.INITIAL_KNIGHT_HP);
+        super(x, y, Constants.INITIAL_KNIGHT_HP, Constants.BONUS_KNIGHT_HP);
     }
 }

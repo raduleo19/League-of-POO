@@ -53,6 +53,18 @@ public class Game {
             for (int heroId = 0; heroId < numHeroes; ++heroId) {
                 heroes.get(heroId).move(rounds.get(round).charAt(heroId));
             }
+            for (Hero player : heroes) {
+                for (Hero player2 : heroes) {
+                    if (player != player2) {
+                        if (!player.isDead() && !player2.isDead()) {
+                            if (player.collide(player2)) {
+                                player.attack(player2);
+                            }
+                        }
+                    }
+                }
+            }
+
         }
     }
 }
