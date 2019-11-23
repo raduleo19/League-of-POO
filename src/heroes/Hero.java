@@ -1,10 +1,20 @@
 package heroes;
 
-abstract public class Hero {
-    protected int xp;
-    protected int hp;
+public class Hero {
+    protected int experiencePoints;
+    protected int healthPoints;
+    protected int x;
+    protected int y;
 
-    abstract void attack();
+    Hero(int x, int y) {
+        experiencePoints = 0;
+        this.x = x;
+        this.y = y;
+    }
 
-    abstract void accept();
+    void attack() {
+    }
+
+    void accept() {
+    }
 }
