@@ -1,7 +1,10 @@
 # League-of-POO
 
-## To Do
+- Data read done
 
-* Implement main logic
-* Implement heroes
-* Implement abilities
+## TO DO:
+
+- Main Logic in progress
+- Players Movements
+- Players Attack
+- Players Buff
