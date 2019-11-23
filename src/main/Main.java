@@ -8,5 +8,6 @@ public class Main {
         Game game = new Game(args[0], args[1]);
         game.load();
         game.run();
+        game.print();
     }
 }

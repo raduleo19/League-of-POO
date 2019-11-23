@@ -30,6 +30,7 @@ public class Game {
         rounds = new ArrayList<>();
 
         int numLines = fileReader.nextInt();
+        int numColumns = fileReader.nextInt();
 
         for (int i = 0; i < numLines; ++i) {
             map.add(fileReader.nextWord());
@@ -53,18 +54,24 @@ public class Game {
             for (int heroId = 0; heroId < numHeroes; ++heroId) {
                 heroes.get(heroId).move(rounds.get(round).charAt(heroId));
             }
-            for (Hero player : heroes) {
-                for (Hero player2 : heroes) {
-                    if (player != player2) {
-                        if (!player.isDead() && !player2.isDead()) {
-                            if (player.collide(player2)) {
-                                player.attack(player2);
+            for (Hero hero : heroes) {
+                for (Hero hero2 : heroes) {
+                    if (hero != hero2) {
+                        if (!hero.isDead() && !hero2.isDead()) {
+                            if (hero.collide(hero2)) {
+                                hero.attack(hero2);
                             }
                         }
                     }
                 }
             }
-
         }
     }
+
+    public void print() {
+        for (Hero hero : heroes) {
+            System.out.println(hero.toString());
+        }
+    }
+
 }
