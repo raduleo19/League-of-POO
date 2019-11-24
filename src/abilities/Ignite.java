@@ -7,20 +7,11 @@ import heroes.Rogue;
 import heroes.Wizard;
 
 public class Ignite extends Ability {
-    private int baseDamage;
-    private int periodicDamage;
-
-    public Ignite() {
-        super();
-        baseDamage = Constants.IGNITE_BASE_DAMAGE;
-        periodicDamage = Constants.IGNITE_OVERTIME_DAMAGE;
-    }
-
     private float calculateDamage(int level, int round) {
         if (round % 3 == 0) {
-            return baseDamage + level * Constants.IGNITE_LEVEL_MULTIPLIER;
+            return Constants.IGNITE_BASE_DAMAGE + level * Constants.IGNITE_LEVEL_MULTIPLIER;
         }
-        return periodicDamage + level * Constants.IGNITE_OVERTIME_LEVEL_MULTIPLIER;
+        return Constants.IGNITE_OVERTIME_DAMAGE + level * Constants.IGNITE_OVERTIME_LEVEL_MULTIPLIER;
     }
 
     @Override

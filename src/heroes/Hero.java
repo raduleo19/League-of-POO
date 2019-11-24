@@ -13,21 +13,35 @@ public abstract class Hero {
     protected ArrayList<Ability> abilities;
     protected int experiencePoints;
     protected int healthPoints;
+    protected int baseHealthPoints;
     protected int level;
     protected int bonusHealthPoints;
     protected int line;
     protected int column;
     protected int paralyzed;
 
-    Hero(int line, int column, int healthPoints, int bonusHealthPoints) {
+    Hero(int line, int column, int baseHealthPoints, int bonusHealthPoints) {
         this.abilities = new ArrayList<>();
         this.experiencePoints = 0;
-        this.healthPoints = healthPoints;
+        this.baseHealthPoints = baseHealthPoints;
+        this.healthPoints = baseHealthPoints;
         this.level = 0;
         this.bonusHealthPoints = bonusHealthPoints;
         this.line = line;
         this.column = column;
         this.paralyzed = 0;
+    }
+
+    public int getHealthPoints() {
+        return healthPoints;
+    }
+
+    public void setHealthPoints(int healthPoints) {
+        this.healthPoints = healthPoints;
+    }
+
+    public int getMaxPossibleHealthPoints() {
+        return baseHealthPoints + level * bonusHealthPoints;
     }
 
     public void setParalyzed(int paralyzed) {

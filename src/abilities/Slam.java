@@ -8,16 +8,9 @@ import heroes.Wizard;
 
 public class Slam extends Ability {
 
-    private int baseDamage;
-
-    public Slam() {
-        super();
-        baseDamage = Constants.SLAM_BASE_DAMAGE;
-    }
-
     @Override
     public void giveDamage(Rogue rogue, int level, float landModifier, int round) {
-        float damage = baseDamage + level * Constants.SLAM_LEVEL_MULTIPLIER;
+        float damage = Constants.SLAM_BASE_DAMAGE + level * Constants.SLAM_LEVEL_MULTIPLIER;
         damage *= Constants.SLAM_ROGUE_MODIFIER;
         damage *= landModifier;
         damage = Math.round(damage);
@@ -27,7 +20,7 @@ public class Slam extends Ability {
 
     @Override
     public void giveDamage(Knight knight, int level, float landModifier, int round) {
-        float damage = baseDamage + level * Constants.SLAM_LEVEL_MULTIPLIER;
+        float damage = Constants.SLAM_BASE_DAMAGE + level * Constants.SLAM_LEVEL_MULTIPLIER;
         damage *= Constants.SLAM_KNIGHT_MODIFIER;
         damage *= landModifier;
         damage = Math.round(damage);
@@ -37,7 +30,7 @@ public class Slam extends Ability {
 
     @Override
     public void giveDamage(Wizard wizard, int level, float landModifier, int round) {
-        float damage = baseDamage + level * Constants.SLAM_LEVEL_MULTIPLIER;
+        float damage = Constants.SLAM_BASE_DAMAGE + level * Constants.SLAM_LEVEL_MULTIPLIER;
         damage *= Constants.SLAM_WIZARD_MODIFIER;
         damage *= landModifier;
         damage = Math.round(damage);
@@ -47,7 +40,7 @@ public class Slam extends Ability {
 
     @Override
     public void giveDamage(Pyromancer pyromancer, int level, float landModifier, int round) {
-        float damage = baseDamage + level * Constants.SLAM_LEVEL_MULTIPLIER;
+        float damage = Constants.SLAM_BASE_DAMAGE + level * Constants.SLAM_LEVEL_MULTIPLIER;
         damage *= Constants.SLAM_PYROMANCER_MODIFIER;
         damage *= landModifier;
         damage = Math.round(damage);
