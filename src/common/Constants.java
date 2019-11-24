@@ -55,8 +55,8 @@ public class Constants {
     public static final float IGNITE_ROGUE_MODIFIER = 0.9f;
     public static final float IGNITE_WIZARD_MODIFIER = 1.05f;
 
-    public static final int SLAM_BASE_DAMAGE = 350;
-    public static final int SLAM_LEVEL_MULTIPLIER = 50;
+    public static final int SLAM_BASE_DAMAGE = 100;
+    public static final int SLAM_LEVEL_MULTIPLIER = 40;
     public static final float SLAM_KNIGHT_MODIFIER = 0.8f;
     public static final float SLAM_PYROMANCER_MODIFIER = 1.2f;
     public static final float SLAM_ROGUE_MODIFIER = 0.9f;

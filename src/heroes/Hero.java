@@ -30,6 +30,10 @@ public abstract class Hero {
         this.paralyzed = 0;
     }
 
+    public void setParalyzed(int paralyzed) {
+        this.paralyzed = paralyzed;
+    }
+
     public void getDamage(float damage) {
         healthPoints -= damage;
     }
