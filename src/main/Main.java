@@ -1,5 +1,7 @@
 package main;
 
+import game.Game;
+
 import java.io.IOException;
 
 public class Main {

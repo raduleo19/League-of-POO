@@ -1,4 +1,8 @@
-package main;
+/*
+ * Copyright (c) 2019 Rica Radu-Leonard
+ */
+
+package game;
 
 import fileio.implementations.FileReader;
 import heroes.Hero;
@@ -16,7 +20,6 @@ public class Game {
     private int numRounds;
     private int numHeroes;
     private ArrayList<Hero> heroes;
-
 
     public Game(String inputPath, String outputPath) {
         this.inputPath = inputPath;
@@ -36,7 +39,7 @@ public class Game {
             map.add(fileReader.nextWord());
         }
 
-        Map.getInstance().load(map);
+        Map.getInstance().setMap(map);
 
         numHeroes = fileReader.nextInt();
         for (int i = 0; i < numHeroes; ++i) {
@@ -54,12 +57,12 @@ public class Game {
             for (int heroId = 0; heroId < numHeroes; ++heroId) {
                 heroes.get(heroId).move(rounds.get(round).charAt(heroId));
             }
-            for (Hero hero : heroes) {
+            for (Hero hero1 : heroes) {
                 for (Hero hero2 : heroes) {
-                    if (hero != hero2) {
-                        if (!hero.isDead() && !hero2.isDead()) {
-                            if (hero.collide(hero2)) {
-                                Hero.battle(hero, hero2);
+                    if (hero1 != hero2) {
+                        if (!hero1.isDead() && !hero2.isDead()) {
+                            if (Hero.collide(hero1, hero2)) {
+                                Hero.battle(hero1, hero2);
                             }
                         }
                     }

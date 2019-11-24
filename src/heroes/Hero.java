@@ -23,6 +23,15 @@ public abstract class Hero {
         this.y = y;
     }
 
+    public static boolean collide(Hero hero1, Hero hero2) {
+        return hero1.x == hero2.x && hero1.y == hero2.y;
+    }
+
+    public static void battle(Hero hero1, Hero hero2) {
+        hero1.attack(hero2);
+        hero2.attack(hero1);
+    }
+
     @Override
     public String toString() {
         if (isDead()) {
@@ -45,15 +54,6 @@ public abstract class Hero {
 
     public boolean isDead() {
         return healthPoints <= 0;
-    }
-
-    public boolean collide(Hero other) {
-        return this.x == other.x && this.y == other.y;
-    }
-
-    public static void battle(Hero hero1, Hero hero2) {
-        hero1.attack(hero2);
-        hero2.attack(hero1);
     }
 
     abstract void accept(Ability ability);
