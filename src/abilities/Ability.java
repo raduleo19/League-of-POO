@@ -9,12 +9,12 @@ public abstract class Ability {
     Ability() {
     }
 
-    public abstract void giveDamage(Knight knight);
+    public abstract void giveDamage(Knight knight, int level, float landModifier, int round);
 
-    public abstract void giveDamage(Pyromancer pyromancer);
+    public abstract void giveDamage(Pyromancer pyromancer, int level, float landModifier, int round);
 
-    public abstract void giveDamage(Rogue rogue);
+    public abstract void giveDamage(Rogue rogue, int level, float landModifier, int round);
 
-    public abstract void giveDamage(Wizard wizard);
+    public abstract void giveDamage(Wizard wizard, int level, float landModifier, int round);
 
 }

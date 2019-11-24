@@ -8,6 +8,7 @@ import abilities.Ability;
 import abilities.Execute;
 import abilities.Slam;
 import common.Constants;
+import map.Map;
 
 public class Knight extends Hero {
 
@@ -28,5 +29,13 @@ public class Knight extends Hero {
     @Override
     void accept(Ability ability) {
         ability.giveDamage(this);
+    }
+
+    @Override
+    public float getLandModifier() {
+        if (Map.getInstance().getLandType(this.line, this.column) == Constants.KNIGHT_PREFERED_LAND) {
+            return Constants.KNIGHT_LAND_MODIFIER;
+        }
+        return Constants.DEFAULT_LAND_MODIFIER;
     }
 }

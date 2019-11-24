@@ -8,6 +8,7 @@ import abilities.Ability;
 import abilities.Fireblast;
 import abilities.Ignite;
 import common.Constants;
+import map.Map;
 
 public class Pyromancer extends Hero {
 
@@ -28,5 +29,13 @@ public class Pyromancer extends Hero {
     @Override
     void accept(Ability ability) {
         ability.giveDamage(this);
+    }
+
+    @Override
+    public float getLandModifier() {
+        if (Map.getInstance().getLandType(this.line, this.column) == Constants.PYROMANCER_PREFERED_LAND) {
+            return Constants.PYROMANCER_LAND_MODIFIER;
+        }
+        return Constants.DEFAULT_LAND_MODIFIER;
     }
 }

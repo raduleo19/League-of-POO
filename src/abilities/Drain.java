@@ -7,22 +7,22 @@ import heroes.Wizard;
 
 public class Drain extends Ability {
     @Override
-    public void giveDamage(Rogue rogue) {
+    public void giveDamage(Rogue rogue, int level, float landModifier, int round) {
 
     }
 
     @Override
-    public void giveDamage(Knight knight) {
+    public void giveDamage(Knight knight, int level, float landModifier, int round) {
 
     }
 
     @Override
-    public void giveDamage(Wizard wizard) {
+    public void giveDamage(Wizard wizard, int level, float landModifier, int round) {
 
     }
 
     @Override
-    public void giveDamage(Pyromancer pyromancer) {
+    public void giveDamage(Pyromancer pyromancer, int level, float landModifier, int round) {
 
     }
 }

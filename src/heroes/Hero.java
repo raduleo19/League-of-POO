@@ -17,6 +17,7 @@ public abstract class Hero {
     protected int bonusHealthPoints;
     protected int line;
     protected int column;
+    protected int paralyzed;
 
     Hero(int line, int column, int healthPoints, int bonusHealthPoints) {
         this.abilities = new ArrayList<>();
@@ -26,11 +27,18 @@ public abstract class Hero {
         this.bonusHealthPoints = bonusHealthPoints;
         this.line = line;
         this.column = column;
+        this.paralyzed = 0;
+    }
+
+    public void getDamage(float damage) {
+        healthPoints -= damage;
     }
 
     abstract void accept(Ability ability);
 
     public abstract String toString();
+
+    public abstract float getLandModifier();
 
     public boolean collide(Hero other) {
         return this.line == other.line && this.column == other.column;
