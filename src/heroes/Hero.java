@@ -1,6 +1,11 @@
 package heroes;
 
+import abilities.Ability;
+
+import java.util.ArrayList;
+
 public abstract class Hero {
+    protected ArrayList<Ability> abilities;
     protected int experiencePoints;
     protected int healthPoints;
     protected int level;
@@ -9,6 +14,7 @@ public abstract class Hero {
     protected int y;
 
     Hero(int x, int y, int healthPoints, int bonusHealthPoints) {
+        this.abilities = new ArrayList<>();
         this.experiencePoints = 0;
         this.healthPoints = healthPoints;
         this.level = 0;
@@ -45,8 +51,21 @@ public abstract class Hero {
         return this.x == other.x && this.y == other.y;
     }
 
-    public void attack(Hero other) {
+    public static void battle(Hero hero1, Hero hero2) {
+        hero1.attack(hero2);
+        hero2.attack(hero1);
+    }
 
+    abstract void accept(Ability ability);
+
+    public void attack(Hero other) {
+        for (Ability ability : abilities) {
+            other.accept(ability);
+        }
+
+        if (other.isDead()) {
+            this.experiencePoints += Math.max(0, 200 - (this.level - other.level) * 40);
+        }
     }
 
 }

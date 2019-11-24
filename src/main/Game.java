@@ -59,7 +59,7 @@ public class Game {
                     if (hero != hero2) {
                         if (!hero.isDead() && !hero2.isDead()) {
                             if (hero.collide(hero2)) {
-                                hero.attack(hero2);
+                                Hero.battle(hero, hero2);
                             }
                         }
                     }

@@ -7,3 +7,10 @@
 ## TO DO:
 - Players Attack
 - Players Buff
+
+````
+Players.acceptAbility(Ability ability) {
+    ability.giveDamage(this);
+} 
+
+````

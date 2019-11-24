@@ -1,5 +1,6 @@
 package heroes;
 
+import abilities.Ability;
 import common.Constants;
 
 public class Rogue extends Hero {
@@ -13,5 +14,10 @@ public class Rogue extends Hero {
             return "R" + " " + "dead";
         }
         return "R" + " " + level + " " + experiencePoints + " " + healthPoints + " " + x + " " + y;
+    }
+
+    @Override
+    void accept(Ability ability) {
+        ability.giveDamage(this);
     }
 }
