@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019 Rica Radu-Leonard
+ */
+
 package heroes;
 
 import abilities.Ability;
@@ -6,8 +10,8 @@ import abilities.Drain;
 import common.Constants;
 
 public class Wizard extends Hero {
-    Wizard(int x, int y) {
-        super(x, y, Constants.INITIAL_WIZARD_HP, Constants.BONUS_WIZARD_HP);
+    Wizard(int line, int column) {
+        super(line, column, Constants.INITIAL_WIZARD_HP, Constants.BONUS_WIZARD_HP);
         abilities.add(new Drain());
         abilities.add(new Deflect());
     }
@@ -15,9 +19,9 @@ public class Wizard extends Hero {
     @Override
     public String toString() {
         if (isDead()) {
-            return "W" + " " + "dead";
+            return Constants.WIZARD + " " + Constants.DEAD;
         }
-        return "W" + " " + level + " " + experiencePoints + " " + healthPoints + " " + x + " " + y;
+        return Constants.WIZARD + " " + level + " " + experiencePoints + " " + healthPoints + " " + line + " " + column;
     }
 
     @Override

@@ -1,5 +1,7 @@
 package heroes;
 
+import common.Constants;
+
 public class HeroFactory {
     private static HeroFactory instance = new HeroFactory();
 
@@ -11,15 +13,15 @@ public class HeroFactory {
         return instance;
     }
 
-    public Hero getHero(final String type, final int x, final int y) {
-        if (type.equals("K")) {
-            return new Knight(x, y);
-        } else if (type.equals("P")) {
-            return new Pyromancer(x, y);
-        } else if (type.equals("R")) {
-            return new Rogue(x, y);
-        } else if (type.equals("W")) {
-            return new Wizard(x, y);
+    public Hero getHero(final String type, final int line, final int column) {
+        if (type.equals(Constants.KNIGHT)) {
+            return new Knight(line, column);
+        } else if (type.equals(Constants.PYROMANCER)) {
+            return new Pyromancer(line, column);
+        } else if (type.equals(Constants.ROGUE)) {
+            return new Rogue(line, column);
+        } else if (type.equals(Constants.WIZARD)) {
+            return new Wizard(line, column);
         }
         return null;
     }

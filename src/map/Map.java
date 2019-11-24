@@ -26,8 +26,8 @@ public class Map {
         this.map = map;
     }
 
-    public char getCell(int x, int y) {
-        return map.get(x).charAt(y);
+    public char getLandType(int line, int column) {
+        return map.get(line).charAt(column);
     }
 
 }

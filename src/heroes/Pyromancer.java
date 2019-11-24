@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019 Rica Radu-Leonard
+ */
+
 package heroes;
 
 import abilities.Ability;
@@ -7,8 +11,8 @@ import common.Constants;
 
 public class Pyromancer extends Hero {
 
-    Pyromancer(int x, int y) {
-        super(x, y, Constants.INITIAL_PYROMANCER_HP, Constants.BONUS_PYROMANCER_HP);
+    Pyromancer(int line, int column) {
+        super(line, column, Constants.INITIAL_PYROMANCER_HP, Constants.BONUS_PYROMANCER_HP);
         abilities.add(new Fireblast());
         abilities.add(new Ignite());
     }
@@ -16,9 +20,9 @@ public class Pyromancer extends Hero {
     @Override
     public String toString() {
         if (isDead()) {
-            return "P" + " " + "dead";
+            return Constants.PYROMANCER + " " + Constants.DEAD;
         }
-        return "P" + " " + level + " " + experiencePoints + " " + healthPoints + " " + x + " " + y;
+        return Constants.PYROMANCER + " " + level + " " + experiencePoints + " " + healthPoints + " " + line + " " + column;
     }
 
     @Override

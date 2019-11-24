@@ -1,19 +1,23 @@
+/*
+ * Copyright (c) 2019 Rica Radu-Leonard
+ */
+
 package heroes;
 
 import abilities.Ability;
 import common.Constants;
 
 public class Rogue extends Hero {
-    Rogue(int x, int y) {
-        super(x, y, Constants.INITIAL_ROGUE_HP, Constants.BONUS_ROGUE_HP);
+    Rogue(int line, int column) {
+        super(line, column, Constants.INITIAL_ROGUE_HP, Constants.BONUS_ROGUE_HP);
     }
 
     @Override
     public String toString() {
         if (isDead()) {
-            return "R" + " " + "dead";
+            return Constants.ROGUE + " " + Constants.DEAD;
         }
-        return "R" + " " + level + " " + experiencePoints + " " + healthPoints + " " + x + " " + y;
+        return Constants.ROGUE + " " + level + " " + experiencePoints + " " + healthPoints + " " + line + " " + column;
     }
 
     @Override

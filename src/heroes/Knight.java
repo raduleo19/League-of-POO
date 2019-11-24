@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019 Rica Radu-Leonard
+ */
+
 package heroes;
 
 import abilities.Ability;
@@ -7,8 +11,8 @@ import common.Constants;
 
 public class Knight extends Hero {
 
-    Knight(int x, int y) {
-        super(x, y, Constants.INITIAL_KNIGHT_HP, Constants.BONUS_KNIGHT_HP);
+    Knight(int line, int column) {
+        super(line, column, Constants.INITIAL_KNIGHT_HP, Constants.BONUS_KNIGHT_HP);
         abilities.add(new Execute());
         abilities.add(new Slam());
     }
@@ -16,9 +20,9 @@ public class Knight extends Hero {
     @Override
     public String toString() {
         if (isDead()) {
-            return "K" + " " + "dead";
+            return Constants.KNIGHT + " " + Constants.DEAD;
         }
-        return "K" + " " + level + " " + experiencePoints + " " + healthPoints + " " + x + " " + y;
+        return Constants.KNIGHT + " " + level + " " + experiencePoints + " " + healthPoints + " " + line + " " + column;
     }
 
     @Override

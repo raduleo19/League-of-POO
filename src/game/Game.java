@@ -50,6 +50,7 @@ public class Game {
         for (int i = 0; i < numRounds; ++i) {
             rounds.add(fileReader.nextWord());
         }
+        fileReader.close();
     }
 
     public void run() {
@@ -61,8 +62,8 @@ public class Game {
                 for (Hero hero2 : heroes) {
                     if (hero1 != hero2) {
                         if (!hero1.isDead() && !hero2.isDead()) {
-                            if (Hero.collide(hero1, hero2)) {
-                                Hero.battle(hero1, hero2);
+                            if (hero1.collide(hero2)) {
+                                hero1.attack(hero2);
                             }
                         }
                     }
@@ -71,10 +72,12 @@ public class Game {
         }
     }
 
-    public void print() {
+    public GameOutput getGameOutput() {
+        ArrayList<String> output = new ArrayList<>();
         for (Hero hero : heroes) {
-            System.out.println(hero.toString());
+            output.add(hero.toString());
         }
+        return new GameOutput(output);
     }
 
 }

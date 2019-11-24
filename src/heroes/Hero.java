@@ -1,6 +1,11 @@
+/*
+ * Copyright (c) 2019 Rica Radu-Leonard
+ */
+
 package heroes;
 
 import abilities.Ability;
+import common.Constants;
 
 import java.util.ArrayList;
 
@@ -10,45 +15,36 @@ public abstract class Hero {
     protected int healthPoints;
     protected int level;
     protected int bonusHealthPoints;
-    protected int x;
-    protected int y;
+    protected int line;
+    protected int column;
 
-    Hero(int x, int y, int healthPoints, int bonusHealthPoints) {
+    Hero(int line, int column, int healthPoints, int bonusHealthPoints) {
         this.abilities = new ArrayList<>();
         this.experiencePoints = 0;
         this.healthPoints = healthPoints;
         this.level = 0;
         this.bonusHealthPoints = bonusHealthPoints;
-        this.x = x;
-        this.y = y;
+        this.line = line;
+        this.column = column;
     }
 
-    public static boolean collide(Hero hero1, Hero hero2) {
-        return hero1.x == hero2.x && hero1.y == hero2.y;
-    }
+    abstract void accept(Ability ability);
 
-    public static void battle(Hero hero1, Hero hero2) {
-        hero1.attack(hero2);
-        hero2.attack(hero1);
-    }
+    public abstract String toString();
 
-    @Override
-    public String toString() {
-        if (isDead()) {
-            return "H" + " " + "dead";
-        }
-        return "H" + " " + level + " " + experiencePoints + " " + healthPoints + " " + x + " " + y;
+    public boolean collide(Hero other) {
+        return this.line == other.line && this.column == other.column;
     }
 
     public void move(char direction) {
-        if (direction == 'U') {
-            x--;
-        } else if (direction == 'D') {
-            x++;
-        } else if (direction == 'L') {
-            y--;
-        } else if (direction == 'R') {
-            y++;
+        if (direction == Constants.UP) {
+            line--;
+        } else if (direction == Constants.DOWN) {
+            line++;
+        } else if (direction == Constants.LEFT) {
+            column--;
+        } else if (direction == Constants.RIGHT) {
+            column++;
         }
     }
 
@@ -56,16 +52,14 @@ public abstract class Hero {
         return healthPoints <= 0;
     }
 
-    abstract void accept(Ability ability);
-
     public void attack(Hero other) {
         for (Ability ability : abilities) {
             other.accept(ability);
         }
 
-        if (other.isDead()) {
-            this.experiencePoints += Math.max(0, 200 - (this.level - other.level) * 40);
-        }
+//        if (other.isDead()) {
+//            this.experiencePoints += Math.max(0, 200 - (this.level - other.level) * 40);
+//        }
     }
 
 }
