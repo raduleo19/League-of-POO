@@ -18,7 +18,7 @@ public class Deflect extends Ability {
 
     @Override
     public void giveDamage(Wizard wizard, int level, float landModifier, int round) {
-
+        return;
     }
 
     @Override

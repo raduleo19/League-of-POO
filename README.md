@@ -5,12 +5,4 @@
 - Players Movements done
 
 ## TO DO:
-- Players Attack
-- Players Buff
-
-````
-Players.acceptAbility(Ability ability) {
-    ability.giveDamage(this);
-} 
-
-````
+- Complete rewrite abilities (I think I used badly the double dispatch)
