@@ -82,7 +82,7 @@ public abstract class Hero {
         other.accept(this);
     }
 
-    public void giveDamage(Knight hero) {
+    public void giveDamage(Knight knight) {
     }
 
     public void giveDamage(Rogue hero) {

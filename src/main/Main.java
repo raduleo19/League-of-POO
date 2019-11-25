@@ -13,12 +13,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         GameInputReader gameInputReader = new GameInputReader(args[0]);
         GameInput gameInput = gameInputReader.getGameInput();
-
-        // TO DO: Use gameInput
-        Game game = new Game(args[0], args[1]);
-        game.load();
+        Game game = new Game(gameInput);
         game.run();
-
         GameOutput gameOutput = game.getGameOutput();
         GameOutputWriter gameOutputWriter = new GameOutputWriter(gameOutput);
         gameOutputWriter.printToFile(args[1]);
