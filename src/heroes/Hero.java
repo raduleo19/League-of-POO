@@ -52,7 +52,7 @@ public abstract class Hero {
         healthPoints -= damage;
     }
 
-    abstract void accept(Ability ability);
+    abstract void accept(Hero hero);
 
     public abstract String toString();
 
@@ -79,13 +79,19 @@ public abstract class Hero {
     }
 
     public void attack(Hero other) {
-        for (Ability ability : abilities) {
-            other.accept(ability);
-        }
+        other.accept(this);
+    }
 
-//        if (other.isDead()) {
-//            this.experiencePoints += Math.max(0, 200 - (this.level - other.level) * 40);
-//        }
+    public void giveDamage(Knight hero) {
+    }
+
+    public void giveDamage(Rogue hero) {
+    }
+
+    public void giveDamage(Pyromancer hero) {
+    }
+
+    public void giveDamage(Wizard hero) {
     }
 
 }

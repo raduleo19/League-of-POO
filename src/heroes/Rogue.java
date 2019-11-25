@@ -4,7 +4,6 @@
 
 package heroes;
 
-import abilities.Ability;
 import common.Constants;
 import map.Map;
 
@@ -22,8 +21,8 @@ public class Rogue extends Hero {
     }
 
     @Override
-    void accept(Ability ability) {
-        ability.giveDamage(this);
+    void accept(Hero hero) {
+        hero.giveDamage(this);
     }
 
     @Override

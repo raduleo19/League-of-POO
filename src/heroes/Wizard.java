@@ -4,7 +4,6 @@
 
 package heroes;
 
-import abilities.Ability;
 import abilities.Deflect;
 import abilities.Drain;
 import common.Constants;
@@ -26,8 +25,8 @@ public class Wizard extends Hero {
     }
 
     @Override
-    void accept(Ability ability) {
-        ability.giveDamage(this);
+    void accept(Hero hero) {
+        hero.giveDamage(this);
     }
 
     @Override
