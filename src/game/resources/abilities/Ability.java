@@ -1,6 +1,6 @@
-package abilities;
+package game.resources.abilities;
 
-import heroes.*;
+import game.resources.heroes.*;
 
 public abstract class Ability {
     protected int level;

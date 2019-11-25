@@ -2,13 +2,13 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package heroes;
+package game.resources.heroes;
 
-import abilities.Ability;
-import abilities.Execute;
-import abilities.Slam;
-import common.Constants;
-import map.Map;
+import game.resources.abilities.Ability;
+import game.resources.abilities.Execute;
+import game.resources.abilities.Slam;
+import game.resources.common.Constants;
+import game.resources.map.Map;
 
 public class Knight extends Hero {
 

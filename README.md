@@ -5,4 +5,4 @@
 - Players Movements done
 
 ## TO DO:
-- use double dispatch to get just the modifier from the abilities
+- use double dispatch to get just the modifier from the game.resources.abilities

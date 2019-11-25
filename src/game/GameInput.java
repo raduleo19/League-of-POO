@@ -4,7 +4,7 @@
 
 package game;
 
-import heroes.Hero;
+import game.resources.heroes.Hero;
 
 import java.util.ArrayList;
 

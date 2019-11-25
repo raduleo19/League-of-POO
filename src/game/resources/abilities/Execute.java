@@ -1,9 +1,9 @@
-package abilities;
+package game.resources.abilities;
 
-import heroes.Knight;
-import heroes.Pyromancer;
-import heroes.Rogue;
-import heroes.Wizard;
+import game.resources.heroes.Knight;
+import game.resources.heroes.Pyromancer;
+import game.resources.heroes.Rogue;
+import game.resources.heroes.Wizard;
 
 public class Execute extends Ability {
     private static final float ROGUE_MODIFIER = 1.15f;

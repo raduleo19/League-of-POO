@@ -1,11 +1,11 @@
-package abilities;
+package game.resources.abilities;
 
-import heroes.Knight;
-import heroes.Pyromancer;
-import heroes.Rogue;
-import heroes.Wizard;
+import game.resources.heroes.Knight;
+import game.resources.heroes.Pyromancer;
+import game.resources.heroes.Rogue;
+import game.resources.heroes.Wizard;
 
-public class Fireblast extends Ability {
+public class Drain extends Ability {
     private static final float ROGUE_MODIFIER = 0.8f;
     private static final float KNIGHT_MODIFIER = 1.2f;
     private static final float PYROMANCER_MODIFIER = 0.9f;

@@ -2,11 +2,11 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package heroes;
+package game.resources.heroes;
 
-import abilities.Ability;
-import common.Constants;
-import map.Map;
+import game.resources.abilities.Ability;
+import game.resources.common.Constants;
+import game.resources.map.Map;
 
 public class Rogue extends Hero {
     Rogue(int line, int column) {

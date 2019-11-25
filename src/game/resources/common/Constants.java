@@ -2,7 +2,7 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package common;
+package game.resources.common;
 
 public class Constants {
 

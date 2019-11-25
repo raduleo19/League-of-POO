@@ -2,13 +2,13 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package heroes;
+package game.resources.heroes;
 
-import abilities.Ability;
-import abilities.Fireblast;
-import abilities.Ignite;
-import common.Constants;
-import map.Map;
+import game.resources.abilities.Ability;
+import game.resources.abilities.Fireblast;
+import game.resources.abilities.Ignite;
+import game.resources.common.Constants;
+import game.resources.map.Map;
 
 public class Pyromancer extends Hero {
 

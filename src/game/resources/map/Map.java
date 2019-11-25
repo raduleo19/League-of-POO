@@ -2,7 +2,7 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package map;
+package game.resources.map;
 
 import java.util.ArrayList;
 

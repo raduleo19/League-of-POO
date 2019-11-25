@@ -2,10 +2,11 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package heroes;
+package game.resources.heroes;
 
-import abilities.Ability;
-import common.Constants;
+import game.resources.abilities.Ability;
+import game.resources.abilities.Overtime;
+import game.resources.common.Constants;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,7 @@ public abstract class Hero {
     protected int bonusHealthPoints;
     protected int line;
     protected int column;
+    protected Overtime overtime;
 
     Hero(int line, int column, int baseHealthPoints, int bonusHealthPoints) {
         this.abilities = new ArrayList<>();
@@ -28,6 +30,7 @@ public abstract class Hero {
         this.bonusHealthPoints = bonusHealthPoints;
         this.line = line;
         this.column = column;
+        this.overtime = new Overtime(0, 0, false);
     }
 
     public abstract String toString();
@@ -41,6 +44,13 @@ public abstract class Hero {
     }
 
     public void move(char direction) {
+        if (overtime.getTime() > 0) {
+            overtime.setTime(overtime.getTime() - 1);
+            this.receiveDamage(overtime.getDamage());
+            if (overtime.isParalisys() || this.isDead()) {
+                return;
+            }
+        }
         if (direction == Constants.UP) {
             line--;
         } else if (direction == Constants.DOWN) {

@@ -5,8 +5,8 @@
 package game;
 
 import fileio.implementations.FileReader;
-import heroes.Hero;
-import heroes.HeroFactory;
+import game.resources.heroes.Hero;
+import game.resources.heroes.HeroFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;

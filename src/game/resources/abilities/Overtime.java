@@ -2,14 +2,14 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package abilities;
+package game.resources.abilities;
 
 public class Overtime {
-    int time;
-    int damage;
-    int paralisys;
+    private int time;
+    private int damage;
+    private boolean paralisys;
 
-    public Overtime(int time, int damage, int paralisys) {
+    public Overtime(int time, int damage, boolean paralisys) {
         this.time = time;
         this.damage = damage;
         this.paralisys = paralisys;
@@ -31,11 +31,11 @@ public class Overtime {
         this.damage = damage;
     }
 
-    public int getParalisys() {
+    public boolean isParalisys() {
         return paralisys;
     }
 
-    public void setParalisys(int paralisys) {
+    public void setParalisys(boolean paralisys) {
         this.paralisys = paralisys;
     }
 }

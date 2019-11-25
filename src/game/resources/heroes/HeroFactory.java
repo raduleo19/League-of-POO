@@ -1,6 +1,6 @@
-package heroes;
+package game.resources.heroes;
 
-import common.Constants;
+import game.resources.common.Constants;
 
 public class HeroFactory {
     private static HeroFactory instance = new HeroFactory();

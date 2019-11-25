@@ -1,15 +1,15 @@
-package abilities;
+package game.resources.abilities;
 
-import heroes.Knight;
-import heroes.Pyromancer;
-import heroes.Rogue;
-import heroes.Wizard;
+import game.resources.heroes.Knight;
+import game.resources.heroes.Pyromancer;
+import game.resources.heroes.Rogue;
+import game.resources.heroes.Wizard;
 
-public class Deflect extends Ability {
+public class Backstab extends Ability {
     private static final float ROGUE_MODIFIER = 1.2f;
-    private static final float KNIGHT_MODIFIER = 1.4f;
-    private static final float PYROMANCER_MODIFIER = 1.3f;
-    private static final float WIZARD_MODIFIER = 0;
+    private static final float KNIGHT_MODIFIER = 0.9f;
+    private static final float PYROMANCER_MODIFIER = 1.25f;
+    private static final float WIZARD_MODIFIER = 1.25f;
 
     @Override
     public float getModifier(Rogue rogue) {

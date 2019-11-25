@@ -2,13 +2,13 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package heroes;
+package game.resources.heroes;
 
-import abilities.Ability;
-import abilities.Deflect;
-import abilities.Drain;
-import common.Constants;
-import map.Map;
+import game.resources.abilities.Ability;
+import game.resources.abilities.Deflect;
+import game.resources.abilities.Drain;
+import game.resources.common.Constants;
+import game.resources.map.Map;
 
 public class Wizard extends Hero {
     Wizard(int line, int column) {

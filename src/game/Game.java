@@ -4,8 +4,8 @@
 
 package game;
 
-import heroes.Hero;
-import map.Map;
+import game.resources.heroes.Hero;
+import game.resources.map.Map;
 
 import java.util.ArrayList;
 
@@ -42,7 +42,9 @@ public class Game {
     public void run() {
         for (int round = 0; round < rounds.size(); ++round) {
             for (int hero = 0; hero < heroes.size(); ++hero) {
-                heroes.get(hero).move(rounds.get(round).charAt(hero));
+                if (!heroes.get(hero).isDead()) {
+                    heroes.get(hero).move(rounds.get(round).charAt(hero));
+                }
             }
 
             for (int hero1 = 0; hero1 < heroes.size(); ++hero1) {
