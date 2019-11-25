@@ -4,6 +4,7 @@
 
 package heroes;
 
+import abilities.Ability;
 import common.Constants;
 import map.Map;
 
@@ -21,15 +22,15 @@ public class Rogue extends Hero {
     }
 
     @Override
-    void accept(Hero hero) {
-        hero.giveDamage(this);
-    }
-
-    @Override
     public float getLandModifier() {
         if (Map.getInstance().getLandType(this.line, this.column) == Constants.ROGUE_PREFERED_LAND) {
             return Constants.ROGUE_LAND_MODIFIER;
         }
         return Constants.DEFAULT_LAND_MODIFIER;
+    }
+
+    @Override
+    public float visit(Ability ability) {
+        return ability.getModifier(this);
     }
 }

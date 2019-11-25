@@ -19,12 +19,19 @@ public class Game {
         rounds = gameInput.getRounds();
     }
 
+    public void battle(Hero hero1, Hero hero2) {
+        // TO DO : SAVE RAW DAMAGE
+        // APPLY DAMAGE
+        // DEFLECT
+    }
+
     public void run() {
         for (int round = 0; round < rounds.size(); ++round) {
             for (int hero = 0; hero < heroes.size(); ++hero) {
                 heroes.get(hero).move(rounds.get(round).charAt(hero));
             }
         }
+        // TO DO: BATTLE
     }
 
     public GameOutput getGameOutput() {

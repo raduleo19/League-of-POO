@@ -18,8 +18,6 @@ public abstract class Hero {
     protected int bonusHealthPoints;
     protected int line;
     protected int column;
-    protected int paralyzed;
-    protected int procentDeflected;
 
     Hero(int line, int column, int baseHealthPoints, int bonusHealthPoints) {
         this.abilities = new ArrayList<>();
@@ -30,8 +28,6 @@ public abstract class Hero {
         this.bonusHealthPoints = bonusHealthPoints;
         this.line = line;
         this.column = column;
-        this.paralyzed = 0;
-        this.procentDeflected = 0;
     }
 
 
@@ -58,5 +54,30 @@ public abstract class Hero {
     public boolean isDead() {
         return healthPoints <= 0;
     }
+
+    public int getTotalDamage(Hero other) {
+        int damage = 0;
+
+        for (Ability ability : abilities) {
+            damage += Math.round(ability.getDamage(other)
+                    * other.visit(ability)
+                    * this.getLandModifier());
+        }
+
+        return damage;
+    }
+
+    public int getRawDamage(Hero other) {
+        int damage = 0;
+
+        for (Ability ability : abilities) {
+            damage += Math.round(ability.getDamage(other)
+                    * this.getLandModifier());
+        }
+
+        return damage;
+    }
+
+    public abstract float visit(Ability ability);
 
 }
