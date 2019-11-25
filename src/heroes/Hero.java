@@ -19,6 +19,7 @@ public abstract class Hero {
     protected int line;
     protected int column;
     protected int paralyzed;
+    protected int procentDeflected;
 
     Hero(int line, int column, int baseHealthPoints, int bonusHealthPoints) {
         this.abilities = new ArrayList<>();
@@ -30,29 +31,9 @@ public abstract class Hero {
         this.line = line;
         this.column = column;
         this.paralyzed = 0;
+        this.procentDeflected = 0;
     }
 
-    public int getHealthPoints() {
-        return healthPoints;
-    }
-
-    public void setHealthPoints(int healthPoints) {
-        this.healthPoints = healthPoints;
-    }
-
-    public int getMaxPossibleHealthPoints() {
-        return baseHealthPoints + level * bonusHealthPoints;
-    }
-
-    public void setParalyzed(int paralyzed) {
-        this.paralyzed = paralyzed;
-    }
-
-    public void getDamage(float damage) {
-        healthPoints -= damage;
-    }
-
-    abstract void accept(Hero hero);
 
     public abstract String toString();
 
@@ -76,22 +57,6 @@ public abstract class Hero {
 
     public boolean isDead() {
         return healthPoints <= 0;
-    }
-
-    public void attack(Hero other) {
-        other.accept(this);
-    }
-
-    public void giveDamage(Knight knight) {
-    }
-
-    public void giveDamage(Rogue hero) {
-    }
-
-    public void giveDamage(Pyromancer hero) {
-    }
-
-    public void giveDamage(Wizard hero) {
     }
 
 }

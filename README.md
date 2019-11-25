@@ -5,4 +5,4 @@
 - Players Movements done
 
 ## TO DO:
-- Complete rewrite abilities (I think I used badly the double dispatch)
+- use double dispatch to get just the modifier from the abilities
