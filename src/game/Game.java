@@ -20,13 +20,23 @@ public class Game {
     }
 
     public void battle(Hero hero1, Hero hero2) {
-        // TO DO : SAVE RAW DAMAGE
-        // APPLY DAMAGE
-        // DEFLECT
         int totalDamage1 = hero1.getTotalDamage(hero2);
         int totalDamage2 = hero2.getTotalDamage(hero1);
+
         hero2.receiveDamage(totalDamage1);
         hero1.receiveDamage(totalDamage2);
+
+        int rawDamage1 = hero1.getRawDamage(hero2);
+        int rawDamage2 = hero2.getRawDamage(hero1);
+
+        // DEFLECT
+
+        if (hero1.isDead() && !hero2.isDead()) {
+            hero2.gainExperience(hero1.getLevel());
+        }
+        if (!hero1.isDead() && hero2.isDead()) {
+            hero1.gainExperience(hero2.getLevel());
+        }
     }
 
     public void run() {

@@ -31,6 +31,7 @@ public abstract class Hero {
     }
 
     public abstract String toString();
+
     public abstract float getLandModifier();
 
     public abstract float requestRaceModifier(Ability ability);
@@ -82,6 +83,10 @@ public abstract class Hero {
         this.healthPoints = this.baseHealthPoints + this.level * this.bonusHealthPoints;
     }
 
+    public int getMaxExperiencePoints() {
+        return Constants.BASE_EXPERIENCE + this.level * Constants.EXPERIENCE_MULTIPLIER;
+    }
+
     public void levelUp() {
         this.level++;
         for (Ability ability : abilities) {
@@ -90,9 +95,19 @@ public abstract class Hero {
         this.getMaxHealthPoints();
     }
 
+    public int getLevel() {
+        return level;
+    }
+
     public void receiveDamage(int damage) {
         this.healthPoints -= damage;
     }
 
+    public void gainExperience(int loserLevel) {
+        experiencePoints += Math.max(0, Constants.BASE_GAIN_EXPERIENCE - (this.level - loserLevel) * Constants.GAIN_EXPERIENCE_MULTIPLIER);
+        while (this.experiencePoints > this.getMaxExperiencePoints()) {
+            this.levelUp();
+        }
+    }
 
 }

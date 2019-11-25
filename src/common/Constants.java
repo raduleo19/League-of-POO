@@ -39,29 +39,9 @@ public class Constants {
     public static final int BONUS_ROGUE_HP = 600;
     public static final int BONUS_WIZARD_HP = 400;
 
-    public static final int IGNITE_BASE_DAMAGE = 150;
-    public static final int IGNITE_LEVEL_MULTIPLIER = 20;
-    public static final int IGNITE_OVERTIME_DAMAGE = 50;
-    public static final int IGNITE_OVERTIME_LEVEL_MULTIPLIER = 30;
-    public static final float IGNITE_ROGUE_MODIFIER = 0.8f;
-    public static final float IGNITE_KNIGHT_MODIFIER = 1.2f;
-    public static final float IGNITE_PYROMANCER_MODIFIER = 0.9f;
-    public static final float IGNITE_WIZARD_MODIFIER = 1.05f;
+    public static final int BASE_EXPERIENCE = 250;
+    public static final int EXPERIENCE_MULTIPLIER = 50;
 
-    public static final int SLAM_BASE_DAMAGE = 100;
-    public static final int SLAM_LEVEL_MULTIPLIER = 40;
-    public static final float SLAM_ROGUE_MODIFIER = 0.8f;
-    public static final float SLAM_KNIGHT_MODIFIER = 1.2f;
-    public static final float SLAM_PYROMANCER_MODIFIER = 0.9f;
-    public static final float SLAM_WIZARD_MODIFIER = 1.05f;
-
-    public static final int EXECUTE_BASE_DAMAGE = 200;
-    public static final int EXECUTE_LEVEL_MULTIPLIER = 30;
-    public static final float EXECUTE_KNIGHT_MODIFIER = 1.15f;
-    public static final float EXECUTE_PYROMANCER_MODIFIER = 1f;
-    public static final float EXECUTE_ROGUE_MODIFIER = 1.1f;
-    public static final float EXECUTE_WIZARD_MODIFIER = 0.8f;
-    public static final int EXECUTE_MAX_HP_LIMIT = 40;
-    public static final int EXECUTE_BASE_HP_LIMIT = 20;
-    public static final int PERCENT_DENOMINATOR = 100;
+    public static final int BASE_GAIN_EXPERIENCE = 200;
+    public static final int GAIN_EXPERIENCE_MULTIPLIER = 40;
 }
