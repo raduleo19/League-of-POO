@@ -30,10 +30,10 @@ public abstract class Hero {
         this.column = column;
     }
 
-
     public abstract String toString();
-
     public abstract float getLandModifier();
+
+    public abstract float requestRaceModifier(Ability ability);
 
     public boolean collide(Hero other) {
         return this.line == other.line && this.column == other.column;
@@ -60,7 +60,7 @@ public abstract class Hero {
 
         for (Ability ability : abilities) {
             damage += Math.round(ability.getDamage(other)
-                    * other.visit(ability)
+                    * other.requestRaceModifier(ability)
                     * this.getLandModifier());
         }
 
@@ -78,6 +78,21 @@ public abstract class Hero {
         return damage;
     }
 
-    public abstract float visit(Ability ability);
+    public void getMaxHealthPoints() {
+        this.healthPoints = this.baseHealthPoints + this.level * this.bonusHealthPoints;
+    }
+
+    public void levelUp() {
+        this.level++;
+        for (Ability ability : abilities) {
+            ability.levelUp();
+        }
+        this.getMaxHealthPoints();
+    }
+
+    public void receiveDamage(int damage) {
+        this.healthPoints -= damage;
+    }
+
 
 }

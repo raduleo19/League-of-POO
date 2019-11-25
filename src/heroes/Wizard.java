@@ -34,7 +34,7 @@ public class Wizard extends Hero {
     }
 
     @Override
-    public float visit(Ability ability) {
+    public float requestRaceModifier(Ability ability) {
         return ability.getModifier(this);
     }
 }

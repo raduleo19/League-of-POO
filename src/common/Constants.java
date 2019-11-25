@@ -39,13 +39,6 @@ public class Constants {
     public static final int BONUS_ROGUE_HP = 600;
     public static final int BONUS_WIZARD_HP = 400;
 
-    public static final int FIREBLAST_BASE_DAMAGE = 350;
-    public static final int FIREBLAST_LEVEL_MULTIPLIER = 50;
-    public static final float FIREBLAST_ROGUE_MODIFIER = 0.8f;
-    public static final float FIREBLAST_KNIGHT_MODIFIER = 1.2f;
-    public static final float FIREBLAST_PYROMANCER_MODIFIER = 0.9f;
-    public static final float FIREBLAST_WIZARD_MODIFIER = 1.05f;
-
     public static final int IGNITE_BASE_DAMAGE = 150;
     public static final int IGNITE_LEVEL_MULTIPLIER = 20;
     public static final int IGNITE_OVERTIME_DAMAGE = 50;

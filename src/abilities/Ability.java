@@ -9,25 +9,20 @@ public abstract class Ability {
         this.level = 0;
     }
 
-    public int getDamage(Hero hero) {
+    public void levelUp() {
+        this.level++;
     }
 
-    public void giveDamage(Hero hero) {
+    public float getDamage(Hero hero) {
+        return 1.0f;
     }
 
-    public void deflect(Hero hero, float damage) {
-    }
+    public abstract float getModifier(Rogue rogue);
 
-    public float getModifier(Rogue rogue) {
-    }
+    public abstract float getModifier(Knight knight);
 
-    public float getModifier(Knight knight) {
-    }
+    public abstract float getModifier(Pyromancer pyromancer);
 
-    public float getModifier(Pyromancer pyromancer) {
-    }
-
-    public float getModifier(Wizard wizard) {
-    }
+    public abstract float getModifier(Wizard wizard);
 
 }
