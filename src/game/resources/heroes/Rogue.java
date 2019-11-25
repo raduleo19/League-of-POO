@@ -5,12 +5,16 @@
 package game.resources.heroes;
 
 import game.resources.abilities.Ability;
+import game.resources.abilities.Backstab;
+import game.resources.abilities.Paralysis;
 import game.resources.common.Constants;
 import game.resources.map.Map;
 
 public class Rogue extends Hero {
     Rogue(int line, int column) {
         super(line, column, Constants.INITIAL_ROGUE_HP, Constants.BONUS_ROGUE_HP);
+        abilities.add(new Backstab(this));
+        abilities.add(new Paralysis(this));
     }
 
     @Override

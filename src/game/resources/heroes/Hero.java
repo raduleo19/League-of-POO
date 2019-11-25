@@ -7,6 +7,7 @@ package game.resources.heroes;
 import game.resources.abilities.Ability;
 import game.resources.abilities.Overtime;
 import game.resources.common.Constants;
+import game.resources.map.Map;
 
 import java.util.ArrayList;
 
@@ -70,7 +71,21 @@ public abstract class Hero {
         int damage = 0;
 
         for (Ability ability : abilities) {
-            damage += Math.round(ability.getDamage(other)
+            int abilityDamage = Math.round(ability.getDamage(other)
+                    * other.requestRaceModifier(ability)
+                    * this.getLandModifier());
+            damage += abilityDamage;
+//            System.out.println(abilityDamage);
+        }
+
+        return damage;
+    }
+
+    public int getDeflectionDamage(Hero other, int receivedRawDamage) {
+        int damage = 0;
+
+        for (Ability ability : abilities) {
+            damage += Math.round(ability.getDeflectionDamage(other, receivedRawDamage)
                     * other.requestRaceModifier(ability)
                     * this.getLandModifier());
         }
@@ -91,6 +106,14 @@ public abstract class Hero {
 
     public void getMaxHealthPoints() {
         this.healthPoints = this.baseHealthPoints + this.level * this.bonusHealthPoints;
+    }
+
+    public float maxHealthPoints() {
+        return this.baseHealthPoints + this.level * this.bonusHealthPoints;
+    }
+
+    public int getHealthPoints() {
+        return healthPoints;
     }
 
     public int getMaxExperiencePoints() {
@@ -118,6 +141,14 @@ public abstract class Hero {
         while (this.experiencePoints > this.getMaxExperiencePoints()) {
             this.levelUp();
         }
+    }
+
+    public void setOvertime(int time, boolean paralisys, int damage) {
+        this.overtime = new Overtime(time, damage, paralisys);
+    }
+
+    public char getLandType() {
+        return Map.getInstance().getLandType(this.line, this.column);
     }
 
 }

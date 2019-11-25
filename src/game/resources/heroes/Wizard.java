@@ -13,8 +13,8 @@ import game.resources.map.Map;
 public class Wizard extends Hero {
     Wizard(int line, int column) {
         super(line, column, Constants.INITIAL_WIZARD_HP, Constants.BONUS_WIZARD_HP);
-        abilities.add(new Drain());
-        abilities.add(new Deflect());
+        abilities.add(new Drain(this));
+        abilities.add(new Deflect(this));
     }
 
     @Override

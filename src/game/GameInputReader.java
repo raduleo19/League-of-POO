@@ -41,7 +41,9 @@ public class GameInputReader {
         for (int i = 0; i < numRounds; ++i) {
             rounds.add(fileReader.nextWord());
         }
+
         fileReader.close();
+
         return new GameInput(map, heroes, rounds);
     }
 

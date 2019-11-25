@@ -14,8 +14,8 @@ public class Pyromancer extends Hero {
 
     Pyromancer(int line, int column) {
         super(line, column, Constants.INITIAL_PYROMANCER_HP, Constants.BONUS_PYROMANCER_HP);
-        abilities.add(new Fireblast());
-        abilities.add(new Ignite());
+        abilities.add(new Fireblast(this));
+        abilities.add(new Ignite(this));
     }
 
     @Override

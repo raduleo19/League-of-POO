@@ -4,18 +4,22 @@ import game.resources.heroes.*;
 
 public abstract class Ability {
     protected int level;
+    protected Hero hero;
 
-    Ability() {
+    public Ability(Hero hero) {
         this.level = 0;
+        this.hero = hero;
     }
 
     public void levelUp() {
         this.level++;
     }
 
-    public float getDamage(Hero hero) {
-        return 1.0f;
-    }
+    public abstract void setOvertime(Hero other);
+
+    public abstract float getDeflectionDamage(Hero other, int receivedRawDamage);
+
+    public abstract float getDamage(Hero other);
 
     public abstract float getModifier(Rogue rogue);
 
