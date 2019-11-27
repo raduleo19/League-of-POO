@@ -27,7 +27,7 @@ public class Ignite extends Ability {
     }
 
     @Override
-    public float getDeflectionDamage(Hero other, int receivedRawDamage) {
+    public float getDeflectionDamage(Hero other, float receivedRawDamage) {
         return 0;
     }
 

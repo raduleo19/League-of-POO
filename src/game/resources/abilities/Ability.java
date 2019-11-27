@@ -17,7 +17,7 @@ public abstract class Ability {
 
     public abstract void setOvertime(Hero other);
 
-    public abstract float getDeflectionDamage(Hero other, int receivedRawDamage);
+    public abstract float getDeflectionDamage(Hero other, float receivedRawDamage);
 
     public abstract float getDamage(Hero other);
 

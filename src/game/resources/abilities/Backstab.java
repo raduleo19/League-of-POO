@@ -26,14 +26,15 @@ public class Backstab extends Ability {
     }
 
     @Override
-    public float getDeflectionDamage(Hero other, int receivedRawDamage) {
+    public float getDeflectionDamage(Hero other, float receivedRawDamage) {
         return 0;
     }
 
     @Override
     public float getDamage(Hero hero) {
         setOvertime(hero);
-        if (numHits % 6 == 0 && this.hero.getLandType() == Constants.ROGUE_PREFERED_LAND) {
+        if (numHits % 6 <= 1 && this.hero.getLandType() == Constants.ROGUE_PREFERED_LAND) {
+            numHits++;
             return BONUS_MULTIPLIER * (BASE_DAMAGE + this.level * LEVEL_MULTIPLIER);
         }
         return BASE_DAMAGE + this.level * LEVEL_MULTIPLIER;

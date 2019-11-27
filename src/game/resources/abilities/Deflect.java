@@ -21,10 +21,10 @@ public class Deflect extends Ability {
     }
 
     @Override
-    public float getDeflectionDamage(Hero other, int receivedRawDamage) {
-        int percent = DEFLECTION_BASE_DAMAGE + this.level * DEFLECTION_LEVEL_MULTIPLIER;
-        percent = Math.min(70, percent);
-        return percent * receivedRawDamage / 100;
+    public float getDeflectionDamage(Hero other, float receivedRawDamage) {
+        float percent = DEFLECTION_BASE_DAMAGE + this.level * DEFLECTION_LEVEL_MULTIPLIER;
+        percent = Math.min(70f, percent);
+        return percent / 100 * receivedRawDamage;
     }
 
     @Override

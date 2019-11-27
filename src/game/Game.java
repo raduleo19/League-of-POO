@@ -39,10 +39,13 @@ public class Game {
 //        System.out.println("========DEFLECTION==");
 //        System.out.println(deflectionDamage1);
 //        System.out.println(deflectionDamage2);
-//        System.out.println("---END_DEF");
+//        System.out.println("========END_DEF");
+//        System.out.println("Total1:" + totalDamage1 + " Deflection1:" + deflectionDamage1);
+//        System.out.println("Total2:" + totalDamage2 + " Deflection2:" + deflectionDamage2);
 
-        System.out.println(totalDamage1 + deflectionDamage1);
-        System.out.println(totalDamage2 + deflectionDamage2);
+
+//        System.out.println(totalDamage1 + deflectionDamage1);
+//        System.out.println(totalDamage2 + deflectionDamage2);
 
         hero2.receiveDamage(deflectionDamage1);
         hero1.receiveDamage(deflectionDamage2);
@@ -56,16 +59,13 @@ public class Game {
     }
 
     public void run() {
-        for (int round = 0; round < 2; ++round) {
+        for (int round = 0; round < rounds.size(); ++round) {
             for (int hero = 0; hero < heroes.size(); ++hero) {
                 if (!heroes.get(hero).isDead()) {
                     heroes.get(hero).move(rounds.get(round).charAt(hero));
                 }
             }
 
-            if (round == 1) {
-                continue;
-            }
             for (int hero1 = 0; hero1 < heroes.size(); ++hero1) {
                 if (!heroes.get(hero1).isDead()) {
                     for (int hero2 = hero1 + 1; hero2 < heroes.size(); ++hero2) {

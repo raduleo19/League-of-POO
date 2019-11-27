@@ -6,6 +6,9 @@ public class Execute extends Ability {
     private static final int BASE_DAMAGE = 200;
     private static final int LEVEL_MULTIPLIER = 30;
 
+    private static final int BASE_HP_LIMIT = 20;
+    private static final int LEVEL_MULTIPLIER_HP_LIMIT = 1;
+
     private static final float ROGUE_MODIFIER = 1.15f;
     private static final float KNIGHT_MODIFIER = 1f;
     private static final float PYROMANCER_MODIFIER = 1.1f;
@@ -21,14 +24,21 @@ public class Execute extends Ability {
     }
 
     @Override
-    public float getDeflectionDamage(Hero other, int receivedRawDamage) {
+    public float getDeflectionDamage(Hero other, float receivedRawDamage) {
         return 0;
     }
 
     @Override
     public float getDamage(Hero hero) {
         setOvertime(hero);
-        return 0;
+        int healthPointsLimitPercent = BASE_HP_LIMIT + this.level * LEVEL_MULTIPLIER_HP_LIMIT;
+        healthPointsLimitPercent = Math.min(healthPointsLimitPercent, 40);
+//        if (hero.getHealthPoints() /  hero.maxHealthPoints() < healthPointsLimitPercent / 100) {
+//            int damage = hero.getHealthPoints();
+//            hero.receiveDamage(damage);
+////            return 1f * damage;
+//        }
+        return BASE_DAMAGE + this.level * LEVEL_MULTIPLIER;
     }
 
     @Override

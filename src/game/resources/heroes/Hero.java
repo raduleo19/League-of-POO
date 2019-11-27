@@ -70,6 +70,7 @@ public abstract class Hero {
     public int getTotalDamage(Hero other) {
         int damage = 0;
 
+//        System.out.println("====Player");
         for (Ability ability : abilities) {
             int abilityDamage = Math.round(ability.getDamage(other)
                     * other.requestRaceModifier(ability)
@@ -78,6 +79,7 @@ public abstract class Hero {
 //            System.out.println(abilityDamage);
         }
 
+//        System.out.println("=====END");
         return damage;
     }
 
@@ -138,7 +140,7 @@ public abstract class Hero {
 
     public void gainExperience(int loserLevel) {
         experiencePoints += Math.max(0, Constants.BASE_GAIN_EXPERIENCE - (this.level - loserLevel) * Constants.GAIN_EXPERIENCE_MULTIPLIER);
-        while (this.experiencePoints > this.getMaxExperiencePoints()) {
+        while (this.experiencePoints >= this.getMaxExperiencePoints()) {
             this.levelUp();
         }
     }
