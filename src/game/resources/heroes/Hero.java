@@ -67,20 +67,19 @@ public abstract class Hero {
         return healthPoints <= 0;
     }
 
-    public int getTotalDamage(Hero other) {
+    public void attack(Hero other) {
         int damage = 0;
+        int rawDamage = 0;
 
-//        System.out.println("====Player");
         for (Ability ability : abilities) {
-            int abilityDamage = Math.round(ability.getDamage(other)
-                    * other.requestRaceModifier(ability)
-                    * this.getLandModifier());
-            damage += abilityDamage;
-//            System.out.println(abilityDamage);
+            float abilityDamage = ability.getDamage(other);
+            float abilityRawDamage = abilityDamage * this.getLandModifier();
+            damage += Math.round(abilityRawDamage * other.requestRaceModifier(ability));
+            rawDamage += Math.round(abilityRawDamage);
         }
 
-//        System.out.println("=====END");
-        return damage;
+        other.receiveDamage(damage);
+        this.receiveDamage(other.getDeflectionDamage(this, rawDamage));
     }
 
     public int getDeflectionDamage(Hero other, int receivedRawDamage) {
@@ -95,16 +94,6 @@ public abstract class Hero {
         return damage;
     }
 
-    public int getRawDamage(Hero other) {
-        int damage = 0;
-
-        for (Ability ability : abilities) {
-            damage += Math.round(ability.getDamage(other)
-                    * this.getLandModifier());
-        }
-
-        return damage;
-    }
 
     public void getMaxHealthPoints() {
         this.healthPoints = this.baseHealthPoints + this.level * this.bonusHealthPoints;
