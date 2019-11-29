@@ -116,7 +116,6 @@ public abstract class Hero {
         for (Ability ability : abilities) {
             ability.levelUp();
         }
-        this.getMaxHealthPoints();
     }
 
     public int getLevel() {
@@ -131,6 +130,9 @@ public abstract class Hero {
         experiencePoints += Math.max(0, Constants.BASE_GAIN_EXPERIENCE - (this.level - loserLevel) * Constants.GAIN_EXPERIENCE_MULTIPLIER);
         while (this.experiencePoints >= this.getMaxExperiencePoints()) {
             this.levelUp();
+            if (!this.isDead()) {
+                this.getMaxHealthPoints();
+            }
         }
     }
 

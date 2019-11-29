@@ -23,20 +23,20 @@ public class Game {
         hero1.attack(hero2);
         hero2.attack(hero1);
 
-        if (!hero1.isDead() && hero2.isDead()) {
-            hero1.gainExperience(hero2.getLevel());
+        if (hero1.isDead()) {
+            hero2.gainExperience(hero1.getLevel());
         }
 
-        if (hero1.isDead() && !hero2.isDead()) {
-            hero2.gainExperience(hero1.getLevel());
+        if (hero2.isDead()) {
+            hero1.gainExperience(hero2.getLevel());
         }
     }
 
     public void run() {
-        for (int round = 0; round < rounds.size(); ++round) {
+        for (String round : rounds) {
             for (int hero = 0; hero < heroes.size(); ++hero) {
                 if (!heroes.get(hero).isDead()) {
-                    heroes.get(hero).move(rounds.get(round).charAt(hero));
+                    heroes.get(hero).move(round.charAt(hero));
                 }
             }
 
