@@ -1,23 +1,32 @@
 package game.resources.abilities;
 
-import game.resources.heroes.*;
+import game.resources.heroes.Hero;
+import game.resources.heroes.Knight;
+import game.resources.heroes.Pyromancer;
+import game.resources.heroes.Rogue;
+import game.resources.heroes.Wizard;
 
 public abstract class Ability {
     protected int level;
     protected Hero hero;
 
-    public Ability(Hero hero) {
+    public Ability(final Hero hero) {
         this.level = 0;
         this.hero = hero;
     }
 
-    public void levelUp() {
+    public final void levelUp() {
         this.level++;
     }
 
-    public abstract void setOvertime(Hero other);
-
-    public abstract float getDeflectionDamage(Hero other, float receivedRawDamage);
+    /**
+     * @param target
+     * @param receivedRawDamage
+     * @return deflection damage based on receivedRawDamage
+     */
+    public float getDeflectionDamage(final Hero target, final float receivedRawDamage) {
+        return 0;
+    }
 
     public abstract float getDamage(Hero other);
 

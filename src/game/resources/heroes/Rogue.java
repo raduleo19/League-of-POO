@@ -10,8 +10,8 @@ import game.resources.abilities.Paralysis;
 import game.resources.common.Constants;
 import game.resources.map.Map;
 
-public class Rogue extends Hero {
-    Rogue(int line, int column) {
+public final class Rogue extends Hero {
+    Rogue(final int line, final int column) {
         super(line, column, Constants.INITIAL_ROGUE_HP, Constants.BONUS_ROGUE_HP);
         abilities.add(new Backstab(this));
         abilities.add(new Paralysis(this));
@@ -22,19 +22,21 @@ public class Rogue extends Hero {
         if (isDead()) {
             return Constants.ROGUE + " " + Constants.DEAD;
         }
-        return Constants.ROGUE + " " + level + " " + experiencePoints + " " + healthPoints + " " + line + " " + column;
+        return Constants.ROGUE + " " + level + " " + experiencePoints + " " + healthPoints + " "
+                + line + " " + column;
     }
 
     @Override
     public float getLandModifier() {
-        if (Map.getInstance().getLandType(this.line, this.column) == Constants.ROGUE_PREFERED_LAND) {
+        if (Map.getInstance().getLandType(this.line, this.column)
+                == Constants.ROGUE_PREFERRED_LAND) {
             return Constants.ROGUE_LAND_MODIFIER;
         }
         return Constants.DEFAULT_LAND_MODIFIER;
     }
 
     @Override
-    public float requestRaceModifier(Ability ability) {
+    public float requestRaceModifier(final Ability ability) {
         return ability.getModifier(this);
     }
 }

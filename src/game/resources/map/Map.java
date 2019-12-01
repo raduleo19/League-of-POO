@@ -6,7 +6,7 @@ package game.resources.map;
 
 import java.util.ArrayList;
 
-public class Map {
+public final class Map {
     private static Map instance = new Map();
     private ArrayList<String> map;
 
@@ -18,15 +18,11 @@ public class Map {
         return instance;
     }
 
-    public ArrayList<String> getMap() {
-        return map;
-    }
-
-    public void setMap(ArrayList<String> map) {
+    public void setMap(final ArrayList<String> map) {
         this.map = map;
     }
 
-    public char getLandType(int line, int column) {
+    public char getLandType(final int line, final int column) {
         return map.get(line).charAt(column);
     }
 

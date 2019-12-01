@@ -9,17 +9,17 @@ import game.resources.map.Map;
 
 import java.util.ArrayList;
 
-public class Game {
+public final class Game {
     private ArrayList<String> rounds;
     private ArrayList<Hero> heroes;
 
-    public Game(GameInput gameInput) {
+    public Game(final GameInput gameInput) {
         Map.getInstance().setMap(gameInput.getMap());
         heroes = gameInput.getHeroes();
         rounds = gameInput.getRounds();
     }
 
-    public void battle(Hero hero1, Hero hero2) {
+    public void fight(final Hero hero1, final Hero hero2) {
         hero1.attack(hero2);
         hero2.attack(hero1);
 
@@ -32,20 +32,25 @@ public class Game {
         }
     }
 
-    public void run() {
+    public void play() {
         for (String round : rounds) {
-            for (int hero = 0; hero < heroes.size(); ++hero) {
-                if (!heroes.get(hero).isDead()) {
-                    heroes.get(hero).move(round.charAt(hero));
+            for (int i = 0; i < heroes.size(); ++i) {
+                Hero hero = heroes.get(i);
+                char move = round.charAt(i);
+                if (!hero.isDead()) {
+                    if (!hero.isStunned()) {
+                        hero.move(move);
+                    }
+                    hero.applyOvertime();
                 }
             }
 
-            for (int hero1 = 0; hero1 < heroes.size(); ++hero1) {
-                if (!heroes.get(hero1).isDead()) {
-                    for (int hero2 = hero1 + 1; hero2 < heroes.size(); ++hero2) {
-                        if (!heroes.get(hero2).isDead()) {
-                            if (heroes.get(hero1).collide(heroes.get(hero2))) {
-                                battle(heroes.get(hero1), heroes.get(hero2));
+            for (int i = 0; i < heroes.size(); ++i) {
+                if (!heroes.get(i).isDead()) {
+                    for (int j = i + 1; j < heroes.size(); ++j) {
+                        if (!heroes.get(j).isDead()) {
+                            if (heroes.get(i).collide(heroes.get(j))) {
+                                fight(heroes.get(i), heroes.get(j));
                             }
                         }
                     }

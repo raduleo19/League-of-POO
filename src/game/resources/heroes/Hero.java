@@ -12,17 +12,18 @@ import game.resources.map.Map;
 import java.util.ArrayList;
 
 public abstract class Hero {
-    protected ArrayList<Ability> abilities;
-    protected int experiencePoints;
     protected int healthPoints;
     protected int baseHealthPoints;
-    protected int level;
     protected int bonusHealthPoints;
+    protected int experiencePoints;
+    protected ArrayList<Ability> abilities;
+    protected int level;
     protected int line;
     protected int column;
     protected Overtime overtime;
 
-    Hero(int line, int column, int baseHealthPoints, int bonusHealthPoints) {
+    Hero(final int line, final int column, final int baseHealthPoints,
+         final int bonusHealthPoints) {
         this.abilities = new ArrayList<>();
         this.experiencePoints = 0;
         this.baseHealthPoints = baseHealthPoints;
@@ -40,18 +41,11 @@ public abstract class Hero {
 
     public abstract float requestRaceModifier(Ability ability);
 
-    public boolean collide(Hero other) {
+    public final boolean collide(final Hero other) {
         return this.line == other.line && this.column == other.column;
     }
 
-    public void move(char direction) {
-        if (overtime.getTime() > 0) {
-            overtime.setTime(overtime.getTime() - 1);
-            this.receiveDamage(overtime.getDamage());
-            if (overtime.isParalisys() || this.isDead()) {
-                return;
-            }
-        }
+    public final void move(final char direction) {
         if (direction == Constants.UP) {
             line--;
         } else if (direction == Constants.DOWN) {
@@ -63,26 +57,30 @@ public abstract class Hero {
         }
     }
 
-    public boolean isDead() {
+    public final boolean isDead() {
         return healthPoints <= 0;
     }
 
-    public void attack(Hero other) {
+    public final boolean isStunned() {
+        return overtime.getStun() && overtime.getTime() > 0;
+    }
+
+    public final void attack(final Hero other) {
         int damage = 0;
         int rawDamage = 0;
 
         for (Ability ability : abilities) {
-            float abilityDamage = ability.getDamage(other);
-            float abilityRawDamage = abilityDamage * this.getLandModifier();
-            damage += Math.round(abilityRawDamage * other.requestRaceModifier(ability));
+            float abilityRawDamage = ability.getDamage(other) * this.getLandModifier();
+            float abilityDamage = abilityRawDamage * other.requestRaceModifier(ability);
             rawDamage += Math.round(abilityRawDamage);
+            damage += Math.round(abilityDamage);
         }
 
         other.receiveDamage(damage);
         this.receiveDamage(other.getDeflectionDamage(this, rawDamage));
     }
 
-    public int getDeflectionDamage(Hero other, int receivedRawDamage) {
+    public final int getDeflectionDamage(final Hero other, final int receivedRawDamage) {
         int damage = 0;
 
         for (Ability ability : abilities) {
@@ -94,53 +92,56 @@ public abstract class Hero {
         return damage;
     }
 
-
-    public void getMaxHealthPoints() {
-        this.healthPoints = this.baseHealthPoints + this.level * this.bonusHealthPoints;
-    }
-
-    public float maxHealthPoints() {
+    public final int getMaxHealthPoints() {
         return this.baseHealthPoints + this.level * this.bonusHealthPoints;
     }
 
-    public int getHealthPoints() {
+    public final int getHealthPoints() {
         return healthPoints;
     }
 
-    public int getMaxExperiencePoints() {
+    public final int getMaxExperiencePoints() {
         return Constants.BASE_EXPERIENCE + this.level * Constants.EXPERIENCE_MULTIPLIER;
     }
 
-    public void levelUp() {
+    public final void levelUp() {
         this.level++;
         for (Ability ability : abilities) {
             ability.levelUp();
         }
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void receiveDamage(int damage) {
-        this.healthPoints -= damage;
-    }
-
-    public void gainExperience(int loserLevel) {
-        experiencePoints += Math.max(0, Constants.BASE_GAIN_EXPERIENCE - (this.level - loserLevel) * Constants.GAIN_EXPERIENCE_MULTIPLIER);
-        while (this.experiencePoints >= this.getMaxExperiencePoints()) {
-            this.levelUp();
-            if (!this.isDead()) {
-                this.getMaxHealthPoints();
-            }
+        if (!this.isDead()) {
+            this.healthPoints = this.getMaxHealthPoints();
         }
     }
 
-    public void setOvertime(int time, boolean paralisys, int damage) {
-        this.overtime = new Overtime(time, damage, paralisys);
+    public final int getLevel() {
+        return level;
     }
 
-    public char getLandType() {
+    public final void receiveDamage(final int damage) {
+        this.healthPoints -= damage;
+    }
+
+    public final void gainExperience(final int loserLevel) {
+        experiencePoints += Math.max(0, Constants.BASE_GAIN_EXPERIENCE
+                - (this.level - loserLevel) * Constants.GAIN_EXPERIENCE_MULTIPLIER);
+        while (this.experiencePoints >= this.getMaxExperiencePoints()) {
+            this.levelUp();
+        }
+    }
+
+    public final void setOvertime(final int time, final boolean stun, final int damage) {
+        this.overtime = new Overtime(time, damage, stun);
+    }
+
+    public final void applyOvertime() {
+        if (overtime.getTime() > 0) {
+            overtime.setTime(overtime.getTime() - 1);
+            this.receiveDamage(overtime.getDamage());
+        }
+    }
+
+    public final char getLandType() {
         return Map.getInstance().getLandType(this.line, this.column);
     }
 

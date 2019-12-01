@@ -4,22 +4,22 @@
 
 package game.resources.abilities;
 
-public class Overtime {
+public final class Overtime {
     private int time;
     private int damage;
-    private boolean paralisys;
+    private boolean stun;
 
-    public Overtime(int time, int damage, boolean paralisys) {
+    public Overtime(final int time, final int damage, final boolean stun) {
         this.time = time;
         this.damage = damage;
-        this.paralisys = paralisys;
+        this.stun = stun;
     }
 
     public int getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(final int time) {
         this.time = time;
     }
 
@@ -27,15 +27,7 @@ public class Overtime {
         return damage;
     }
 
-    public void setDamage(int damage) {
-        this.damage = damage;
-    }
-
-    public boolean isParalisys() {
-        return paralisys;
-    }
-
-    public void setParalisys(boolean paralisys) {
-        this.paralisys = paralisys;
+    public boolean getStun() {
+        return stun;
     }
 }

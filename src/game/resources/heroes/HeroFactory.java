@@ -2,7 +2,7 @@ package game.resources.heroes;
 
 import game.resources.common.Constants;
 
-public class HeroFactory {
+public final class HeroFactory {
     private static HeroFactory instance = new HeroFactory();
 
     private HeroFactory() {

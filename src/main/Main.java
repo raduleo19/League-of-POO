@@ -4,17 +4,25 @@
 
 package main;
 
-import game.*;
+import game.Game;
+import game.GameInput;
+import game.GameInputReader;
+import game.GameOutput;
+import game.GameOutputWriter;
 
 import java.io.IOException;
 
-public class Main {
+public final class Main {
 
-    public static void main(String[] args) throws IOException {
+    private Main() {
+
+    }
+
+    public static void main(final String[] args) throws IOException {
         GameInputReader gameInputReader = new GameInputReader(args[0]);
         GameInput gameInput = gameInputReader.getGameInput();
         Game game = new Game(gameInput);
-        game.run();
+        game.play();
         GameOutput gameOutput = game.getGameOutput();
         GameOutputWriter gameOutputWriter = new GameOutputWriter(gameOutput);
         gameOutputWriter.printToFile(args[1]);

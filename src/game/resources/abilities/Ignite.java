@@ -1,8 +1,12 @@
 package game.resources.abilities;
 
-import game.resources.heroes.*;
+import game.resources.heroes.Hero;
+import game.resources.heroes.Knight;
+import game.resources.heroes.Pyromancer;
+import game.resources.heroes.Rogue;
+import game.resources.heroes.Wizard;
 
-public class Ignite extends Ability {
+public final class Ignite extends Ability {
     private static final int BASE_DAMAGE = 150;
     private static final int LEVEL_MULTIPLIER = 20;
 
@@ -14,46 +18,36 @@ public class Ignite extends Ability {
     private static final float PYROMANCER_MODIFIER = 0.9f;
     private static final float WIZARD_MODIFIER = 1.05f;
 
-    public Ignite(Hero hero) {
+    public Ignite(final Hero hero) {
         super(hero);
     }
 
     @Override
-    public void setOvertime(Hero hero) {
+    public float getDamage(final Hero hero) {
         float damage = DOT_BASE_DAMAGE + this.level * DOT_LEVEL_MULTIPLIER;
         damage *= this.hero.getLandModifier();
         damage *= hero.requestRaceModifier(this);
         hero.setOvertime(2, false, Math.round(damage));
-    }
-
-    @Override
-    public float getDeflectionDamage(Hero other, float receivedRawDamage) {
-        return 0;
-    }
-
-    @Override
-    public float getDamage(Hero hero) {
-        setOvertime(hero);
         return BASE_DAMAGE + this.level * LEVEL_MULTIPLIER;
     }
 
     @Override
-    public float getModifier(Rogue rogue) {
+    public float getModifier(final Rogue rogue) {
         return ROGUE_MODIFIER;
     }
 
     @Override
-    public float getModifier(Knight knight) {
+    public float getModifier(final Knight knight) {
         return KNIGHT_MODIFIER;
     }
 
     @Override
-    public float getModifier(Pyromancer pyromancer) {
+    public float getModifier(final Pyromancer pyromancer) {
         return PYROMANCER_MODIFIER;
     }
 
     @Override
-    public float getModifier(Wizard wizard) {
+    public float getModifier(final Wizard wizard) {
         return WIZARD_MODIFIER;
     }
 }

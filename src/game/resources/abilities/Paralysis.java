@@ -1,9 +1,13 @@
 package game.resources.abilities;
 
 import game.resources.common.Constants;
-import game.resources.heroes.*;
+import game.resources.heroes.Hero;
+import game.resources.heroes.Knight;
+import game.resources.heroes.Pyromancer;
+import game.resources.heroes.Rogue;
+import game.resources.heroes.Wizard;
 
-public class Paralysis extends Ability {
+public final class Paralysis extends Ability {
     private static final int DOT_BASE_DAMAGE = 40;
     private static final int DOT_LEVEL_MULTIPLIER = 10;
 
@@ -12,50 +16,43 @@ public class Paralysis extends Ability {
     private static final float PYROMANCER_MODIFIER = 1.2f;
     private static final float WIZARD_MODIFIER = 1.25f;
 
-    public Paralysis(Hero hero) {
+    private static final int STANDARD_DURATION = 3;
+    private static final int CRITICAL_DURATION = 3;
+
+    public Paralysis(final Hero hero) {
         super(hero);
     }
 
     @Override
-    public void setOvertime(Hero other) {
+    public float getDamage(final Hero hero) {
         float damage = DOT_BASE_DAMAGE + this.level * DOT_LEVEL_MULTIPLIER;
         damage *= this.hero.getLandModifier();
-        damage *= other.requestRaceModifier(this);
-        int time = 3;
-        if (this.hero.getLandType() == Constants.ROGUE_PREFERED_LAND) {
-            time = 6;
+        damage *= hero.requestRaceModifier(this);
+        int time = STANDARD_DURATION;
+        if (this.hero.getLandType() == Constants.ROGUE_PREFERRED_LAND) {
+            time = CRITICAL_DURATION;
         }
-        other.setOvertime(time, true, Math.round(damage));
-    }
-
-    @Override
-    public float getDeflectionDamage(Hero other, float receivedRawDamage) {
-        return 0;
-    }
-
-    @Override
-    public float getDamage(Hero hero) {
-        setOvertime(hero);
+        hero.setOvertime(time, true, Math.round(damage));
         return DOT_BASE_DAMAGE + this.level * DOT_LEVEL_MULTIPLIER;
     }
 
     @Override
-    public float getModifier(Rogue rogue) {
+    public float getModifier(final Rogue rogue) {
         return ROGUE_MODIFIER;
     }
 
     @Override
-    public float getModifier(Knight knight) {
+    public float getModifier(final Knight knight) {
         return KNIGHT_MODIFIER;
     }
 
     @Override
-    public float getModifier(Pyromancer pyromancer) {
+    public float getModifier(final Pyromancer pyromancer) {
         return PYROMANCER_MODIFIER;
     }
 
     @Override
-    public float getModifier(Wizard wizard) {
+    public float getModifier(final Wizard wizard) {
         return WIZARD_MODIFIER;
     }
 }

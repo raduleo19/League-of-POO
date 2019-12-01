@@ -1,8 +1,13 @@
 package game.resources.abilities;
 
-import game.resources.heroes.*;
+import game.resources.common.Constants;
+import game.resources.heroes.Hero;
+import game.resources.heroes.Knight;
+import game.resources.heroes.Pyromancer;
+import game.resources.heroes.Rogue;
+import game.resources.heroes.Wizard;
 
-public class Execute extends Ability {
+public final class Execute extends Ability {
     private static final int BASE_DAMAGE = 200;
     private static final int LEVEL_MULTIPLIER = 30;
 
@@ -14,50 +19,41 @@ public class Execute extends Ability {
     private static final float PYROMANCER_MODIFIER = 1.1f;
     private static final float WIZARD_MODIFIER = 0.8f;
 
-    public Execute(Hero hero) {
+    private static final int HP_LIMIT = 40;
+
+    public Execute(final Hero hero) {
         super(hero);
     }
 
     @Override
-    public void setOvertime(Hero other) {
-
-    }
-
-    @Override
-    public float getDeflectionDamage(Hero other, float receivedRawDamage) {
-        return 0;
-    }
-
-    @Override
-    public float getDamage(Hero hero) {
-        setOvertime(hero);
+    public float getDamage(final Hero hero) {
         int healthPointsLimitPercent = BASE_HP_LIMIT + this.level * LEVEL_MULTIPLIER_HP_LIMIT;
-        healthPointsLimitPercent = Math.min(healthPointsLimitPercent, 40);
-//        if (hero.getHealthPoints() /  hero.maxHealthPoints() < healthPointsLimitPercent / 100) {
-//            int damage = hero.getHealthPoints();
-//            hero.receiveDamage(damage);
-////            return 1f * damage;
-//        }
+        healthPointsLimitPercent = Math.min(healthPointsLimitPercent, HP_LIMIT);
+        if (hero.getHealthPoints() / hero.getMaxHealthPoints()
+                < healthPointsLimitPercent / Constants.PERCENT_BASE) {
+            int damage = hero.getHealthPoints();
+            hero.receiveDamage(damage);
+        }
         return BASE_DAMAGE + this.level * LEVEL_MULTIPLIER;
     }
 
     @Override
-    public float getModifier(Rogue rogue) {
+    public float getModifier(final Rogue rogue) {
         return ROGUE_MODIFIER;
     }
 
     @Override
-    public float getModifier(Knight knight) {
+    public float getModifier(final Knight knight) {
         return KNIGHT_MODIFIER;
     }
 
     @Override
-    public float getModifier(Pyromancer pyromancer) {
+    public float getModifier(final Pyromancer pyromancer) {
         return PYROMANCER_MODIFIER;
     }
 
     @Override
-    public float getModifier(Wizard wizard) {
+    public float getModifier(final Wizard wizard) {
         return WIZARD_MODIFIER;
     }
 }

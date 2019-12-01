@@ -6,10 +6,10 @@ package game;
 
 import java.util.ArrayList;
 
-public class GameOutput {
+public final class GameOutput {
     private ArrayList<String> output;
 
-    public GameOutput(ArrayList<String> output) {
+    public GameOutput(final ArrayList<String> output) {
         this.output = output;
     }
 

@@ -8,12 +8,13 @@ import game.resources.heroes.Hero;
 
 import java.util.ArrayList;
 
-public class GameInput {
+public final class GameInput {
     private ArrayList<String> map;
     private ArrayList<Hero> heroes;
     private ArrayList<String> rounds;
 
-    public GameInput(ArrayList<String> map, ArrayList<Hero> heroes, ArrayList<String> rounds) {
+    public GameInput(final ArrayList<String> map, final ArrayList<Hero> heroes,
+                     final ArrayList<String> rounds) {
         this.map = map;
         this.heroes = heroes;
         this.rounds = rounds;

@@ -11,10 +11,10 @@ import game.resources.heroes.HeroFactory;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class GameInputReader {
+public final class GameInputReader {
     private String inputPath;
 
-    public GameInputReader(String inputPath) {
+    public GameInputReader(final String inputPath) {
         this.inputPath = inputPath;
     }
 
@@ -26,7 +26,7 @@ public class GameInputReader {
         ArrayList<String> rounds = new ArrayList<>();
 
         int numLines = fileReader.nextInt();
-        int numColumns = fileReader.nextInt();
+        fileReader.nextInt();
 
         for (int i = 0; i < numLines; ++i) {
             map.add(fileReader.nextWord());
@@ -34,7 +34,8 @@ public class GameInputReader {
 
         int numHeroes = fileReader.nextInt();
         for (int i = 0; i < numHeroes; ++i) {
-            heroes.add(HeroFactory.getInstance().getHero(fileReader.nextWord(), fileReader.nextInt(), fileReader.nextInt()));
+            heroes.add(HeroFactory.getInstance().getHero(fileReader.nextWord(),
+                    fileReader.nextInt(), fileReader.nextInt()));
         }
 
         int numRounds = fileReader.nextInt();

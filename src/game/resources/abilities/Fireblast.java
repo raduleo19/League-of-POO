@@ -4,9 +4,13 @@
 
 package game.resources.abilities;
 
-import game.resources.heroes.*;
+import game.resources.heroes.Hero;
+import game.resources.heroes.Knight;
+import game.resources.heroes.Pyromancer;
+import game.resources.heroes.Rogue;
+import game.resources.heroes.Wizard;
 
-public class Fireblast extends Ability {
+public final class Fireblast extends Ability {
     private static final int BASE_DAMAGE = 350;
     private static final int LEVEL_MULTIPLIER = 50;
 
@@ -15,42 +19,32 @@ public class Fireblast extends Ability {
     private static final float PYROMANCER_MODIFIER = 0.9f;
     private static final float WIZARD_MODIFIER = 1.05f;
 
-    public Fireblast(Hero hero) {
+    public Fireblast(final Hero hero) {
         super(hero);
     }
 
     @Override
-    public void setOvertime(Hero hero) {
-    }
-
-    @Override
-    public float getDeflectionDamage(Hero other, float receivedRawDamage) {
-        return 0;
-    }
-
-    @Override
-    public float getDamage(Hero hero) {
-        setOvertime(hero);
+    public float getDamage(final Hero hero) {
         return BASE_DAMAGE + this.level * LEVEL_MULTIPLIER;
     }
 
     @Override
-    public float getModifier(Rogue rogue) {
+    public float getModifier(final Rogue rogue) {
         return ROGUE_MODIFIER;
     }
 
     @Override
-    public float getModifier(Knight knight) {
+    public float getModifier(final Knight knight) {
         return KNIGHT_MODIFIER;
     }
 
     @Override
-    public float getModifier(Pyromancer pyromancer) {
+    public float getModifier(final Pyromancer pyromancer) {
         return PYROMANCER_MODIFIER;
     }
 
     @Override
-    public float getModifier(Wizard wizard) {
+    public float getModifier(final Wizard wizard) {
         return WIZARD_MODIFIER;
     }
 }

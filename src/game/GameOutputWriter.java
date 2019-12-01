@@ -9,14 +9,14 @@ import fileio.implementations.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class GameOutputWriter {
-    ArrayList<String> gameOutput;
+public final class GameOutputWriter {
+    private ArrayList<String> gameOutput;
 
-    public GameOutputWriter(GameOutput gameOutput) {
+    public GameOutputWriter(final GameOutput gameOutput) {
         this.gameOutput = gameOutput.getOutput();
     }
 
-    public void printToFile(String outputFileName) throws IOException {
+    public void printToFile(final String outputFileName) throws IOException {
         FileWriter fileWriter = new FileWriter(outputFileName);
         for (String line : gameOutput) {
             fileWriter.writeWord(line);
