@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019 Rica Radu-Leonard
+ */
+
 package game.resources.abilities;
 
 import game.resources.common.Constants;
@@ -8,16 +12,6 @@ import game.resources.heroes.Rogue;
 import game.resources.heroes.Wizard;
 
 public final class Backstab extends Ability {
-    private static final int BASE_DAMAGE = 200;
-    private static final int LEVEL_MULTIPLIER = 20;
-
-    private static final float BONUS_MULTIPLIER = 1.5f;
-    private static final float ROGUE_MODIFIER = 1.2f;
-    private static final float KNIGHT_MODIFIER = 0.9f;
-    private static final float PYROMANCER_MODIFIER = 1.25f;
-    private static final float WIZARD_MODIFIER = 1.25f;
-    private static final int CRITICAL_ROUND = 3;
-
     private int numHits;
 
     public Backstab(final Hero hero) {
@@ -26,32 +20,32 @@ public final class Backstab extends Ability {
     }
 
     @Override
-    public float getDamage(final Hero hero) {
-        if (numHits % CRITICAL_ROUND == 0
+    public float getDamage(final Hero other) {
+        if (numHits++ % Constants.BACKSTAB_BONUS_ROUNDS == 0
                 && this.hero.getLandType() == Constants.ROGUE_PREFERRED_LAND) {
-            numHits++;
-            return BONUS_MULTIPLIER * (BASE_DAMAGE + this.level * LEVEL_MULTIPLIER);
+            return Constants.BACKSTAB_BONUS_MULTIPLIER * (Constants.BACKSTAB_BASE_DAMAGE
+                    + this.level * Constants.BACKSTAB_LEVEL_MULTIPLIER);
         }
-        return BASE_DAMAGE + this.level * LEVEL_MULTIPLIER;
+        return Constants.BACKSTAB_BASE_DAMAGE + this.level * Constants.BACKSTAB_LEVEL_MULTIPLIER;
     }
 
     @Override
     public float getModifier(final Rogue rogue) {
-        return ROGUE_MODIFIER;
+        return Constants.BACKSTAB_ROGUE_MODIFIER;
     }
 
     @Override
     public float getModifier(final Knight knight) {
-        return KNIGHT_MODIFIER;
+        return Constants.BACKSTAB_KNIGHT_MODIFIER;
     }
 
     @Override
     public float getModifier(final Pyromancer pyromancer) {
-        return PYROMANCER_MODIFIER;
+        return Constants.BACKSTAB_PYROMANCER_MODIFIER;
     }
 
     @Override
     public float getModifier(final Wizard wizard) {
-        return WIZARD_MODIFIER;
+        return Constants.BACKSTAB_WIZARD_MODIFIER;
     }
 }

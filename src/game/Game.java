@@ -4,6 +4,8 @@
 
 package game;
 
+import game.input.GameInput;
+import game.output.GameOutput;
 import game.resources.heroes.Hero;
 import game.resources.map.Map;
 

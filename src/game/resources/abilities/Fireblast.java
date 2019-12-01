@@ -4,6 +4,7 @@
 
 package game.resources.abilities;
 
+import game.resources.common.Constants;
 import game.resources.heroes.Hero;
 import game.resources.heroes.Knight;
 import game.resources.heroes.Pyromancer;
@@ -11,40 +12,33 @@ import game.resources.heroes.Rogue;
 import game.resources.heroes.Wizard;
 
 public final class Fireblast extends Ability {
-    private static final int BASE_DAMAGE = 350;
-    private static final int LEVEL_MULTIPLIER = 50;
-
-    private static final float ROGUE_MODIFIER = 0.8f;
-    private static final float KNIGHT_MODIFIER = 1.2f;
-    private static final float PYROMANCER_MODIFIER = 0.9f;
-    private static final float WIZARD_MODIFIER = 1.05f;
 
     public Fireblast(final Hero hero) {
         super(hero);
     }
 
     @Override
-    public float getDamage(final Hero hero) {
-        return BASE_DAMAGE + this.level * LEVEL_MULTIPLIER;
+    public float getDamage(final Hero other) {
+        return Constants.FIREBLAST_BASE_DAMAGE + this.level * Constants.FIREBLAST_LEVEL_MULTIPLIER;
     }
 
     @Override
     public float getModifier(final Rogue rogue) {
-        return ROGUE_MODIFIER;
+        return Constants.FIREBLAST_ROGUE_MODIFIER;
     }
 
     @Override
     public float getModifier(final Knight knight) {
-        return KNIGHT_MODIFIER;
+        return Constants.FIREBLAST_KNIGHT_MODIFIER;
     }
 
     @Override
     public float getModifier(final Pyromancer pyromancer) {
-        return PYROMANCER_MODIFIER;
+        return Constants.FIREBLAST_PYROMANCER_MODIFIER;
     }
 
     @Override
     public float getModifier(final Wizard wizard) {
-        return WIZARD_MODIFIER;
+        return Constants.FIREBLAST_WIZARD_MODIFIER;
     }
 }

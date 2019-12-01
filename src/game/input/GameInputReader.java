@@ -2,7 +2,7 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package game;
+package game.input;
 
 import fileio.implementations.FileReader;
 import game.resources.heroes.Hero;

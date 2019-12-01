@@ -5,9 +5,9 @@
 package game.resources.heroes;
 
 import game.resources.abilities.Ability;
-import game.resources.abilities.Overtime;
 import game.resources.common.Constants;
 import game.resources.map.Map;
+import game.resources.overtime.Overtime;
 
 import java.util.ArrayList;
 
@@ -144,5 +144,4 @@ public abstract class Hero {
     public final char getLandType() {
         return Map.getInstance().getLandType(this.line, this.column);
     }
-
 }

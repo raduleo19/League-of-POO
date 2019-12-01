@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019 Rica Radu-Leonard
+ */
+
 package game.resources.abilities;
 
 import game.resources.heroes.Hero;
@@ -28,6 +32,10 @@ public abstract class Ability {
         return 0;
     }
 
+    /**
+     * @param other
+     * @return damage without modifiers
+     */
     public abstract float getDamage(Hero other);
 
     public abstract float getModifier(Rogue rogue);

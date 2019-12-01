@@ -5,10 +5,10 @@
 package main;
 
 import game.Game;
-import game.GameInput;
-import game.GameInputReader;
-import game.GameOutput;
-import game.GameOutputWriter;
+import game.input.GameInput;
+import game.input.GameInputReader;
+import game.output.GameOutput;
+import game.output.GameOutputWriter;
 
 import java.io.IOException;
 

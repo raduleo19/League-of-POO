@@ -2,7 +2,7 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package game;
+package game.output;
 
 import java.util.ArrayList;
 

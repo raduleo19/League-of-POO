@@ -2,7 +2,7 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package game.resources.abilities;
+package game.resources.overtime;
 
 public final class Overtime {
     private int time;
