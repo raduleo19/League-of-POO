@@ -2,9 +2,9 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package game.resources.heroes;
+package game.resources.characters.heroes;
 
-import game.resources.abilities.Ability;
+import game.resources.characters.heroes.abilities.Ability;
 import game.resources.common.Constants;
 import game.resources.map.Map;
 import game.resources.overtime.Overtime;

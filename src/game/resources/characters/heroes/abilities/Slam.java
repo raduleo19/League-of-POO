@@ -2,14 +2,14 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package game.resources.abilities;
+package game.resources.characters.heroes.abilities;
 
+import game.resources.characters.heroes.Hero;
+import game.resources.characters.heroes.Knight;
+import game.resources.characters.heroes.Pyromancer;
+import game.resources.characters.heroes.Rogue;
+import game.resources.characters.heroes.Wizard;
 import game.resources.common.Constants;
-import game.resources.heroes.Hero;
-import game.resources.heroes.Knight;
-import game.resources.heroes.Pyromancer;
-import game.resources.heroes.Rogue;
-import game.resources.heroes.Wizard;
 
 public final class Slam extends Ability {
 

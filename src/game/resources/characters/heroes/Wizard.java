@@ -2,11 +2,11 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package game.resources.heroes;
+package game.resources.characters.heroes;
 
-import game.resources.abilities.Ability;
-import game.resources.abilities.Deflect;
-import game.resources.abilities.Drain;
+import game.resources.characters.heroes.abilities.Ability;
+import game.resources.characters.heroes.abilities.Deflect;
+import game.resources.characters.heroes.abilities.Drain;
 import game.resources.common.Constants;
 import game.resources.map.Map;
 

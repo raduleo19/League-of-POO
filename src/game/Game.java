@@ -6,7 +6,8 @@ package game;
 
 import game.input.GameInput;
 import game.output.GameOutput;
-import game.resources.heroes.Hero;
+import game.resources.characters.angels.Angel;
+import game.resources.characters.heroes.Hero;
 import game.resources.map.Map;
 
 import java.util.ArrayList;
@@ -14,11 +15,13 @@ import java.util.ArrayList;
 public final class Game {
     private ArrayList<String> rounds;
     private ArrayList<Hero> heroes;
+    private ArrayList<ArrayList<Angel>> angels;
 
     public Game(final GameInput gameInput) {
         Map.getInstance().setMap(gameInput.getMap());
         heroes = gameInput.getHeroes();
         rounds = gameInput.getRounds();
+        angels = gameInput.getAngels();
     }
 
     public void fight(final Hero hero1, final Hero hero2) {

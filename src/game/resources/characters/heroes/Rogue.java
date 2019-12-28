@@ -2,11 +2,11 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package game.resources.heroes;
+package game.resources.characters.heroes;
 
-import game.resources.abilities.Ability;
-import game.resources.abilities.Backstab;
-import game.resources.abilities.Paralysis;
+import game.resources.characters.heroes.abilities.Ability;
+import game.resources.characters.heroes.abilities.Backstab;
+import game.resources.characters.heroes.abilities.Paralysis;
 import game.resources.common.Constants;
 import game.resources.map.Map;
 

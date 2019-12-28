@@ -2,7 +2,7 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package game.resources.heroes;
+package game.resources.characters.heroes;
 
 import game.resources.common.Constants;
 

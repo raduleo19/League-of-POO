@@ -6,12 +6,26 @@ package game.resources.common;
 
 public final class Constants {
 
-    // HEROES CONSTANTS
+    // STATE CONSTANTS
     public static final String DEAD = "dead";
+
+    // HEROES CONSTANTS
     public static final String KNIGHT = "K";
     public static final String PYROMANCER = "P";
     public static final String ROGUE = "R";
     public static final String WIZARD = "W";
+
+    // ANGELS CONSTANTS
+    public static final String DAMAGE_ANGEL = "DamageAngel";
+    public static final String DARK_ANGEL = "DarkAngel";
+    public static final String DRACULA = "Dracula";
+    public static final String GOOD_BOY = "GoodBoy";
+    public static final String LEVEL_UP_ANGEL = "LevelUpAngel";
+    public static final String LIFE_GIVER = "LifeGiver";
+    public static final String SMALL_ANGEL = "SmallAngel";
+    public static final String SPAWNER = "Spawner";
+    public static final String THE_DOOMER = "TheDoomer";
+    public static final String XP_ANGEL = "XPAngel";
 
     // DIRECTION CONSTANTS
     public static final char UP = 'U';
