@@ -17,11 +17,6 @@ public class DamageAngel extends Angel {
     }
 
     @Override
-    public String toString() {
-        return "Angel " + Constants.DAMAGE_ANGEL + " was spawned at " + line + " " + column;
-    }
-
-    @Override
     public void applyBuff(Knight knight) {
         knight.getBuff().increaseBuff(Constants.DAMAGE_ANGEL_DAMAGE_BONUS_KNIGHT);
     }
@@ -39,5 +34,10 @@ public class DamageAngel extends Angel {
     @Override
     public void applyBuff(Wizard wizard) {
         wizard.getBuff().increaseBuff(Constants.DAMAGE_ANGEL_DAMAGE_BONUS_WIZARD);
+    }
+
+    @Override
+    public String toString() {
+        return "Angel " + Constants.DAMAGE_ANGEL + " was spawned at " + line + " " + column;
     }
 }

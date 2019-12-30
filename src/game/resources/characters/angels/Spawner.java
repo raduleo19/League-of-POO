@@ -17,11 +17,6 @@ public class Spawner extends Angel {
     }
 
     @Override
-    public String toString() {
-        return "Angel " + Constants.SPAWNER + " was spawned at " + line + " " + column;
-    }
-
-    @Override
     public void applyBuff(Knight knight) {
         knight.setHealthPoints(Constants.SPAWNER_HP_KNIGHT);
     }
@@ -39,5 +34,10 @@ public class Spawner extends Angel {
     @Override
     public void applyBuff(Wizard wizard) {
         wizard.setHealthPoints(Constants.SPAWNER_HP_WIZARD);
+    }
+
+    @Override
+    public String toString() {
+        return "Angel " + Constants.SPAWNER + " was spawned at " + line + " " + column;
     }
 }

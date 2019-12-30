@@ -17,11 +17,6 @@ public class GoodBoy extends Angel {
     }
 
     @Override
-    public String toString() {
-        return "Angel " + Constants.GOOD_BOY + " was spawned at " + line + " " + column;
-    }
-
-    @Override
     public void applyBuff(Knight knight) {
         knight.increaseHealthPoints(Constants.GOOD_BOY_HP_BONUS_KNIGHT);
         knight.getBuff().increaseBuff(Constants.GOOD_BOY_DAMAGE_BONUS_KNIGHT);
@@ -43,5 +38,10 @@ public class GoodBoy extends Angel {
     public void applyBuff(Wizard wizard) {
         wizard.increaseHealthPoints(Constants.GOOD_BOY_HP_BONUS_WIZARD);
         wizard.getBuff().increaseBuff(Constants.GOOD_BOY_DAMAGE_BONUS_WIZARD);
+    }
+
+    @Override
+    public String toString() {
+        return "Angel " + Constants.GOOD_BOY + " was spawned at " + line + " " + column;
     }
 }

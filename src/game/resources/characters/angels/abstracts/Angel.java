@@ -26,22 +26,11 @@ public abstract class Angel {
         return column;
     }
 
-    @Override
-    public String toString() {
-        return "Angel " + "AngelType" + " was spawned at " + line + " " + column;
-    }
+    public abstract void applyBuff(Knight knight);
 
-    public void applyBuff(Knight knight) {
-    }
+    public abstract void applyBuff(Pyromancer pyromancer);
 
-    public void applyBuff(Pyromancer pyromancer) {
-    }
+    public abstract void applyBuff(Rogue rogue);
 
-    public void applyBuff(Rogue rogue) {
-    }
-
-    public void applyBuff(Wizard wizard) {
-    }
-
-
+    public abstract void applyBuff(Wizard wizard);
 }

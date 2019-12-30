@@ -17,11 +17,6 @@ public class LifeGiver extends Angel {
     }
 
     @Override
-    public String toString() {
-        return "Angel " + Constants.LIFE_GIVER + " was spawned at " + line + " " + column;
-    }
-
-    @Override
     public void applyBuff(Knight knight) {
         knight.increaseHealthPoints(Constants.LIFE_GIVER_HP_BONUS_KNIGHT);
     }
@@ -39,5 +34,10 @@ public class LifeGiver extends Angel {
     @Override
     public void applyBuff(Wizard wizard) {
         wizard.increaseHealthPoints(Constants.LIFE_GIVER_HP_BONUS_WIZARD);
+    }
+
+    @Override
+    public String toString() {
+        return "Angel " + Constants.LIFE_GIVER + " was spawned at " + line + " " + column;
     }
 }

@@ -17,11 +17,6 @@ public class TheDoomer extends Angel {
     }
 
     @Override
-    public String toString() {
-        return "Angel " + Constants.THE_DOOMER + " was spawned at " + line + " " + column;
-    }
-
-    @Override
     public void applyBuff(Knight knight) {
         knight.setHealthPoints(0);
     }
@@ -39,5 +34,10 @@ public class TheDoomer extends Angel {
     @Override
     public void applyBuff(Wizard wizard) {
         wizard.setHealthPoints(0);
+    }
+
+    @Override
+    public String toString() {
+        return "Angel " + Constants.THE_DOOMER + " was spawned at " + line + " " + column;
     }
 }

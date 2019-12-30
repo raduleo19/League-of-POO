@@ -17,11 +17,6 @@ public class SmallAngel extends Angel {
     }
 
     @Override
-    public String toString() {
-        return "Angel " + Constants.SMALL_ANGEL + " was spawned at " + line + " " + column;
-    }
-
-    @Override
     public void applyBuff(Knight knight) {
         knight.increaseHealthPoints(Constants.SMALL_ANGEL_HP_BONUS_KNIGHT);
         knight.getBuff().increaseBuff(Constants.SMALL_ANGEL_DAMAGE_BONUS_KNIGHT);
@@ -43,5 +38,10 @@ public class SmallAngel extends Angel {
     public void applyBuff(Wizard wizard) {
         wizard.increaseHealthPoints(Constants.SMALL_ANGEL_HP_BONUS_WIZARD);
         wizard.getBuff().increaseBuff(Constants.SMALL_ANGEL_DAMAGE_BONUS_WIZARD);
+    }
+
+    @Override
+    public String toString() {
+        return "Angel " + Constants.SMALL_ANGEL + " was spawned at " + line + " " + column;
     }
 }

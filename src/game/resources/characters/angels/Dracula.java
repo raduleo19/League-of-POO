@@ -17,11 +17,6 @@ public class Dracula extends Angel {
     }
 
     @Override
-    public String toString() {
-        return "Angel " + Constants.DRACULA + " was spawned at " + line + " " + column;
-    }
-
-    @Override
     public void applyBuff(Knight knight) {
         knight.decreaseHealthPoints(Constants.DRACULA_HP_BONUS_KNIGHT);
         knight.getBuff().decreaseBuff(Constants.DRACULA_DAMAGE_BONUS_KNIGHT);
@@ -43,5 +38,10 @@ public class Dracula extends Angel {
     public void applyBuff(Wizard wizard) {
         wizard.decreaseHealthPoints(Constants.DRACULA_HP_BONUS_WIZARD);
         wizard.getBuff().decreaseBuff(Constants.DRACULA_DAMAGE_BONUS_WIZARD);
+    }
+
+    @Override
+    public String toString() {
+        return "Angel " + Constants.DRACULA + " was spawned at " + line + " " + column;
     }
 }

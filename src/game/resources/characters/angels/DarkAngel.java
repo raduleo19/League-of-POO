@@ -17,11 +17,6 @@ public class DarkAngel extends Angel {
     }
 
     @Override
-    public String toString() {
-        return "Angel " + Constants.DARK_ANGEL + " was spawned at " + line + " " + column;
-    }
-
-    @Override
     public void applyBuff(Knight knight) {
         knight.decreaseHealthPoints(Constants.DARK_ANGEL_HP_BONUS_KNIGHT);
     }
@@ -39,5 +34,10 @@ public class DarkAngel extends Angel {
     @Override
     public void applyBuff(Wizard wizard) {
         wizard.decreaseHealthPoints(Constants.DARK_ANGEL_HP_BONUS_WIZARD);
+    }
+
+    @Override
+    public String toString() {
+        return "Angel " + Constants.DARK_ANGEL + " was spawned at " + line + " " + column;
     }
 }
