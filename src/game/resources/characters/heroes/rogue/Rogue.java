@@ -2,17 +2,21 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package game.resources.characters.heroes;
+package game.resources.characters.heroes.rogue;
 
-import game.resources.characters.heroes.abilities.Ability;
-import game.resources.characters.heroes.abilities.Backstab;
-import game.resources.characters.heroes.abilities.Paralysis;
+import game.resources.characters.angels.Angel;
+import game.resources.characters.heroes.abstracts.Ability;
+import game.resources.characters.heroes.abstracts.Hero;
+import game.resources.characters.heroes.rogue.abilities.Backstab;
+import game.resources.characters.heroes.rogue.abilities.Paralysis;
+import game.resources.characters.heroes.rogue.strategies.RogueStrategy;
 import game.resources.common.Constants;
 import game.resources.map.Map;
 
 public final class Rogue extends Hero {
-    Rogue(final int line, final int column) {
-        super(line, column, Constants.INITIAL_ROGUE_HP, Constants.BONUS_ROGUE_HP);
+    public Rogue(final int line, final int column) {
+        super(line, column, Constants.INITIAL_ROGUE_HP, Constants.BONUS_ROGUE_HP,
+                new RogueStrategy());
         abilities.add(new Backstab(this));
         abilities.add(new Paralysis(this));
     }
@@ -38,5 +42,10 @@ public final class Rogue extends Hero {
     @Override
     public float requestRaceModifier(final Ability ability) {
         return ability.getModifier(this);
+    }
+
+    @Override
+    public void requestBuff(Angel angel) {
+        angel.applyBuff(this);
     }
 }

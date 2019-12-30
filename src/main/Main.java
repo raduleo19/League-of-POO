@@ -26,6 +26,6 @@ public final class Main {
         GameOutput gameOutput = game.getGameOutput();
         GameOutputWriter gameOutputWriter = new GameOutputWriter(gameOutput);
         gameOutputWriter.printToFile(args[1]);
-//        gameOutputWriter.printToConsole();
+        gameOutputWriter.printToConsole();
     }
 }

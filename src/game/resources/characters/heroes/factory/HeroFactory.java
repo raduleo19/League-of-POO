@@ -2,8 +2,13 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package game.resources.characters.heroes;
+package game.resources.characters.heroes.factory;
 
+import game.resources.characters.heroes.abstracts.Hero;
+import game.resources.characters.heroes.knight.Knight;
+import game.resources.characters.heroes.pyromancer.Pyromancer;
+import game.resources.characters.heroes.rogue.Rogue;
+import game.resources.characters.heroes.wizard.Wizard;
 import game.resources.common.Constants;
 
 public final class HeroFactory {

@@ -4,8 +4,15 @@
 
 package game.resources.characters.angels;
 
+import game.resources.common.Constants;
+
 public class XPAngel extends Angel {
     public XPAngel(int line, int column) {
         super(line, column);
+    }
+
+    @Override
+    public String toString() {
+        return "Angel " + Constants.XP_ANGEL + " was spawned at " + line + " " + column;
     }
 }

@@ -4,5 +4,5 @@
 
 package game.resources.characters.admin;
 
-public class Magician {
+public class Admin {
 }

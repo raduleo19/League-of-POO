@@ -7,8 +7,8 @@ package game.input;
 import fileio.implementations.FileReader;
 import game.resources.characters.angels.Angel;
 import game.resources.characters.angels.AngelFactory;
-import game.resources.characters.heroes.Hero;
-import game.resources.characters.heroes.HeroFactory;
+import game.resources.characters.heroes.abstracts.Hero;
+import game.resources.characters.heroes.factory.HeroFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;

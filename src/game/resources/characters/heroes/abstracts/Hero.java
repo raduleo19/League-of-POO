@@ -2,28 +2,31 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package game.resources.characters.heroes;
+package game.resources.characters.heroes.abstracts;
 
-import game.resources.characters.heroes.abilities.Ability;
+import game.resources.characters.angels.Angel;
+import game.resources.characters.heroes.interfaces.Strategy;
+import game.resources.characters.heroes.shared.Overtime;
 import game.resources.common.Constants;
 import game.resources.map.Map;
-import game.resources.overtime.Overtime;
 
 import java.util.ArrayList;
 
 public abstract class Hero {
+    protected int level;
+    protected int line;
+    protected int column;
+    protected int buff;
     protected int healthPoints;
     protected int baseHealthPoints;
     protected int bonusHealthPoints;
     protected int experiencePoints;
     protected ArrayList<Ability> abilities;
-    protected int level;
-    protected int line;
-    protected int column;
     protected Overtime overtime;
+    protected Strategy strategy;
 
-    Hero(final int line, final int column, final int baseHealthPoints,
-         final int bonusHealthPoints) {
+    protected Hero(final int line, final int column, final int baseHealthPoints,
+                   final int bonusHealthPoints, Strategy strategy) {
         this.abilities = new ArrayList<>();
         this.experiencePoints = 0;
         this.baseHealthPoints = baseHealthPoints;
@@ -33,6 +36,12 @@ public abstract class Hero {
         this.line = line;
         this.column = column;
         this.overtime = new Overtime(0, 0, false);
+        this.strategy = strategy;
+        this.buff = 0;
+    }
+
+    public void applyStrategy() {
+        strategy.applyStrategy(this);
     }
 
     public abstract String toString();
@@ -41,8 +50,14 @@ public abstract class Hero {
 
     public abstract float requestRaceModifier(Ability ability);
 
+    public abstract void requestBuff(Angel angel);
+
     public final boolean collide(final Hero other) {
         return this.line == other.line && this.column == other.column;
+    }
+
+    public final boolean collide(final Angel other) {
+        return this.line == other.getLine() && this.column == other.getColumn();
     }
 
     public final void move(final char direction) {
@@ -69,14 +84,18 @@ public abstract class Hero {
         int damage = 0;
         int rawDamage = 0;
 
+
+//        System.out.print(other.healthPoints);
         for (Ability ability : abilities) {
             float abilityRawDamage = ability.getDamage(other) * this.getLandModifier();
-            float abilityDamage = abilityRawDamage * other.requestRaceModifier(ability);
+            float abilityDamage = Math.round(abilityRawDamage) * (other.requestRaceModifier(ability)
+                    + 1.0f * buff / 100);
+//            System.out.print("Damage:" + Math.round(abilityDamage) + ' ');
             rawDamage += Math.round(abilityRawDamage);
             damage += Math.round(abilityDamage);
         }
-
         other.receiveDamage(damage);
+//        System.out.println(" " + damage + ' ' + other.healthPoints);
         this.receiveDamage(other.getDeflectionDamage(this, rawDamage));
     }
 
@@ -85,7 +104,7 @@ public abstract class Hero {
 
         for (Ability ability : abilities) {
             damage += Math.round(ability.getDeflectionDamage(other, receivedRawDamage)
-                    * other.requestRaceModifier(ability)
+                    * (other.requestRaceModifier(ability) + 1.0f * buff / 100)
                     * this.getLandModifier());
         }
 
@@ -98,6 +117,10 @@ public abstract class Hero {
 
     public final int getHealthPoints() {
         return healthPoints;
+    }
+
+    public void setHealthPoints(int healthPoints) {
+        this.healthPoints = healthPoints;
     }
 
     public final int getMaxExperiencePoints() {
@@ -143,5 +166,17 @@ public abstract class Hero {
 
     public final char getLandType() {
         return Map.getInstance().getLandType(this.line, this.column);
+    }
+
+    public int getBuff() {
+        return buff;
+    }
+
+    public void setBuff(int buff) {
+        this.buff = buff;
+    }
+
+    public final void increaseHealthPoints(int value) {
+        healthPoints += value;
     }
 }

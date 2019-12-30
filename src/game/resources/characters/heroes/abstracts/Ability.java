@@ -2,13 +2,12 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package game.resources.characters.heroes.abilities;
+package game.resources.characters.heroes.abstracts;
 
-import game.resources.characters.heroes.Hero;
-import game.resources.characters.heroes.Knight;
-import game.resources.characters.heroes.Pyromancer;
-import game.resources.characters.heroes.Rogue;
-import game.resources.characters.heroes.Wizard;
+import game.resources.characters.heroes.knight.Knight;
+import game.resources.characters.heroes.pyromancer.Pyromancer;
+import game.resources.characters.heroes.rogue.Rogue;
+import game.resources.characters.heroes.wizard.Wizard;
 
 public abstract class Ability {
     protected int level;

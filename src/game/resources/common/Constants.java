@@ -138,6 +138,12 @@ public final class Constants {
     public static final float SLAM_PYROMANCER_MODIFIER = 0.9f;
     public static final float SLAM_WIZARD_MODIFIER = 1.05f;
 
+    // LIFE GIVER CONSTANTS
+    public static final int LIFE_GIVER_HP_BONUS_KNIGHT = 100;
+    public static final int LIFE_GIVER_HP_BONUS_PYROMANCER = 80;
+    public static final int LIFE_GIVER_HP_BONUS_ROGUE = 90;
+    public static final int LIFE_GIVER_HP_BONUS_WIZARD = 120;
+
     private Constants() {
     }
 }

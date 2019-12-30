@@ -2,27 +2,31 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package game.resources.characters.heroes;
+package game.resources.characters.heroes.knight;
 
-import game.resources.characters.heroes.abilities.Ability;
-import game.resources.characters.heroes.abilities.Execute;
-import game.resources.characters.heroes.abilities.Slam;
+import game.resources.characters.angels.Angel;
+import game.resources.characters.heroes.abstracts.Ability;
+import game.resources.characters.heroes.abstracts.Hero;
+import game.resources.characters.heroes.knight.abilities.Execute;
+import game.resources.characters.heroes.knight.abilities.Slam;
+import game.resources.characters.heroes.knight.strategies.KnightStrategy;
 import game.resources.common.Constants;
 import game.resources.map.Map;
 
 public final class Knight extends Hero {
 
-    Knight(final int line, final int column) {
-        super(line, column, Constants.INITIAL_KNIGHT_HP, Constants.BONUS_KNIGHT_HP);
+    public Knight(final int line, final int column) {
+        super(line, column, Constants.INITIAL_KNIGHT_HP, Constants.BONUS_KNIGHT_HP,
+                new KnightStrategy());
         abilities.add(new Execute(this));
         abilities.add(new Slam(this));
     }
 
     @Override
     public String toString() {
-        if (isDead()) {
-            return Constants.KNIGHT + " " + Constants.DEAD;
-        }
+//        if (isDead()) {
+//            return Constants.KNIGHT + " " + Constants.DEAD;
+//        }
         return Constants.KNIGHT + " " + level + " " + experiencePoints + " " + healthPoints + " "
                 + line + " " + column;
     }
@@ -39,5 +43,10 @@ public final class Knight extends Hero {
     @Override
     public float requestRaceModifier(final Ability ability) {
         return ability.getModifier(this);
+    }
+
+    @Override
+    public void requestBuff(Angel angel) {
+        angel.applyBuff(this);
     }
 }
