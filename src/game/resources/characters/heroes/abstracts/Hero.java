@@ -4,8 +4,9 @@
 
 package game.resources.characters.heroes.abstracts;
 
-import game.resources.characters.angels.Angel;
+import game.resources.characters.angels.abstracts.Angel;
 import game.resources.characters.heroes.interfaces.Strategy;
+import game.resources.characters.heroes.shared.Buff;
 import game.resources.characters.heroes.shared.Overtime;
 import game.resources.common.Constants;
 import game.resources.map.Map;
@@ -16,12 +17,12 @@ public abstract class Hero {
     protected int level;
     protected int line;
     protected int column;
-    protected int buff;
     protected int healthPoints;
     protected int baseHealthPoints;
     protected int bonusHealthPoints;
     protected int experiencePoints;
     protected ArrayList<Ability> abilities;
+    protected Buff buff;
     protected Overtime overtime;
     protected Strategy strategy;
 
@@ -37,7 +38,7 @@ public abstract class Hero {
         this.column = column;
         this.overtime = new Overtime(0, 0, false);
         this.strategy = strategy;
-        this.buff = 0;
+        this.buff = new Buff();
     }
 
     public void applyStrategy() {
@@ -89,7 +90,7 @@ public abstract class Hero {
         for (Ability ability : abilities) {
             float abilityRawDamage = ability.getDamage(other) * this.getLandModifier();
             float abilityDamage = Math.round(abilityRawDamage) * (other.requestRaceModifier(ability)
-                    + 1.0f * buff / 100);
+                    + buff.getBuff());
 //            System.out.print("Damage:" + Math.round(abilityDamage) + ' ');
             rawDamage += Math.round(abilityRawDamage);
             damage += Math.round(abilityDamage);
@@ -104,7 +105,7 @@ public abstract class Hero {
 
         for (Ability ability : abilities) {
             damage += Math.round(ability.getDeflectionDamage(other, receivedRawDamage)
-                    * (other.requestRaceModifier(ability) + 1.0f * buff / 100)
+                    * (other.requestRaceModifier(ability) + buff.getBuff())
                     * this.getLandModifier());
         }
 
@@ -128,13 +129,17 @@ public abstract class Hero {
     }
 
     public final void levelUp() {
-        this.level++;
-        for (Ability ability : abilities) {
-            ability.levelUp();
-        }
         if (!this.isDead()) {
+            this.level++;
+            for (Ability ability : abilities) {
+                ability.levelUp();
+            }
             this.healthPoints = this.getMaxHealthPoints();
         }
+    }
+
+    public void setExperiencePoints(int experiencePoints) {
+        this.experiencePoints = experiencePoints;
     }
 
     public final int getLevel() {
@@ -168,15 +173,15 @@ public abstract class Hero {
         return Map.getInstance().getLandType(this.line, this.column);
     }
 
-    public int getBuff() {
+    public Buff getBuff() {
         return buff;
-    }
-
-    public void setBuff(int buff) {
-        this.buff = buff;
     }
 
     public final void increaseHealthPoints(int value) {
         healthPoints += value;
+    }
+
+    public final void decreaseHealthPoints(int value) {
+        healthPoints -= value;
     }
 }

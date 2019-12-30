@@ -4,7 +4,7 @@
 
 package game.resources.characters.heroes.pyromancer;
 
-import game.resources.characters.angels.Angel;
+import game.resources.characters.angels.abstracts.Angel;
 import game.resources.characters.heroes.abstracts.Ability;
 import game.resources.characters.heroes.abstracts.Hero;
 import game.resources.characters.heroes.pyromancer.abilities.Fireblast;

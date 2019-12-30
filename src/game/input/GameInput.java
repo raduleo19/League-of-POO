@@ -4,7 +4,7 @@
 
 package game.input;
 
-import game.resources.characters.angels.Angel;
+import game.resources.characters.angels.abstracts.Angel;
 import game.resources.characters.heroes.abstracts.Hero;
 
 import java.util.ArrayList;

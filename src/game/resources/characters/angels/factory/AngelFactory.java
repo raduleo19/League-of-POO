@@ -2,8 +2,19 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package game.resources.characters.angels;
+package game.resources.characters.angels.factory;
 
+import game.resources.characters.angels.DamageAngel;
+import game.resources.characters.angels.DarkAngel;
+import game.resources.characters.angels.Dracula;
+import game.resources.characters.angels.GoodBoy;
+import game.resources.characters.angels.LevelUpAngel;
+import game.resources.characters.angels.LifeGiver;
+import game.resources.characters.angels.SmallAngel;
+import game.resources.characters.angels.Spawner;
+import game.resources.characters.angels.TheDoomer;
+import game.resources.characters.angels.XPAngel;
+import game.resources.characters.angels.abstracts.Angel;
 import game.resources.common.Constants;
 
 public final class AngelFactory {

@@ -6,7 +6,7 @@ package game;
 
 import game.input.GameInput;
 import game.output.GameOutput;
-import game.resources.characters.angels.Angel;
+import game.resources.characters.angels.abstracts.Angel;
 import game.resources.characters.heroes.abstracts.Hero;
 import game.resources.map.Map;
 

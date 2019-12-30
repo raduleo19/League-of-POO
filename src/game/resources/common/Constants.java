@@ -144,6 +144,60 @@ public final class Constants {
     public static final int LIFE_GIVER_HP_BONUS_ROGUE = 90;
     public static final int LIFE_GIVER_HP_BONUS_WIZARD = 120;
 
+    // DAMAGE ANGEL CONSTANTS
+    public static final float DAMAGE_ANGEL_DAMAGE_BONUS_KNIGHT = 0.15f;
+    public static final float DAMAGE_ANGEL_DAMAGE_BONUS_PYROMANCER = 0.2f;
+    public static final float DAMAGE_ANGEL_DAMAGE_BONUS_ROGUE = 0.3f;
+    public static final float DAMAGE_ANGEL_DAMAGE_BONUS_WIZARD = 0.4f;
+
+    // DARK ANGEL CONSTANTS
+    public static final int DARK_ANGEL_HP_BONUS_KNIGHT = 40;
+    public static final int DARK_ANGEL_HP_BONUS_PYROMANCER = 30;
+    public static final int DARK_ANGEL_HP_BONUS_ROGUE = 10;
+    public static final int DARK_ANGEL_HP_BONUS_WIZARD = 20;
+
+    // DRACULA CONSTANTS
+    public static final int DRACULA_HP_BONUS_KNIGHT = 60;
+    public static final int DRACULA_HP_BONUS_PYROMANCER = 40;
+    public static final int DRACULA_HP_BONUS_ROGUE = 35;
+    public static final int DRACULA_HP_BONUS_WIZARD = 20;
+    public static final float DRACULA_DAMAGE_BONUS_KNIGHT = 0.2f;
+    public static final float DRACULA_DAMAGE_BONUS_PYROMANCER = 0.3f;
+    public static final float DRACULA_DAMAGE_BONUS_ROGUE = 0.1f;
+    public static final float DRACULA_DAMAGE_BONUS_WIZARD = 0.4f;
+
+    // GOOD BOY CONSTANTS
+    public static final int GOOD_BOY_HP_BONUS_KNIGHT = 20;
+    public static final int GOOD_BOY_HP_BONUS_PYROMANCER = 30;
+    public static final int GOOD_BOY_HP_BONUS_ROGUE = 40;
+    public static final int GOOD_BOY_HP_BONUS_WIZARD = 50;
+    public static final float GOOD_BOY_DAMAGE_BONUS_KNIGHT = 0.4f;
+    public static final float GOOD_BOY_DAMAGE_BONUS_PYROMANCER = 0.5f;
+    public static final float GOOD_BOY_DAMAGE_BONUS_ROGUE = 0.4f;
+    public static final float GOOD_BOY_DAMAGE_BONUS_WIZARD = 0.3f;
+
+    // LEVEL UP ANGEL CONSTANTS
+    public static final float LEVEL_UP_ANGEL_DAMAGE_BONUS_KNIGHT = 0.1f;
+    public static final float LEVEL_UP_ANGEL_DAMAGE_BONUS_PYROMANCER = 0.2f;
+    public static final float LEVEL_UP_ANGEL_DAMAGE_BONUS_ROGUE = 0.15f;
+    public static final float LEVEL_UP_ANGEL_DAMAGE_BONUS_WIZARD = 0.25f;
+
+    // SPAWNER CONSTANTS
+    public static final int SPAWNER_HP_KNIGHT = 200;
+    public static final int SPAWNER_HP_PYROMANCER = 150;
+    public static final int SPAWNER_HP_ROGUE = 180;
+    public static final int SPAWNER_HP_WIZARD = 120;
+
+    // SMALL ANGEL CONSTANTS
+    public static final int SMALL_ANGEL_HP_BONUS_KNIGHT = 10;
+    public static final int SMALL_ANGEL_HP_BONUS_PYROMANCER = 15;
+    public static final int SMALL_ANGEL_HP_BONUS_ROGUE = 20;
+    public static final int SMALL_ANGEL_HP_BONUS_WIZARD = 25;
+    public static final float SMALL_ANGEL_DAMAGE_BONUS_KNIGHT = 0.1f;
+    public static final float SMALL_ANGEL_DAMAGE_BONUS_PYROMANCER = 0.15f;
+    public static final float SMALL_ANGEL_DAMAGE_BONUS_ROGUE = 0.05f;
+    public static final float SMALL_ANGEL_DAMAGE_BONUS_WIZARD = 0.1f;
+
     private Constants() {
     }
 }

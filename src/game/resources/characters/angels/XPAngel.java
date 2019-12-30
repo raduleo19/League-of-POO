@@ -4,6 +4,7 @@
 
 package game.resources.characters.angels;
 
+import game.resources.characters.angels.abstracts.Angel;
 import game.resources.common.Constants;
 
 public class XPAngel extends Angel {

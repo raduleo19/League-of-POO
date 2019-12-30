@@ -13,10 +13,10 @@ public class KnightStrategy implements Strategy {
         if (hero.getMaxHealthPoints() / 3 < hero.getHealthPoints()
                 && hero.getHealthPoints() < hero.getMaxHealthPoints() / 2) {
             hero.setHealthPoints(Math.round(hero.getHealthPoints() * 4 / 5));
-            hero.setBuff(hero.getBuff() + 50);
+            hero.getBuff().increaseBuff(0.5f);
         } else if (hero.getHealthPoints() <= hero.getMaxHealthPoints() / 3) {
             hero.setHealthPoints(Math.round(hero.getHealthPoints() * 5 / 4));
-            hero.setBuff(hero.getBuff() - 20);
+            hero.getBuff().decreaseBuff(0.2f);
         }
     }
 }

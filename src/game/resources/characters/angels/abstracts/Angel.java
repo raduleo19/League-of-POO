@@ -2,7 +2,7 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package game.resources.characters.angels;
+package game.resources.characters.angels.abstracts;
 
 import game.resources.characters.heroes.knight.Knight;
 import game.resources.characters.heroes.pyromancer.Pyromancer;

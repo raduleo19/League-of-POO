@@ -4,5 +4,12 @@
 
 package game.resources.characters.admin;
 
+import java.util.ArrayList;
+
 public class Admin {
+    ArrayList<String> logs;
+
+    public Admin() {
+        logs = new ArrayList<>();
+    }
 }

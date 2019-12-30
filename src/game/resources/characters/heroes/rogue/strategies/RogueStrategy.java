@@ -13,10 +13,10 @@ public class RogueStrategy implements Strategy {
         if (hero.getMaxHealthPoints() / 7 < hero.getHealthPoints()
                 && hero.getHealthPoints() < hero.getMaxHealthPoints() / 5) {
             hero.setHealthPoints(Math.round(hero.getHealthPoints() * 6 / 7));
-            hero.setBuff(hero.getBuff() + 40);
+            hero.getBuff().increaseBuff(0.4f);
         } else if (hero.getHealthPoints() <= hero.getMaxHealthPoints() / 7) {
             hero.setHealthPoints(Math.round(hero.getHealthPoints() * 3 / 2));
-            hero.setBuff(hero.getBuff() - 10);
+            hero.getBuff().decreaseBuff(0.1f);
         }
     }
 }

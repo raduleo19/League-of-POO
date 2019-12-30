@@ -4,6 +4,7 @@
 
 package game.resources.characters.angels;
 
+import game.resources.characters.angels.abstracts.Angel;
 import game.resources.characters.heroes.knight.Knight;
 import game.resources.characters.heroes.pyromancer.Pyromancer;
 import game.resources.characters.heroes.rogue.Rogue;
