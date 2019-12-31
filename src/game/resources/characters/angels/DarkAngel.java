@@ -36,8 +36,7 @@ public class DarkAngel extends Angel {
         wizard.decreaseHealthPoints(Constants.DARK_ANGEL_HP_BONUS_WIZARD);
     }
 
-    @Override
-    public String toString() {
-        return "Angel " + Constants.DARK_ANGEL + " was spawned at " + line + " " + column;
+    public String getType() {
+        return Constants.DARK_ANGEL;
     }
 }

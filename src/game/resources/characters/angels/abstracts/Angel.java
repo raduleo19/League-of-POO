@@ -33,4 +33,6 @@ public abstract class Angel {
     public abstract void applyBuff(Rogue rogue);
 
     public abstract void applyBuff(Wizard wizard);
+
+    public abstract String getType();
 }

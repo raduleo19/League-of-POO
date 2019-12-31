@@ -12,4 +12,12 @@ public class Admin {
     public Admin() {
         logs = new ArrayList<>();
     }
+
+    public void receiveNotification(String notification) {
+        logs.add(notification);
+    }
+
+    public ArrayList<String> getLogs() {
+        return logs;
+    }
 }

@@ -198,6 +198,12 @@ public final class Constants {
     public static final float SMALL_ANGEL_DAMAGE_BONUS_ROGUE = 0.05f;
     public static final float SMALL_ANGEL_DAMAGE_BONUS_WIZARD = 0.1f;
 
+    // XP ANGEL CONSTANTS
+    public static final int XP_ANGEL_BONUS_XP_KNIGHT = 45;
+    public static final int XP_ANGEL_BONUS_XP_PYROMANCER = 50;
+    public static final int XP_ANGEL_BONUS_XP_ROGUE = 40;
+    public static final int XP_ANGEL_BONUS_XP_WIZARD = 60;
+
     private Constants() {
     }
 }

@@ -23,6 +23,10 @@ public final class Rogue extends Hero {
 
     @Override
     public String toString() {
+        return null;
+    }
+
+    public String getStats() {
         if (isDead()) {
             return Constants.ROGUE + " " + Constants.DEAD;
         }

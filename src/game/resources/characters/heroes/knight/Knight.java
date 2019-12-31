@@ -24,9 +24,13 @@ public final class Knight extends Hero {
 
     @Override
     public String toString() {
-//        if (isDead()) {
-//            return Constants.KNIGHT + " " + Constants.DEAD;
-//        }
+        return null;
+    }
+
+    public String getStats() {
+        if (isDead()) {
+            return Constants.KNIGHT + " " + Constants.DEAD;
+        }
         return Constants.KNIGHT + " " + level + " " + experiencePoints + " " + healthPoints + " "
                 + line + " " + column;
     }

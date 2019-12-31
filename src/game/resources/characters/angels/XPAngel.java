@@ -18,26 +18,25 @@ public class XPAngel extends Angel {
 
     @Override
     public void applyBuff(Knight knight) {
-
+        knight.gainExperience(Constants.XP_ANGEL_BONUS_XP_KNIGHT);
     }
 
     @Override
     public void applyBuff(Pyromancer pyromancer) {
-
+        pyromancer.gainExperience(Constants.XP_ANGEL_BONUS_XP_PYROMANCER);
     }
 
     @Override
     public void applyBuff(Rogue rogue) {
-
+        rogue.gainExperience(Constants.XP_ANGEL_BONUS_XP_ROGUE);
     }
 
     @Override
     public void applyBuff(Wizard wizard) {
-
+        wizard.gainExperience(Constants.XP_ANGEL_BONUS_XP_WIZARD);
     }
 
-    @Override
-    public String toString() {
-        return "Angel " + Constants.XP_ANGEL + " was spawned at " + line + " " + column;
+    public String getType() {
+        return Constants.XP_ANGEL;
     }
 }

@@ -36,8 +36,7 @@ public class DamageAngel extends Angel {
         wizard.getBuff().increaseBuff(Constants.DAMAGE_ANGEL_DAMAGE_BONUS_WIZARD);
     }
 
-    @Override
-    public String toString() {
-        return "Angel " + Constants.DAMAGE_ANGEL + " was spawned at " + line + " " + column;
+    public String getType() {
+        return Constants.DAMAGE_ANGEL;
     }
 }

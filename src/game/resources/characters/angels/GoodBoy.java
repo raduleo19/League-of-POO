@@ -40,8 +40,7 @@ public class GoodBoy extends Angel {
         wizard.getBuff().increaseBuff(Constants.GOOD_BOY_DAMAGE_BONUS_WIZARD);
     }
 
-    @Override
-    public String toString() {
-        return "Angel " + Constants.GOOD_BOY + " was spawned at " + line + " " + column;
+    public String getType() {
+        return Constants.GOOD_BOY;
     }
 }

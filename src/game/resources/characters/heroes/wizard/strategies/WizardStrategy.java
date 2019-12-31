@@ -12,10 +12,10 @@ public class WizardStrategy implements Strategy {
     public void applyStrategy(Hero hero) {
         if (hero.getMaxHealthPoints() / 4 < hero.getHealthPoints()
                 && hero.getHealthPoints() < hero.getMaxHealthPoints() / 2) {
-            hero.setHealthPoints(Math.round(hero.getHealthPoints() * 9 / 10));
+            hero.setHealthPoints(hero.getHealthPoints() - (hero.getHealthPoints() / 10));
             hero.getBuff().increaseBuff(0.6f);
-        } else if (hero.getHealthPoints() <= hero.getMaxHealthPoints() / 4) {
-            hero.setHealthPoints(Math.round(hero.getHealthPoints() * 6 / 5));
+        } else if (hero.getHealthPoints() < hero.getMaxHealthPoints() / 4) {
+            hero.setHealthPoints(hero.getHealthPoints() + (hero.getHealthPoints() / 5));
             hero.getBuff().decreaseBuff(0.2f);
         }
     }

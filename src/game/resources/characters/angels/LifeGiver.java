@@ -36,8 +36,7 @@ public class LifeGiver extends Angel {
         wizard.increaseHealthPoints(Constants.LIFE_GIVER_HP_BONUS_WIZARD);
     }
 
-    @Override
-    public String toString() {
-        return "Angel " + Constants.LIFE_GIVER + " was spawned at " + line + " " + column;
+    public String getType() {
+        return Constants.LIFE_GIVER;
     }
 }

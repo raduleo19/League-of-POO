@@ -36,8 +36,7 @@ public class TheDoomer extends Angel {
         wizard.setHealthPoints(0);
     }
 
-    @Override
-    public String toString() {
-        return "Angel " + Constants.THE_DOOMER + " was spawned at " + line + " " + column;
+    public String getType() {
+        return Constants.THE_DOOMER;
     }
 }

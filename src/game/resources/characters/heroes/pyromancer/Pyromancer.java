@@ -24,9 +24,13 @@ public final class Pyromancer extends Hero {
 
     @Override
     public String toString() {
-//        if (isDead()) {
-//            return Constants.PYROMANCER + " " + Constants.DEAD;
-//        }
+        return null;
+    }
+
+    public String getStats() {
+        if (isDead()) {
+            return Constants.PYROMANCER + " " + Constants.DEAD;
+        }
         return Constants.PYROMANCER + " " + level + " " + experiencePoints + " " + healthPoints
                 + " " + line + " " + column;
     }

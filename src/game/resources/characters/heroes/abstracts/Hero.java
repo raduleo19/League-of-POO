@@ -45,7 +45,10 @@ public abstract class Hero {
         strategy.applyStrategy(this);
     }
 
+    @Override
     public abstract String toString();
+
+    public abstract String getStats();
 
     public abstract float getLandModifier();
 
@@ -128,7 +131,7 @@ public abstract class Hero {
         return Constants.BASE_EXPERIENCE + this.level * Constants.EXPERIENCE_MULTIPLIER;
     }
 
-    public final void levelUp() {
+    public final void receiveLevelBonus() {
         if (!this.isDead()) {
             this.level++;
             for (Ability ability : abilities) {
@@ -136,6 +139,11 @@ public abstract class Hero {
             }
             this.healthPoints = this.getMaxHealthPoints();
         }
+    }
+
+    public final void levelUp() {
+        setExperiencePoints(getMaxExperiencePoints());
+        receiveLevelBonus();
     }
 
     public void setExperiencePoints(int experiencePoints) {
@@ -150,11 +158,10 @@ public abstract class Hero {
         this.healthPoints -= damage;
     }
 
-    public final void gainExperience(final int loserLevel) {
-        experiencePoints += Math.max(0, Constants.BASE_GAIN_EXPERIENCE
-                - (this.level - loserLevel) * Constants.GAIN_EXPERIENCE_MULTIPLIER);
+    public final void gainExperience(final int value) {
+        experiencePoints += value;
         while (this.experiencePoints >= this.getMaxExperiencePoints()) {
-            this.levelUp();
+            this.receiveLevelBonus();
         }
     }
 

@@ -23,6 +23,10 @@ public final class Wizard extends Hero {
 
     @Override
     public String toString() {
+        return null;
+    }
+
+    public String getStats() {
         if (isDead()) {
             return Constants.WIZARD + " " + Constants.DEAD;
         }

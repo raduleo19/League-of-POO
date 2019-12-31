@@ -19,33 +19,28 @@ public class LevelUpAngel extends Angel {
     @Override
     public void applyBuff(Knight knight) {
         knight.getBuff().increaseBuff(Constants.LEVEL_UP_ANGEL_DAMAGE_BONUS_KNIGHT);
-        knight.setExperiencePoints(knight.getMaxExperiencePoints());
         knight.levelUp();
     }
 
     @Override
     public void applyBuff(Pyromancer pyromancer) {
         pyromancer.getBuff().increaseBuff(Constants.LEVEL_UP_ANGEL_DAMAGE_BONUS_PYROMANCER);
-        pyromancer.setExperiencePoints(pyromancer.getMaxExperiencePoints());
         pyromancer.levelUp();
     }
 
     @Override
     public void applyBuff(Rogue rogue) {
         rogue.getBuff().increaseBuff(Constants.LEVEL_UP_ANGEL_DAMAGE_BONUS_ROGUE);
-        rogue.setExperiencePoints(rogue.getMaxExperiencePoints());
         rogue.levelUp();
     }
 
     @Override
     public void applyBuff(Wizard wizard) {
         wizard.getBuff().increaseBuff(Constants.LEVEL_UP_ANGEL_DAMAGE_BONUS_WIZARD);
-        wizard.setExperiencePoints(wizard.getMaxExperiencePoints());
         wizard.levelUp();
     }
 
-    @Override
-    public String toString() {
-        return "Angel " + Constants.LEVEL_UP_ANGEL + " was spawned at " + line + " " + column;
+    public String getType() {
+        return Constants.LEVEL_UP_ANGEL;
     }
 }

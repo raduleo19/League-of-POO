@@ -36,8 +36,7 @@ public class Spawner extends Angel {
         wizard.setHealthPoints(Constants.SPAWNER_HP_WIZARD);
     }
 
-    @Override
-    public String toString() {
-        return "Angel " + Constants.SPAWNER + " was spawned at " + line + " " + column;
+    public String getType() {
+        return Constants.SPAWNER;
     }
 }

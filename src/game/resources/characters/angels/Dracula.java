@@ -40,8 +40,7 @@ public class Dracula extends Angel {
         wizard.getBuff().decreaseBuff(Constants.DRACULA_DAMAGE_BONUS_WIZARD);
     }
 
-    @Override
-    public String toString() {
-        return "Angel " + Constants.DRACULA + " was spawned at " + line + " " + column;
+    public String getType() {
+        return Constants.DRACULA;
     }
 }

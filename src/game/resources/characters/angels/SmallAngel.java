@@ -40,8 +40,7 @@ public class SmallAngel extends Angel {
         wizard.getBuff().increaseBuff(Constants.SMALL_ANGEL_DAMAGE_BONUS_WIZARD);
     }
 
-    @Override
-    public String toString() {
-        return "Angel " + Constants.SMALL_ANGEL + " was spawned at " + line + " " + column;
+    public String getType() {
+        return Constants.SMALL_ANGEL;
     }
 }

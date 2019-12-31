@@ -23,6 +23,7 @@ public final class Paralysis extends Ability {
         float damage = Constants.PARALYSIS_DOT_BASE_DAMAGE
                 + this.level * Constants.PARALYSIS_DOT_LEVEL_MULTIPLIER;
         damage *= this.hero.getLandModifier();
+        damage = Math.round(damage);
         damage *= other.requestRaceModifier(this);
         int time = Constants.PARALYSIS_STANDARD_DURATION;
         if (this.hero.getLandType() == Constants.ROGUE_PREFERRED_LAND) {
