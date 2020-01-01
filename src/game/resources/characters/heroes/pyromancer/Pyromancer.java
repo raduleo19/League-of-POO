@@ -15,16 +15,16 @@ import game.resources.map.Map;
 
 public final class Pyromancer extends Hero {
 
-    public Pyromancer(final int line, final int column) {
+    public Pyromancer(final int line, final int column, final int id) {
         super(line, column, Constants.INITIAL_PYROMANCER_HP, Constants.BONUS_PYROMANCER_HP,
-                new PyromancerStrategy());
+                new PyromancerStrategy(), id);
         abilities.add(new Fireblast(this));
         abilities.add(new Ignite(this));
     }
 
     @Override
     public String toString() {
-        return null;
+        return "Pyromancer " + id;
     }
 
     public String getStats() {

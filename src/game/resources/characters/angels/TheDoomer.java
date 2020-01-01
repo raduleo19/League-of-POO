@@ -18,22 +18,38 @@ public class TheDoomer extends Angel {
 
     @Override
     public void applyBuff(Knight knight) {
-        knight.setHealthPoints(0);
+        if (!knight.isDead()) {
+            sendHitNotification(knight);
+            sendKilledNotification(knight);
+            knight.setHealthPoints(0);
+        }
     }
 
     @Override
     public void applyBuff(Pyromancer pyromancer) {
-        pyromancer.setHealthPoints(0);
+        if (!pyromancer.isDead()) {
+            sendHitNotification(pyromancer);
+            sendKilledNotification(pyromancer);
+            pyromancer.setHealthPoints(0);
+        }
     }
 
     @Override
     public void applyBuff(Rogue rogue) {
-        rogue.setHealthPoints(0);
+        if (!rogue.isDead()) {
+            sendHitNotification(rogue);
+            sendKilledNotification(rogue);
+            rogue.setHealthPoints(0);
+        }
     }
 
     @Override
     public void applyBuff(Wizard wizard) {
-        wizard.setHealthPoints(0);
+        if (!wizard.isDead()) {
+            sendHitNotification(wizard);
+            sendKilledNotification(wizard);
+            wizard.setHealthPoints(0);
+        }
     }
 
     public String getType() {

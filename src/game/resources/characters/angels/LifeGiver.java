@@ -18,22 +18,34 @@ public class LifeGiver extends Angel {
 
     @Override
     public void applyBuff(Knight knight) {
-        knight.increaseHealthPoints(Constants.LIFE_GIVER_HP_BONUS_KNIGHT);
+        if (!knight.isDead()) {
+            sendHelpedNotification(knight);
+            knight.increaseHealthPoints(Constants.LIFE_GIVER_HP_BONUS_KNIGHT);
+        }
     }
 
     @Override
     public void applyBuff(Pyromancer pyromancer) {
-        pyromancer.increaseHealthPoints(Constants.LIFE_GIVER_HP_BONUS_PYROMANCER);
+        if (!pyromancer.isDead()) {
+            sendHelpedNotification(pyromancer);
+            pyromancer.increaseHealthPoints(Constants.LIFE_GIVER_HP_BONUS_PYROMANCER);
+        }
     }
 
     @Override
     public void applyBuff(Rogue rogue) {
-        rogue.increaseHealthPoints(Constants.LIFE_GIVER_HP_BONUS_ROGUE);
+        if (!rogue.isDead()) {
+            sendHelpedNotification(rogue);
+            rogue.increaseHealthPoints(Constants.LIFE_GIVER_HP_BONUS_ROGUE);
+        }
     }
 
     @Override
     public void applyBuff(Wizard wizard) {
-        wizard.increaseHealthPoints(Constants.LIFE_GIVER_HP_BONUS_WIZARD);
+        if (!wizard.isDead()) {
+            sendHelpedNotification(wizard);
+            wizard.increaseHealthPoints(Constants.LIFE_GIVER_HP_BONUS_WIZARD);
+        }
     }
 
     public String getType() {

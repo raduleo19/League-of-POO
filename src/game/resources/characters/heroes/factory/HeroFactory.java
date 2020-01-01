@@ -22,15 +22,15 @@ public final class HeroFactory {
         return instance;
     }
 
-    public Hero getHero(final String type, final int line, final int column) {
+    public Hero getHero(final String type, final int line, final int column, int id) {
         if (type.equals(Constants.KNIGHT)) {
-            return new Knight(line, column);
+            return new Knight(line, column, id);
         } else if (type.equals(Constants.PYROMANCER)) {
-            return new Pyromancer(line, column);
+            return new Pyromancer(line, column, id);
         } else if (type.equals(Constants.ROGUE)) {
-            return new Rogue(line, column);
+            return new Rogue(line, column, id);
         } else if (type.equals(Constants.WIZARD)) {
-            return new Wizard(line, column);
+            return new Wizard(line, column, id);
         }
         return null;
     }

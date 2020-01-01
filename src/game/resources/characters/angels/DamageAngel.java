@@ -18,22 +18,34 @@ public class DamageAngel extends Angel {
 
     @Override
     public void applyBuff(Knight knight) {
-        knight.getBuff().increaseBuff(Constants.DAMAGE_ANGEL_DAMAGE_BONUS_KNIGHT);
+        if (!knight.isDead()) {
+            sendHelpedNotification(knight);
+            knight.getBuff().increaseBuff(Constants.DAMAGE_ANGEL_DAMAGE_BONUS_KNIGHT);
+        }
     }
 
     @Override
     public void applyBuff(Pyromancer pyromancer) {
-        pyromancer.getBuff().increaseBuff(Constants.DAMAGE_ANGEL_DAMAGE_BONUS_PYROMANCER);
+        if (!pyromancer.isDead()) {
+            sendHelpedNotification(pyromancer);
+            pyromancer.getBuff().increaseBuff(Constants.DAMAGE_ANGEL_DAMAGE_BONUS_PYROMANCER);
+        }
     }
 
     @Override
     public void applyBuff(Rogue rogue) {
-        rogue.getBuff().increaseBuff(Constants.DAMAGE_ANGEL_DAMAGE_BONUS_ROGUE);
+        if (!rogue.isDead()) {
+            sendHelpedNotification(rogue);
+            rogue.getBuff().increaseBuff(Constants.DAMAGE_ANGEL_DAMAGE_BONUS_ROGUE);
+        }
     }
 
     @Override
     public void applyBuff(Wizard wizard) {
-        wizard.getBuff().increaseBuff(Constants.DAMAGE_ANGEL_DAMAGE_BONUS_WIZARD);
+        if (!wizard.isDead()) {
+            sendHelpedNotification(wizard);
+            wizard.getBuff().increaseBuff(Constants.DAMAGE_ANGEL_DAMAGE_BONUS_WIZARD);
+        }
     }
 
     public String getType() {

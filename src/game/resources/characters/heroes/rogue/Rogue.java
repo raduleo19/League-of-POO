@@ -14,16 +14,16 @@ import game.resources.common.Constants;
 import game.resources.map.Map;
 
 public final class Rogue extends Hero {
-    public Rogue(final int line, final int column) {
+    public Rogue(final int line, final int column, final int id) {
         super(line, column, Constants.INITIAL_ROGUE_HP, Constants.BONUS_ROGUE_HP,
-                new RogueStrategy());
+                new RogueStrategy(), id);
         abilities.add(new Backstab(this));
         abilities.add(new Paralysis(this));
     }
 
     @Override
     public String toString() {
-        return null;
+        return "Rogue " + id;
     }
 
     public String getStats() {

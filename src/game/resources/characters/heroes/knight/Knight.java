@@ -15,16 +15,16 @@ import game.resources.map.Map;
 
 public final class Knight extends Hero {
 
-    public Knight(final int line, final int column) {
+    public Knight(final int line, final int column, final int id) {
         super(line, column, Constants.INITIAL_KNIGHT_HP, Constants.BONUS_KNIGHT_HP,
-                new KnightStrategy());
+                new KnightStrategy(), id);
         abilities.add(new Execute(this));
         abilities.add(new Slam(this));
     }
 
     @Override
     public String toString() {
-        return null;
+        return "Knight " + id;
     }
 
     public String getStats() {

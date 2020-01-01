@@ -18,26 +18,38 @@ public class GoodBoy extends Angel {
 
     @Override
     public void applyBuff(Knight knight) {
-        knight.increaseHealthPoints(Constants.GOOD_BOY_HP_BONUS_KNIGHT);
-        knight.getBuff().increaseBuff(Constants.GOOD_BOY_DAMAGE_BONUS_KNIGHT);
+        if (!knight.isDead()) {
+            sendHelpedNotification(knight);
+            knight.increaseHealthPoints(Constants.GOOD_BOY_HP_BONUS_KNIGHT);
+            knight.getBuff().increaseBuff(Constants.GOOD_BOY_DAMAGE_BONUS_KNIGHT);
+        }
     }
 
     @Override
     public void applyBuff(Pyromancer pyromancer) {
-        pyromancer.increaseHealthPoints(Constants.GOOD_BOY_HP_BONUS_PYROMANCER);
-        pyromancer.getBuff().increaseBuff(Constants.GOOD_BOY_DAMAGE_BONUS_PYROMANCER);
+        if (!pyromancer.isDead()) {
+            sendHelpedNotification(pyromancer);
+            pyromancer.increaseHealthPoints(Constants.GOOD_BOY_HP_BONUS_PYROMANCER);
+            pyromancer.getBuff().increaseBuff(Constants.GOOD_BOY_DAMAGE_BONUS_PYROMANCER);
+        }
     }
 
     @Override
     public void applyBuff(Rogue rogue) {
-        rogue.increaseHealthPoints(Constants.GOOD_BOY_HP_BONUS_ROGUE);
-        rogue.getBuff().increaseBuff(Constants.GOOD_BOY_DAMAGE_BONUS_ROGUE);
+        if (!rogue.isDead()) {
+            sendHelpedNotification(rogue);
+            rogue.increaseHealthPoints(Constants.GOOD_BOY_HP_BONUS_ROGUE);
+            rogue.getBuff().increaseBuff(Constants.GOOD_BOY_DAMAGE_BONUS_ROGUE);
+        }
     }
 
     @Override
     public void applyBuff(Wizard wizard) {
-        wizard.increaseHealthPoints(Constants.GOOD_BOY_HP_BONUS_WIZARD);
-        wizard.getBuff().increaseBuff(Constants.GOOD_BOY_DAMAGE_BONUS_WIZARD);
+        if (!wizard.isDead()) {
+            sendHelpedNotification(wizard);
+            wizard.increaseHealthPoints(Constants.GOOD_BOY_HP_BONUS_WIZARD);
+            wizard.getBuff().increaseBuff(Constants.GOOD_BOY_DAMAGE_BONUS_WIZARD);
+        }
     }
 
     public String getType() {

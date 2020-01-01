@@ -151,10 +151,10 @@ public final class Constants {
     public static final float DAMAGE_ANGEL_DAMAGE_BONUS_WIZARD = 0.4f;
 
     // DARK ANGEL CONSTANTS
-    public static final int DARK_ANGEL_HP_BONUS_KNIGHT = 40;
-    public static final int DARK_ANGEL_HP_BONUS_PYROMANCER = 30;
-    public static final int DARK_ANGEL_HP_BONUS_ROGUE = 10;
-    public static final int DARK_ANGEL_HP_BONUS_WIZARD = 20;
+    public static final int DARK_ANGEL_HP_LOSS_KNIGHT = 40;
+    public static final int DARK_ANGEL_HP_LOSS_PYROMANCER = 30;
+    public static final int DARK_ANGEL_HP_LOSS_ROGUE = 10;
+    public static final int DARK_ANGEL_HP_LOSS_WIZARD = 20;
 
     // DRACULA CONSTANTS
     public static final int DRACULA_HP_BONUS_KNIGHT = 60;

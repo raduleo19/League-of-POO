@@ -14,16 +14,16 @@ import game.resources.common.Constants;
 import game.resources.map.Map;
 
 public final class Wizard extends Hero {
-    public Wizard(final int line, final int column) {
+    public Wizard(final int line, final int column, final int id) {
         super(line, column, Constants.INITIAL_WIZARD_HP, Constants.BONUS_WIZARD_HP,
-                new WizardStrategy());
+                new WizardStrategy(), id);
         abilities.add(new Drain(this));
         abilities.add(new Deflect(this));
     }
 
     @Override
     public String toString() {
-        return null;
+        return "Wizard " + id;
     }
 
     public String getStats() {

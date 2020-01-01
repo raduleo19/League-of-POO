@@ -37,7 +37,7 @@ public final class GameInputReader {
         int numHeroes = fileReader.nextInt();
         for (int i = 0; i < numHeroes; ++i) {
             heroes.add(HeroFactory.getInstance().getHero(fileReader.nextWord(),
-                    fileReader.nextInt(), fileReader.nextInt()));
+                    fileReader.nextInt(), fileReader.nextInt(), i));
         }
 
         int numRounds = fileReader.nextInt();

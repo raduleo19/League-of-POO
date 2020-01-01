@@ -18,22 +18,34 @@ public class DarkAngel extends Angel {
 
     @Override
     public void applyBuff(Knight knight) {
-        knight.decreaseHealthPoints(Constants.DARK_ANGEL_HP_BONUS_KNIGHT);
+        if (!knight.isDead()) {
+            sendHitNotification(knight);
+            knight.decreaseHealthPoints(Constants.DARK_ANGEL_HP_LOSS_KNIGHT);
+        }
     }
 
     @Override
     public void applyBuff(Pyromancer pyromancer) {
-        pyromancer.decreaseHealthPoints(Constants.DARK_ANGEL_HP_BONUS_PYROMANCER);
+        if (!pyromancer.isDead()) {
+            sendHitNotification(pyromancer);
+            pyromancer.decreaseHealthPoints(Constants.DARK_ANGEL_HP_LOSS_PYROMANCER);
+        }
     }
 
     @Override
     public void applyBuff(Rogue rogue) {
-        rogue.decreaseHealthPoints(Constants.DARK_ANGEL_HP_BONUS_ROGUE);
+        if (!rogue.isDead()) {
+            sendHitNotification(rogue);
+            rogue.decreaseHealthPoints(Constants.DARK_ANGEL_HP_LOSS_ROGUE);
+        }
     }
 
     @Override
     public void applyBuff(Wizard wizard) {
-        wizard.decreaseHealthPoints(Constants.DARK_ANGEL_HP_BONUS_WIZARD);
+        if (!wizard.isDead()) {
+            sendHitNotification(wizard);
+            wizard.decreaseHealthPoints(Constants.DARK_ANGEL_HP_LOSS_WIZARD);
+        }
     }
 
     public String getType() {

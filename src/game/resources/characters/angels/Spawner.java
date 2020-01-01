@@ -18,22 +18,38 @@ public class Spawner extends Angel {
 
     @Override
     public void applyBuff(Knight knight) {
-        knight.setHealthPoints(Constants.SPAWNER_HP_KNIGHT);
+        if (knight.isDead()) {
+            knight.setHealthPoints(Constants.SPAWNER_HP_KNIGHT);
+            sendHelpedNotification(knight);
+            sendResurrectedNotification(knight);
+        }
     }
 
     @Override
     public void applyBuff(Pyromancer pyromancer) {
-        pyromancer.setHealthPoints(Constants.SPAWNER_HP_PYROMANCER);
+        if (pyromancer.isDead()) {
+            pyromancer.setHealthPoints(Constants.SPAWNER_HP_PYROMANCER);
+            sendHelpedNotification(pyromancer);
+            sendResurrectedNotification(pyromancer);
+        }
     }
 
     @Override
     public void applyBuff(Rogue rogue) {
-        rogue.setHealthPoints(Constants.SPAWNER_HP_ROGUE);
+        if (rogue.isDead()) {
+            rogue.setHealthPoints(Constants.SPAWNER_HP_ROGUE);
+            sendHelpedNotification(rogue);
+            sendResurrectedNotification(rogue);
+        }
     }
 
     @Override
     public void applyBuff(Wizard wizard) {
-        wizard.setHealthPoints(Constants.SPAWNER_HP_WIZARD);
+        if (wizard.isDead()) {
+            wizard.setHealthPoints(Constants.SPAWNER_HP_WIZARD);
+            sendHelpedNotification(wizard);
+            sendResurrectedNotification(wizard);
+        }
     }
 
     public String getType() {

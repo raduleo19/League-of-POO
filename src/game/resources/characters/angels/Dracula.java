@@ -18,26 +18,38 @@ public class Dracula extends Angel {
 
     @Override
     public void applyBuff(Knight knight) {
-        knight.decreaseHealthPoints(Constants.DRACULA_HP_BONUS_KNIGHT);
-        knight.getBuff().decreaseBuff(Constants.DRACULA_DAMAGE_BONUS_KNIGHT);
+        if (!knight.isDead()) {
+            sendHitNotification(knight);
+            knight.decreaseHealthPoints(Constants.DRACULA_HP_BONUS_KNIGHT);
+            knight.getBuff().decreaseBuff(Constants.DRACULA_DAMAGE_BONUS_KNIGHT);
+        }
     }
 
     @Override
     public void applyBuff(Pyromancer pyromancer) {
-        pyromancer.decreaseHealthPoints(Constants.DRACULA_HP_BONUS_PYROMANCER);
-        pyromancer.getBuff().decreaseBuff(Constants.DRACULA_DAMAGE_BONUS_PYROMANCER);
+        if (!pyromancer.isDead()) {
+            sendHitNotification(pyromancer);
+            pyromancer.decreaseHealthPoints(Constants.DRACULA_HP_BONUS_PYROMANCER);
+            pyromancer.getBuff().decreaseBuff(Constants.DRACULA_DAMAGE_BONUS_PYROMANCER);
+        }
     }
 
     @Override
     public void applyBuff(Rogue rogue) {
-        rogue.decreaseHealthPoints(Constants.DRACULA_HP_BONUS_ROGUE);
-        rogue.getBuff().decreaseBuff(Constants.DRACULA_DAMAGE_BONUS_ROGUE);
+        if (!rogue.isDead()) {
+            sendHitNotification(rogue);
+            rogue.decreaseHealthPoints(Constants.DRACULA_HP_BONUS_ROGUE);
+            rogue.getBuff().decreaseBuff(Constants.DRACULA_DAMAGE_BONUS_ROGUE);
+        }
     }
 
     @Override
     public void applyBuff(Wizard wizard) {
-        wizard.decreaseHealthPoints(Constants.DRACULA_HP_BONUS_WIZARD);
-        wizard.getBuff().decreaseBuff(Constants.DRACULA_DAMAGE_BONUS_WIZARD);
+        if (!wizard.isDead()) {
+            sendHitNotification(wizard);
+            wizard.decreaseHealthPoints(Constants.DRACULA_HP_BONUS_WIZARD);
+            wizard.getBuff().decreaseBuff(Constants.DRACULA_DAMAGE_BONUS_WIZARD);
+        }
     }
 
     public String getType() {

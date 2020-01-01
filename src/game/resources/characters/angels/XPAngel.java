@@ -18,22 +18,34 @@ public class XPAngel extends Angel {
 
     @Override
     public void applyBuff(Knight knight) {
-        knight.gainExperience(Constants.XP_ANGEL_BONUS_XP_KNIGHT);
+        if (!knight.isDead()) {
+            sendHelpedNotification(knight);
+            knight.gainExperience(Constants.XP_ANGEL_BONUS_XP_KNIGHT);
+        }
     }
 
     @Override
     public void applyBuff(Pyromancer pyromancer) {
-        pyromancer.gainExperience(Constants.XP_ANGEL_BONUS_XP_PYROMANCER);
+        if (!pyromancer.isDead()) {
+            sendHelpedNotification(pyromancer);
+            pyromancer.gainExperience(Constants.XP_ANGEL_BONUS_XP_PYROMANCER);
+        }
     }
 
     @Override
     public void applyBuff(Rogue rogue) {
-        rogue.gainExperience(Constants.XP_ANGEL_BONUS_XP_ROGUE);
+        if (!rogue.isDead()) {
+            sendHelpedNotification(rogue);
+            rogue.gainExperience(Constants.XP_ANGEL_BONUS_XP_ROGUE);
+        }
     }
 
     @Override
     public void applyBuff(Wizard wizard) {
-        wizard.gainExperience(Constants.XP_ANGEL_BONUS_XP_WIZARD);
+        if (!wizard.isDead()) {
+            sendHelpedNotification(wizard);
+            wizard.gainExperience(Constants.XP_ANGEL_BONUS_XP_WIZARD);
+        }
     }
 
     public String getType() {
