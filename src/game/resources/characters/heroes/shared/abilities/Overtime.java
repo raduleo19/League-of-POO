@@ -2,7 +2,7 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package game.resources.characters.heroes.shared;
+package game.resources.characters.heroes.shared.abilities;
 
 public final class Overtime {
     private int time;

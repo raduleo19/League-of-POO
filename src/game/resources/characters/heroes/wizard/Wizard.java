@@ -7,18 +7,32 @@ package game.resources.characters.heroes.wizard;
 import game.resources.characters.angels.abstracts.Angel;
 import game.resources.characters.heroes.abstracts.Ability;
 import game.resources.characters.heroes.abstracts.Hero;
+import game.resources.characters.heroes.shared.strategies.AttackStrategy;
+import game.resources.characters.heroes.shared.strategies.DefenseStrategy;
+import game.resources.characters.heroes.shared.strategies.NormalStrategy;
 import game.resources.characters.heroes.wizard.abilities.Deflect;
 import game.resources.characters.heroes.wizard.abilities.Drain;
-import game.resources.characters.heroes.wizard.strategies.WizardStrategy;
 import game.resources.common.Constants;
 import game.resources.map.Map;
 
 public final class Wizard extends Hero {
     public Wizard(final int line, final int column, final int id) {
         super(line, column, Constants.INITIAL_WIZARD_HP, Constants.BONUS_WIZARD_HP,
-                new WizardStrategy(), id);
+                id);
         abilities.add(new Drain(this));
         abilities.add(new Deflect(this));
+    }
+
+    @Override
+    public void selectStrategy() {
+        if (this.getMaxHealthPoints() / 4 < this.getHealthPoints()
+                && this.getHealthPoints() < this.getMaxHealthPoints() / 2) {
+            strategy = new AttackStrategy(10, 0.6f);
+        } else if (this.getHealthPoints() < this.getMaxHealthPoints() / 4) {
+            strategy = new DefenseStrategy(5, 0.2f);
+        } else {
+            strategy = new NormalStrategy();
+        }
     }
 
     @Override

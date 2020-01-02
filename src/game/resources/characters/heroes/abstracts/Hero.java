@@ -7,8 +7,9 @@ package game.resources.characters.heroes.abstracts;
 import game.resources.characters.angels.abstracts.Angel;
 import game.resources.characters.heroes.interfaces.IHeroObservable;
 import game.resources.characters.heroes.interfaces.IStrategy;
-import game.resources.characters.heroes.shared.Buff;
-import game.resources.characters.heroes.shared.Overtime;
+import game.resources.characters.heroes.shared.abilities.Buff;
+import game.resources.characters.heroes.shared.abilities.Overtime;
+import game.resources.characters.heroes.shared.strategies.NormalStrategy;
 import game.resources.characters.observers.interfaces.IObserver;
 import game.resources.common.Constants;
 import game.resources.map.Map;
@@ -31,7 +32,7 @@ public abstract class Hero implements IHeroObservable {
     protected IObserver observer;
 
     protected Hero(final int line, final int column, final int baseHealthPoints,
-                   final int bonusHealthPoints, IStrategy strategy, final int id) {
+                   final int bonusHealthPoints, final int id) {
         this.abilities = new ArrayList<>();
         this.experiencePoints = 0;
         this.baseHealthPoints = baseHealthPoints;
@@ -41,7 +42,7 @@ public abstract class Hero implements IHeroObservable {
         this.line = line;
         this.column = column;
         this.overtime = new Overtime(0, 0, false);
-        this.strategy = strategy;
+        this.strategy = new NormalStrategy();
         this.buff = new Buff();
         this.id = id;
     }
@@ -50,6 +51,7 @@ public abstract class Hero implements IHeroObservable {
         this.observer = observer;
     }
 
+    public abstract void selectStrategy();
     public void applyStrategy() {
         strategy.applyStrategy(this);
     }

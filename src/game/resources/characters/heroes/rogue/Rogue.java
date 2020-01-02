@@ -9,16 +9,30 @@ import game.resources.characters.heroes.abstracts.Ability;
 import game.resources.characters.heroes.abstracts.Hero;
 import game.resources.characters.heroes.rogue.abilities.Backstab;
 import game.resources.characters.heroes.rogue.abilities.Paralysis;
-import game.resources.characters.heroes.rogue.strategies.RogueStrategy;
+import game.resources.characters.heroes.shared.strategies.AttackStrategy;
+import game.resources.characters.heroes.shared.strategies.DefenseStrategy;
+import game.resources.characters.heroes.shared.strategies.NormalStrategy;
 import game.resources.common.Constants;
 import game.resources.map.Map;
 
 public final class Rogue extends Hero {
     public Rogue(final int line, final int column, final int id) {
         super(line, column, Constants.INITIAL_ROGUE_HP, Constants.BONUS_ROGUE_HP,
-                new RogueStrategy(), id);
+                id);
         abilities.add(new Backstab(this));
         abilities.add(new Paralysis(this));
+    }
+
+    @Override
+    public void selectStrategy() {
+        if (this.getMaxHealthPoints() / 7 < this.getHealthPoints()
+                && this.getHealthPoints() < this.getMaxHealthPoints() / 5) {
+            strategy = new AttackStrategy(7, 0.4f);
+        } else if (this.getHealthPoints() < this.getMaxHealthPoints() / 7) {
+            strategy = new DefenseStrategy(2, 0.1f);
+        } else {
+            strategy = new NormalStrategy();
+        }
     }
 
     @Override

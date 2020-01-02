@@ -82,6 +82,7 @@ public final class Game {
                 if (!hero.isDead()) {
                     if (!hero.isStunned()) {
                         hero.applyOvertime();
+                        hero.selectStrategy();
                         hero.applyStrategy();
                         hero.move(move);
                     } else {

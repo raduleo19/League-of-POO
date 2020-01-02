@@ -9,7 +9,9 @@ import game.resources.characters.heroes.abstracts.Ability;
 import game.resources.characters.heroes.abstracts.Hero;
 import game.resources.characters.heroes.knight.abilities.Execute;
 import game.resources.characters.heroes.knight.abilities.Slam;
-import game.resources.characters.heroes.knight.strategies.KnightStrategy;
+import game.resources.characters.heroes.shared.strategies.AttackStrategy;
+import game.resources.characters.heroes.shared.strategies.DefenseStrategy;
+import game.resources.characters.heroes.shared.strategies.NormalStrategy;
 import game.resources.common.Constants;
 import game.resources.map.Map;
 
@@ -17,9 +19,21 @@ public final class Knight extends Hero {
 
     public Knight(final int line, final int column, final int id) {
         super(line, column, Constants.INITIAL_KNIGHT_HP, Constants.BONUS_KNIGHT_HP,
-                new KnightStrategy(), id);
+                id);
         abilities.add(new Execute(this));
         abilities.add(new Slam(this));
+    }
+
+    @Override
+    public void selectStrategy() {
+        if (this.getMaxHealthPoints() / 3 < this.getHealthPoints()
+                && this.getHealthPoints() < this.getMaxHealthPoints() / 2) {
+            strategy = new AttackStrategy(5, 0.5f);
+        } else if (this.getHealthPoints() < this.getMaxHealthPoints() / 3) {
+            strategy = new DefenseStrategy(4, 0.2f);
+        } else {
+            strategy = new NormalStrategy();
+        }
     }
 
     @Override
