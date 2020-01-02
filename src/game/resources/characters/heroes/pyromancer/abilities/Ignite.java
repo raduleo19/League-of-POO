@@ -24,7 +24,7 @@ public final class Ignite extends Ability {
                 + this.level * Constants.IGNITE_DOT_LEVEL_MULTIPLIER;
         damage *= this.hero.getLandModifier();
         damage = Math.round(damage);
-        damage *= other.requestRaceModifier(this);
+        damage *= other.requestRaceModifier(this) + this.hero.getBuff().getBuff();
         other.setOvertime(2, false, Math.round(damage));
         return Constants.IGNITE_BASE_DAMAGE + this.level * Constants.IGNITE_LEVEL_MULTIPLIER;
     }

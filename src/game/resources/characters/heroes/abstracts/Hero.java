@@ -5,16 +5,17 @@
 package game.resources.characters.heroes.abstracts;
 
 import game.resources.characters.angels.abstracts.Angel;
-import game.resources.characters.heroes.interfaces.Strategy;
+import game.resources.characters.heroes.interfaces.IHeroObservable;
+import game.resources.characters.heroes.interfaces.IStrategy;
 import game.resources.characters.heroes.shared.Buff;
 import game.resources.characters.heroes.shared.Overtime;
-import game.resources.characters.observers.interfaces.Observer;
+import game.resources.characters.observers.interfaces.IObserver;
 import game.resources.common.Constants;
 import game.resources.map.Map;
 
 import java.util.ArrayList;
 
-public abstract class Hero {
+public abstract class Hero implements IHeroObservable {
     protected int id;
     protected int line;
     protected int column;
@@ -26,11 +27,11 @@ public abstract class Hero {
     protected ArrayList<Ability> abilities;
     protected Buff buff;
     protected Overtime overtime;
-    protected Strategy strategy;
-    protected Observer observer;
+    protected IStrategy strategy;
+    protected IObserver observer;
 
     protected Hero(final int line, final int column, final int baseHealthPoints,
-                   final int bonusHealthPoints, Strategy strategy, final int id) {
+                   final int bonusHealthPoints, IStrategy strategy, final int id) {
         this.abilities = new ArrayList<>();
         this.experiencePoints = 0;
         this.baseHealthPoints = baseHealthPoints;
@@ -45,7 +46,7 @@ public abstract class Hero {
         this.id = id;
     }
 
-    public void setObserver(Observer observer) {
+    public void setObserver(IObserver observer) {
         this.observer = observer;
     }
 
@@ -92,42 +93,60 @@ public abstract class Hero {
         return overtime.getStun() && overtime.getTime() > 0;
     }
 
-    public final void attack(final Hero other) {
+    public void attack(final Hero other) {
         int damage = 0;
         int rawDamage = 0;
 
 
 //        System.out.print(other.healthPoints);
         for (Ability ability : abilities) {
-            float abilityRawDamage = ability.getDamage(other) * this.getLandModifier();
+            float abilityRawDamage = ability.getDamage(other);
+//            System.out.println(abilityRawDamage * (other.requestRaceModifier(ability)
+//                    + buff.getBuff()));
+
+
             float newModifier = 1.0f;
             if (other.requestRaceModifier(ability) != 1.0f) {
                 newModifier = other.requestRaceModifier(ability)
                         + buff.getBuff();
             }
-            float abilityDamage = Math.round(abilityRawDamage) * newModifier;
-//            System.out.println(abilityDamage);
-//            System.out.print("Damage:" + Math.round(abilityDamage) + ' ');
-            rawDamage += Math.round(abilityRawDamage);
+
+//            System.out.println(ability.getClass().getSimpleName() + ' ' + newModifier);;
+            float abilityDamage = Math.round(Math.round(abilityRawDamage) * this
+                    .getLandModifier()) * newModifier;
+//
+            rawDamage += Math.round(abilityRawDamage * this.getLandModifier());
             damage += Math.round(abilityDamage);
+////            System.out.println(abilityDamage);
+////            System.out.print("Damage:" + Math.round(abilityDamage) + ' ');
+//
+//
+//            System.out.println(
+//                    this.toString() + " give " + abilityDamage + " to " + other.toString());
         }
         other.receiveDamage(damage);
 //        System.out.println(" " + damage + ' ' + other.healthPoints);
-        this.receiveDamage(other.getDeflectionDamage(this, rawDamage));
+        int deflectionDamage = other.getDeflectionDamage(this, rawDamage);
+        this.receiveDamage(deflectionDamage);
+//        if (this.getId() == 44 || other.getId() == 44 || this.getId() == 35 || hero2.getId() ==
+//        35) {
+//            if (deflectionDamage != 0) {
+//                System.out.println("DEFLECTION:" + deflectionDamage);
+//                System.out.println("RAW DMG:" + rawDamage);
+//            }
+//        }
     }
 
     public final int getDeflectionDamage(final Hero other, final int receivedRawDamage) {
         int damage = 0;
 
         for (Ability ability : abilities) {
-            float newModifier = 1.0f;
-            if (other.requestRaceModifier(ability) != 1.0f) {
-                newModifier = other.requestRaceModifier(ability)
-                        + buff.getBuff();
+            if (other.requestRaceModifier(ability) != 0.0f) {
+                damage += Math.round(
+                        ability.getDeflectionDamage(other, receivedRawDamage)
+                                * this.getLandModifier() * (other.requestRaceModifier(ability)
+                                + buff.getBuff()));
             }
-            damage += Math.round(Math.round(ability.getDeflectionDamage(other, receivedRawDamage)
-
-                    * this.getLandModifier()) * newModifier);
         }
 
         return damage;
@@ -163,6 +182,11 @@ public abstract class Hero {
     public void sendLevelUpNotification() {
         observer.receiveNotification(
                 String.format("%s reached level %d", this.toString(), this.getLevel()));
+    }
+
+    public void sendKilledNotification(Hero other) {
+        observer.receiveNotification(String.format("Player %s was killed by %s", other.toString(),
+                this.toString()));
     }
 
     public final void levelUp() {
@@ -209,10 +233,14 @@ public abstract class Hero {
     }
 
     public final void increaseHealthPoints(int value) {
-        healthPoints += value;
+        healthPoints = Math.min(getMaxHealthPoints(), healthPoints + value);
     }
 
     public final void decreaseHealthPoints(int value) {
         healthPoints -= value;
+    }
+
+    public int getId() {
+        return id;
     }
 }

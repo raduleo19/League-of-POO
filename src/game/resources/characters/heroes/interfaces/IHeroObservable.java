@@ -6,6 +6,8 @@ package game.resources.characters.heroes.interfaces;
 
 import game.resources.characters.heroes.abstracts.Hero;
 
-public interface Strategy {
-    void applyStrategy(Hero hero);
+public interface IHeroObservable {
+    void sendLevelUpNotification();
+
+    void sendKilledNotification(Hero other);
 }

@@ -5,9 +5,9 @@
 package game.resources.characters.heroes.knight.strategies;
 
 import game.resources.characters.heroes.abstracts.Hero;
-import game.resources.characters.heroes.interfaces.Strategy;
+import game.resources.characters.heroes.interfaces.IStrategy;
 
-public class KnightStrategy implements Strategy {
+public class KnightStrategy implements IStrategy {
     @Override
     public void applyStrategy(Hero hero) {
         if (hero.getMaxHealthPoints() / 3 < hero.getHealthPoints()

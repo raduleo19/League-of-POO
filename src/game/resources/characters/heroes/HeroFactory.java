@@ -2,7 +2,7 @@
  * Copyright (c) 2019 Rica Radu-Leonard
  */
 
-package game.resources.characters.heroes.factory;
+package game.resources.characters.heroes;
 
 import game.resources.characters.heroes.abstracts.Hero;
 import game.resources.characters.heroes.knight.Knight;

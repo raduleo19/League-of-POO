@@ -5,9 +5,9 @@
 package game.resources.characters.heroes.wizard.strategies;
 
 import game.resources.characters.heroes.abstracts.Hero;
-import game.resources.characters.heroes.interfaces.Strategy;
+import game.resources.characters.heroes.interfaces.IStrategy;
 
-public class WizardStrategy implements Strategy {
+public class WizardStrategy implements IStrategy {
     @Override
     public void applyStrategy(Hero hero) {
         if (hero.getMaxHealthPoints() / 4 < hero.getHealthPoints()

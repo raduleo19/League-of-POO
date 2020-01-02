@@ -52,4 +52,23 @@ public final class Wizard extends Hero {
     public void requestBuff(Angel angel) {
         angel.applyBuff(this);
     }
+
+    @Override
+    public final void attack(final Hero other) {
+        int damage = 0;
+
+        for (Ability ability : abilities) {
+
+            float newModifier = 1.0f;
+            if (other.requestRaceModifier(ability) != 1.0f) {
+                newModifier = other.requestRaceModifier(ability)
+                        + buff.getBuff();
+            }
+            newModifier -= 0.0000001;
+            float abilityDamage = Math.round(ability.getDamage(other) * newModifier * this
+                    .getLandModifier());
+            damage += Math.round(abilityDamage);
+        }
+        other.receiveDamage(damage);
+    }
 }

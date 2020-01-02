@@ -21,6 +21,9 @@ public class DarkAngel extends Angel {
         if (!knight.isDead()) {
             sendHitNotification(knight);
             knight.decreaseHealthPoints(Constants.DARK_ANGEL_HP_LOSS_KNIGHT);
+            if (knight.isDead()) {
+                sendKilledNotification(knight);
+            }
         }
     }
 
@@ -29,6 +32,9 @@ public class DarkAngel extends Angel {
         if (!pyromancer.isDead()) {
             sendHitNotification(pyromancer);
             pyromancer.decreaseHealthPoints(Constants.DARK_ANGEL_HP_LOSS_PYROMANCER);
+            if (pyromancer.isDead()) {
+                sendKilledNotification(pyromancer);
+            }
         }
     }
 
@@ -37,6 +43,9 @@ public class DarkAngel extends Angel {
         if (!rogue.isDead()) {
             sendHitNotification(rogue);
             rogue.decreaseHealthPoints(Constants.DARK_ANGEL_HP_LOSS_ROGUE);
+            if (rogue.isDead()) {
+                sendKilledNotification(rogue);
+            }
         }
     }
 
@@ -45,6 +54,9 @@ public class DarkAngel extends Angel {
         if (!wizard.isDead()) {
             sendHitNotification(wizard);
             wizard.decreaseHealthPoints(Constants.DARK_ANGEL_HP_LOSS_WIZARD);
+            if (wizard.isDead()) {
+                sendKilledNotification(wizard);
+            }
         }
     }
 

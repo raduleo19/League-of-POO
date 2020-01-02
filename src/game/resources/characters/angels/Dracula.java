@@ -22,6 +22,9 @@ public class Dracula extends Angel {
             sendHitNotification(knight);
             knight.decreaseHealthPoints(Constants.DRACULA_HP_BONUS_KNIGHT);
             knight.getBuff().decreaseBuff(Constants.DRACULA_DAMAGE_BONUS_KNIGHT);
+            if (knight.isDead()) {
+                sendKilledNotification(knight);
+            }
         }
     }
 
@@ -31,6 +34,9 @@ public class Dracula extends Angel {
             sendHitNotification(pyromancer);
             pyromancer.decreaseHealthPoints(Constants.DRACULA_HP_BONUS_PYROMANCER);
             pyromancer.getBuff().decreaseBuff(Constants.DRACULA_DAMAGE_BONUS_PYROMANCER);
+            if (pyromancer.isDead()) {
+                sendKilledNotification(pyromancer);
+            }
         }
     }
 
@@ -40,6 +46,9 @@ public class Dracula extends Angel {
             sendHitNotification(rogue);
             rogue.decreaseHealthPoints(Constants.DRACULA_HP_BONUS_ROGUE);
             rogue.getBuff().decreaseBuff(Constants.DRACULA_DAMAGE_BONUS_ROGUE);
+            if (rogue.isDead()) {
+                sendKilledNotification(rogue);
+            }
         }
     }
 
@@ -49,6 +58,9 @@ public class Dracula extends Angel {
             sendHitNotification(wizard);
             wizard.decreaseHealthPoints(Constants.DRACULA_HP_BONUS_WIZARD);
             wizard.getBuff().decreaseBuff(Constants.DRACULA_DAMAGE_BONUS_WIZARD);
+            if (wizard.isDead()) {
+                sendKilledNotification(wizard);
+            }
         }
     }
 

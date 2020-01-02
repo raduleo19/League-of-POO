@@ -4,17 +4,18 @@
 
 package game.resources.characters.angels.abstracts;
 
+import game.resources.characters.angels.interfaces.IAngelObservable;
 import game.resources.characters.heroes.abstracts.Hero;
 import game.resources.characters.heroes.knight.Knight;
 import game.resources.characters.heroes.pyromancer.Pyromancer;
 import game.resources.characters.heroes.rogue.Rogue;
 import game.resources.characters.heroes.wizard.Wizard;
-import game.resources.characters.observers.interfaces.Observer;
+import game.resources.characters.observers.interfaces.IObserver;
 
-public abstract class Angel {
+public abstract class Angel implements IAngelObservable {
     protected int line;
     protected int column;
-    protected Observer observer;
+    protected IObserver observer;
 
     public Angel(int line, int column) {
         this.line = line;
@@ -40,7 +41,7 @@ public abstract class Angel {
 
     public abstract String getType();
 
-    public void setObserver(Observer observer) {
+    public void setObserver(IObserver observer) {
         this.observer = observer;
     }
 

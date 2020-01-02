@@ -5,9 +5,9 @@
 package game.resources.characters.observers;
 
 import game.output.GameOutput;
-import game.resources.characters.observers.interfaces.Observer;
+import game.resources.characters.observers.interfaces.IObserver;
 
-public class Admin implements Observer {
+public class Admin implements IObserver {
     GameOutput gameOutput;
 
     public Admin(GameOutput gameOutput) {

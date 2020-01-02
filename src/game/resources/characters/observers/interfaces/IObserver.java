@@ -4,6 +4,6 @@
 
 package game.resources.characters.observers.interfaces;
 
-public interface Observer {
+public interface IObserver {
     void receiveNotification(String message);
 }

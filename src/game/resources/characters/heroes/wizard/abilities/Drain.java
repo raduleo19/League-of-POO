@@ -21,9 +21,9 @@ public final class Drain extends Ability {
     @Override
     public float getDamage(final Hero other) {
         int percent = Constants.DRAIN_BASE_DAMAGE + this.level * Constants.DRAIN_LEVEL_MULTIPLIER;
-        float baseHealthPoints = Math.min(Constants.DRAIN_HP_LIMIT * other.getMaxHealthPoints(),
+        int baseHealthPoints = (int) Math.min(Constants.DRAIN_HP_LIMIT * other.getMaxHealthPoints(),
                 other.getHealthPoints());
-        return percent * baseHealthPoints / Constants.PERCENT_BASE;
+        return 1.0f * percent * baseHealthPoints / Constants.PERCENT_BASE;
     }
 
     @Override

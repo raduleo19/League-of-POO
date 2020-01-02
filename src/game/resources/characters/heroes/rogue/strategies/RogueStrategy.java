@@ -5,9 +5,9 @@
 package game.resources.characters.heroes.rogue.strategies;
 
 import game.resources.characters.heroes.abstracts.Hero;
-import game.resources.characters.heroes.interfaces.Strategy;
+import game.resources.characters.heroes.interfaces.IStrategy;
 
-public class RogueStrategy implements Strategy {
+public class RogueStrategy implements IStrategy {
     @Override
     public void applyStrategy(Hero hero) {
         if (hero.getMaxHealthPoints() / 7 < hero.getHealthPoints()
