@@ -17,17 +17,17 @@ public abstract class Angel implements IAngelObservable {
     protected int column;
     protected IObserver observer;
 
-    public Angel(int line, int column) {
+    public Angel(final int line, final int column) {
         this.line = line;
         this.column = column;
         observer = null;
     }
 
-    public int getLine() {
+    public final int getLine() {
         return line;
     }
 
-    public int getColumn() {
+    public final int getColumn() {
         return column;
     }
 
@@ -41,32 +41,32 @@ public abstract class Angel implements IAngelObservable {
 
     public abstract String getType();
 
-    public void setObserver(IObserver observer) {
+    public final void setObserver(final IObserver observer) {
         this.observer = observer;
     }
 
-    public void sendSpawnedNotification() {
+    public final void sendSpawnedNotification() {
         observer.receiveNotification(
                 String.format("Angel %s was spawned at %d %d", getType(), getLine(),
                         getColumn()));
     }
 
-    public void sendHelpedNotification(Hero hero) {
+    public final void sendHelpedNotification(final Hero hero) {
         observer.receiveNotification(
                 String.format("%s helped %s", getType(), hero.toString()));
     }
 
-    public void sendHitNotification(Hero hero) {
+    public final void sendHitNotification(final Hero hero) {
         observer.receiveNotification(
                 String.format("%s hit %s", getType(), hero.toString()));
     }
 
-    public void sendKilledNotification(Hero hero) {
+    public final void sendKilledNotification(final Hero hero) {
         observer.receiveNotification(
                 String.format("Player %s was killed by an angel", hero.toString()));
     }
 
-    public void sendResurrectedNotification(Hero hero) {
+    public final void sendResurrectedNotification(final Hero hero) {
         observer.receiveNotification(
                 String.format("Player %s was brought to life by an angel", hero.toString()));
     }

@@ -11,13 +11,13 @@ import game.resources.characters.heroes.rogue.Rogue;
 import game.resources.characters.heroes.wizard.Wizard;
 import game.resources.common.Constants;
 
-public class Dracula extends Angel {
-    public Dracula(int line, int column) {
+public final class Dracula extends Angel {
+    public Dracula(final int line, final int column) {
         super(line, column);
     }
 
     @Override
-    public void applyBuff(Knight knight) {
+    public void applyBuff(final Knight knight) {
         if (!knight.isDead()) {
             sendHitNotification(knight);
             knight.decreaseHealthPoints(Constants.DRACULA_HP_BONUS_KNIGHT);
@@ -29,7 +29,7 @@ public class Dracula extends Angel {
     }
 
     @Override
-    public void applyBuff(Pyromancer pyromancer) {
+    public void applyBuff(final Pyromancer pyromancer) {
         if (!pyromancer.isDead()) {
             sendHitNotification(pyromancer);
             pyromancer.decreaseHealthPoints(Constants.DRACULA_HP_BONUS_PYROMANCER);
@@ -41,7 +41,7 @@ public class Dracula extends Angel {
     }
 
     @Override
-    public void applyBuff(Rogue rogue) {
+    public void applyBuff(final Rogue rogue) {
         if (!rogue.isDead()) {
             sendHitNotification(rogue);
             rogue.decreaseHealthPoints(Constants.DRACULA_HP_BONUS_ROGUE);
@@ -53,7 +53,7 @@ public class Dracula extends Angel {
     }
 
     @Override
-    public void applyBuff(Wizard wizard) {
+    public void applyBuff(final Wizard wizard) {
         if (!wizard.isDead()) {
             sendHitNotification(wizard);
             wizard.decreaseHealthPoints(Constants.DRACULA_HP_BONUS_WIZARD);

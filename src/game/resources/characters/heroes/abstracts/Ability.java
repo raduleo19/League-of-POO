@@ -10,16 +10,10 @@ import game.resources.characters.heroes.rogue.Rogue;
 import game.resources.characters.heroes.wizard.Wizard;
 
 public abstract class Ability {
-    protected int level;
     protected Hero hero;
 
     public Ability(final Hero hero) {
-        this.level = 0;
         this.hero = hero;
-    }
-
-    public final void levelUp() {
-        this.level++;
     }
 
     /**

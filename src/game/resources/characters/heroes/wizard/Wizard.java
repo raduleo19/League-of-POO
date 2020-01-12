@@ -25,11 +25,12 @@ public final class Wizard extends Hero {
 
     @Override
     public void selectStrategy() {
-        if (this.getMaxHealthPoints() / 4 < this.getHealthPoints()
-                && this.getHealthPoints() < this.getMaxHealthPoints() / 2) {
-            strategy = new AttackStrategy(10, 0.6f);
-        } else if (this.getHealthPoints() < this.getMaxHealthPoints() / 4) {
-            strategy = new DefenseStrategy(5, 0.2f);
+        if (this.getMaxHealthPoints() / Constants.WIZARD_MIN_HP < this.getHealthPoints()
+                && this.getHealthPoints() < this.getMaxHealthPoints() / Constants.WIZARD_MAX_HP) {
+            strategy = new AttackStrategy(Constants.WIZARD_ATTACK_HP, Constants.WIZARD_ATTACK_BUFF);
+        } else if (this.getHealthPoints() < this.getMaxHealthPoints() / Constants.WIZARD_MIN_HP) {
+            strategy = new DefenseStrategy(Constants.WIZARD_DEFENSE_HP,
+                    Constants.WIZARD_DEFENSE_BUFF);
         } else {
             strategy = new NormalStrategy();
         }
@@ -63,12 +64,12 @@ public final class Wizard extends Hero {
     }
 
     @Override
-    public void requestBuff(Angel angel) {
+    public void requestBuff(final Angel angel) {
         angel.applyBuff(this);
     }
 
     @Override
-    public final void attack(final Hero other) {
+    public void attack(final Hero other) {
         int damage = 0;
 
         for (Ability ability : abilities) {
@@ -78,7 +79,6 @@ public final class Wizard extends Hero {
                 newModifier = other.requestRaceModifier(ability)
                         + buff.getBuff();
             }
-            newModifier -= 0.0000001;
             float abilityDamage = Math.round(ability.getDamage(other) * newModifier * this
                     .getLandModifier());
             damage += Math.round(abilityDamage);

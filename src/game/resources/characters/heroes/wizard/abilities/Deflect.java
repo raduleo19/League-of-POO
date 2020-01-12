@@ -26,7 +26,7 @@ public final class Deflect extends Ability {
     @Override
     public float getDeflectionDamage(final Hero other, final float receivedRawDamage) {
         float percent = Constants.DEFLECT_DEFLECTION_BASE_DAMAGE
-                + this.level * Constants.DEFLECT_DEFLECTION_LEVEL_MULTIPLIER;
+                + this.hero.getLevel() * Constants.DEFLECT_DEFLECTION_LEVEL_MULTIPLIER;
         percent = Math.min(Constants.DEFLECT_DEFLECTION_LIMIT, percent);
         return percent / Constants.PERCENT_BASE * receivedRawDamage;
     }

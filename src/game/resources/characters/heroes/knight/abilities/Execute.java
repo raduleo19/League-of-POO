@@ -21,14 +21,15 @@ public final class Execute extends Ability {
     @Override
     public float getDamage(final Hero other) {
         int healthPointsLimitPercent = Constants.EXECUTE_BASE_HP_LIMIT
-                + this.level * Constants.EXECUTE_LEVEL_MULTIPLIER_HP_LIMIT;
+                + this.hero.getLevel() * Constants.EXECUTE_LEVEL_MULTIPLIER_HP_LIMIT;
         healthPointsLimitPercent = Math.min(healthPointsLimitPercent, Constants.EXECUTE_HP_LIMIT);
         if (other.getHealthPoints() / other.getMaxHealthPoints()
                 < healthPointsLimitPercent / Constants.PERCENT_BASE) {
             int damage = other.getHealthPoints();
             other.receiveDamage(damage);
         }
-        return Constants.EXECUTE_BASE_DAMAGE + this.level * Constants.EXECUTE_LEVEL_MULTIPLIER;
+        return Constants.EXECUTE_BASE_DAMAGE
+                + this.hero.getLevel() * Constants.EXECUTE_LEVEL_MULTIPLIER;
     }
 
     @Override

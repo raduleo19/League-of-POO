@@ -25,9 +25,10 @@ public final class Backstab extends Ability {
         if (numHits++ % Constants.BACKSTAB_BONUS_ROUNDS == 0
                 && this.hero.getLandType() == Constants.ROGUE_PREFERRED_LAND) {
             return Constants.BACKSTAB_BONUS_MULTIPLIER * (Constants.BACKSTAB_BASE_DAMAGE
-                    + this.level * Constants.BACKSTAB_LEVEL_MULTIPLIER);
+                    + this.hero.getLevel() * Constants.BACKSTAB_LEVEL_MULTIPLIER);
         }
-        return Constants.BACKSTAB_BASE_DAMAGE + this.level * Constants.BACKSTAB_LEVEL_MULTIPLIER;
+        return Constants.BACKSTAB_BASE_DAMAGE
+                + this.hero.getLevel() * Constants.BACKSTAB_LEVEL_MULTIPLIER;
     }
 
     @Override

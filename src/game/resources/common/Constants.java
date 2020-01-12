@@ -204,6 +204,42 @@ public final class Constants {
     public static final int XP_ANGEL_BONUS_XP_ROGUE = 40;
     public static final int XP_ANGEL_BONUS_XP_WIZARD = 60;
 
+    // KNIGHT STRATEGY CONSTANTS
+    public static final int KNIGHT_MIN_HP = 3;
+    public static final int KNIGHT_MAX_HP = 2;
+    public static final float KNIGHT_ATTACK_BUFF = 0.5f;
+    public static final float KNIGHT_DEFENSE_BUFF = 0.2f;
+    public static final int KNIGHT_ATTACK_HP = 5;
+    public static final int KNIGHT_DEFENSE_HP = 4;
+
+    // PYROMANCER STRATEGY CONSTANTS
+    public static final int PYROMANCER_MIN_HP = 4;
+    public static final int PYROMANCER_MAX_HP = 3;
+    public static final float PYROMANCER_ATTACK_BUFF = 0.7f;
+    public static final float PYROMANCER_DEFENSE_BUFF = 0.3f;
+    public static final int PYROMANCER_ATTACK_HP = 4;
+    public static final int PYROMANCER_DEFENSE_HP = 3;
+
+    // WIZARD STRATEGY CONSTANTS
+    public static final int WIZARD_MIN_HP = 4;
+    public static final int WIZARD_MAX_HP = 2;
+    public static final float WIZARD_ATTACK_BUFF = 0.6f;
+    public static final float WIZARD_DEFENSE_BUFF = 0.2f;
+    public static final int WIZARD_ATTACK_HP = 10;
+    public static final int WIZARD_DEFENSE_HP = 5;
+
+    // ROGUE STRATEGY CONSTANTS
+    public static final int ROGUE_MIN_HP = 7;
+    public static final int ROGUE_MAX_HP = 5;
+    public static final float ROGUE_ATTACK_BUFF = 0.4f;
+    public static final float ROGUE_DEFENSE_BUFF = 0.1f;
+    public static final int ROGUE_ATTACK_HP = 7;
+    public static final int ROGUE_DEFENSE_HP = 2;
+
+    // APROXIMATION CONSTANTS
+    public static final float EPS = 0.000001f;
+
+
     private Constants() {
     }
 }

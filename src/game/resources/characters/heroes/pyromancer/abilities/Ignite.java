@@ -21,12 +21,13 @@ public final class Ignite extends Ability {
     @Override
     public float getDamage(final Hero other) {
         float damage = Constants.IGNITE_DOT_BASE_DAMAGE
-                + this.level * Constants.IGNITE_DOT_LEVEL_MULTIPLIER;
+                + this.hero.getLevel() * Constants.IGNITE_DOT_LEVEL_MULTIPLIER;
         damage *= this.hero.getLandModifier();
         damage = Math.round(damage);
         damage *= other.requestRaceModifier(this) + this.hero.getBuff().getBuff();
         other.setOvertime(2, false, Math.round(damage));
-        return Constants.IGNITE_BASE_DAMAGE + this.level * Constants.IGNITE_LEVEL_MULTIPLIER;
+        return Constants.IGNITE_BASE_DAMAGE
+                + this.hero.getLevel() * Constants.IGNITE_LEVEL_MULTIPLIER;
     }
 
     @Override

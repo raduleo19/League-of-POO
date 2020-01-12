@@ -25,11 +25,12 @@ public final class Rogue extends Hero {
 
     @Override
     public void selectStrategy() {
-        if (this.getMaxHealthPoints() / 7 < this.getHealthPoints()
-                && this.getHealthPoints() < this.getMaxHealthPoints() / 5) {
-            strategy = new AttackStrategy(7, 0.4f);
-        } else if (this.getHealthPoints() < this.getMaxHealthPoints() / 7) {
-            strategy = new DefenseStrategy(2, 0.1f);
+        if (this.getMaxHealthPoints() / Constants.ROGUE_MIN_HP < this.getHealthPoints()
+                && this.getHealthPoints() < this.getMaxHealthPoints() / Constants.ROGUE_MAX_HP) {
+            strategy = new AttackStrategy(Constants.ROGUE_ATTACK_HP, Constants.ROGUE_ATTACK_BUFF);
+        } else if (this.getHealthPoints() < this.getMaxHealthPoints() / Constants.ROGUE_MIN_HP) {
+            strategy = new DefenseStrategy(Constants.ROGUE_DEFENSE_HP,
+                    Constants.ROGUE_DEFENSE_BUFF);
         } else {
             strategy = new NormalStrategy();
         }
@@ -63,7 +64,7 @@ public final class Rogue extends Hero {
     }
 
     @Override
-    public void requestBuff(Angel angel) {
+    public void requestBuff(final Angel angel) {
         angel.applyBuff(this);
     }
 
@@ -71,43 +72,25 @@ public final class Rogue extends Hero {
         int damage = 0;
         int rawDamage = 0;
 
-
-//        System.out.print(other.healthPoints);
         for (Ability ability : abilities) {
             float abilityRawDamage = ability.getDamage(other);
-//            System.out.println(abilityRawDamage * (other.requestRaceModifier(ability)
-//                    + buff.getBuff()));
-
 
             float newModifier = 1.0f;
             if (other.requestRaceModifier(ability) != 1.0f) {
                 newModifier = other.requestRaceModifier(ability)
-                        + buff.getBuff() - 0.000001f;
+                        + buff.getBuff() - Constants.EPS;
             }
 
-//            System.out.println(ability.getClass().getSimpleName() + ' ' + newModifier);;
             float abilityDamage = Math.round(Math.round(abilityRawDamage) * this
                     .getLandModifier()) * newModifier;
-//
+
             rawDamage += Math.round(abilityRawDamage * this.getLandModifier());
             damage += Math.round(abilityDamage);
-////            System.out.println(abilityDamage);
-////            System.out.print("Damage:" + Math.round(abilityDamage) + ' ');
-//
-//
-//            System.out.println(
-//                    this.toString() + " give " + abilityDamage + " to " + other.toString());
         }
+
         other.receiveDamage(damage);
-//        System.out.println(" " + damage + ' ' + other.healthPoints);
+
         int deflectionDamage = other.getDeflectionDamage(this, rawDamage);
         this.receiveDamage(deflectionDamage);
-//        if (this.getId() == 44 || other.getId() == 44 || this.getId() == 35 || hero2.getId() ==
-//        35) {
-//            if (deflectionDamage != 0) {
-//                System.out.println("DEFLECTION:" + deflectionDamage);
-//                System.out.println("RAW DMG:" + rawDamage);
-//            }
-//        }
     }
 }

@@ -26,11 +26,12 @@ public final class Knight extends Hero {
 
     @Override
     public void selectStrategy() {
-        if (this.getMaxHealthPoints() / 3 < this.getHealthPoints()
-                && this.getHealthPoints() < this.getMaxHealthPoints() / 2) {
-            strategy = new AttackStrategy(5, 0.5f);
-        } else if (this.getHealthPoints() < this.getMaxHealthPoints() / 3) {
-            strategy = new DefenseStrategy(4, 0.2f);
+        if (this.getMaxHealthPoints() / Constants.KNIGHT_MIN_HP < this.getHealthPoints()
+                && this.getHealthPoints() < this.getMaxHealthPoints() / Constants.KNIGHT_MAX_HP) {
+            strategy = new AttackStrategy(Constants.KNIGHT_ATTACK_HP, Constants.KNIGHT_ATTACK_BUFF);
+        } else if (this.getHealthPoints() < this.getMaxHealthPoints() / Constants.KNIGHT_MIN_HP) {
+            strategy = new DefenseStrategy(Constants.KNIGHT_DEFENSE_HP,
+                    Constants.KNIGHT_DEFENSE_BUFF);
         } else {
             strategy = new NormalStrategy();
         }
@@ -64,7 +65,7 @@ public final class Knight extends Hero {
     }
 
     @Override
-    public void requestBuff(Angel angel) {
+    public void requestBuff(final Angel angel) {
         angel.applyBuff(this);
     }
 }

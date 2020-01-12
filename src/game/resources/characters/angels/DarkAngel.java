@@ -11,13 +11,13 @@ import game.resources.characters.heroes.rogue.Rogue;
 import game.resources.characters.heroes.wizard.Wizard;
 import game.resources.common.Constants;
 
-public class DarkAngel extends Angel {
-    public DarkAngel(int line, int column) {
+public final class DarkAngel extends Angel {
+    public DarkAngel(final int line, final int column) {
         super(line, column);
     }
 
     @Override
-    public void applyBuff(Knight knight) {
+    public void applyBuff(final Knight knight) {
         if (!knight.isDead()) {
             sendHitNotification(knight);
             knight.decreaseHealthPoints(Constants.DARK_ANGEL_HP_LOSS_KNIGHT);
@@ -28,7 +28,7 @@ public class DarkAngel extends Angel {
     }
 
     @Override
-    public void applyBuff(Pyromancer pyromancer) {
+    public void applyBuff(final Pyromancer pyromancer) {
         if (!pyromancer.isDead()) {
             sendHitNotification(pyromancer);
             pyromancer.decreaseHealthPoints(Constants.DARK_ANGEL_HP_LOSS_PYROMANCER);
@@ -39,7 +39,7 @@ public class DarkAngel extends Angel {
     }
 
     @Override
-    public void applyBuff(Rogue rogue) {
+    public void applyBuff(final Rogue rogue) {
         if (!rogue.isDead()) {
             sendHitNotification(rogue);
             rogue.decreaseHealthPoints(Constants.DARK_ANGEL_HP_LOSS_ROGUE);
@@ -50,7 +50,7 @@ public class DarkAngel extends Angel {
     }
 
     @Override
-    public void applyBuff(Wizard wizard) {
+    public void applyBuff(final Wizard wizard) {
         if (!wizard.isDead()) {
             sendHitNotification(wizard);
             wizard.decreaseHealthPoints(Constants.DARK_ANGEL_HP_LOSS_WIZARD);

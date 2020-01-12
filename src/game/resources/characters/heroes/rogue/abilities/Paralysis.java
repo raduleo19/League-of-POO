@@ -21,7 +21,7 @@ public final class Paralysis extends Ability {
     @Override
     public float getDamage(final Hero other) {
         float damage = Constants.PARALYSIS_DOT_BASE_DAMAGE
-                + this.level * Constants.PARALYSIS_DOT_LEVEL_MULTIPLIER;
+                + this.hero.getLevel() * Constants.PARALYSIS_DOT_LEVEL_MULTIPLIER;
         damage *= this.hero.getLandModifier();
         damage = Math.round(damage);
         damage *= other.requestRaceModifier(this) + this.hero.getBuff().getBuff();
@@ -31,7 +31,7 @@ public final class Paralysis extends Ability {
         }
         other.setOvertime(time, true, Math.round(damage));
         return Constants.PARALYSIS_DOT_BASE_DAMAGE
-                + this.level * Constants.PARALYSIS_DOT_LEVEL_MULTIPLIER;
+                + this.hero.getLevel() * Constants.PARALYSIS_DOT_LEVEL_MULTIPLIER;
     }
 
     @Override

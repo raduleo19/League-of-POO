@@ -35,21 +35,8 @@ public final class Game {
     }
 
     public void fight(final Hero hero1, final Hero hero2) {
-        if (hero1.getId() == 44 || hero2.getId() == 44 || hero1.getId() == 35
-                || hero2.getId() == 35) {
-            System.out.println("START BATTLE");
-            System.out.println(hero1.toString() + ": " + hero1.getHealthPoints());
-            System.out.println(hero2.toString() + ": " + hero2.getHealthPoints());
-        }
         hero1.attack(hero2);
         hero2.attack(hero1);
-        if (hero1.getId() == 44 || hero2.getId() == 44 || hero1.getId() == 35
-                || hero2.getId() == 35) {
-            System.out.println("AFTER BATTLE");
-            System.out.println(hero1.toString() + ": " + hero1.getHealthPoints());
-            System.out.println(hero2.toString() + ": " + hero2.getHealthPoints());
-            System.out.println("========");
-        }
 
         if (hero1.isDead() && !hero2.isDead()) {
             int experiencePointsGain = Math.max(0, Constants.BASE_GAIN_EXPERIENCE
@@ -61,19 +48,21 @@ public final class Game {
                     - (hero1.getLevel() - hero2.getLevel()) * Constants.GAIN_EXPERIENCE_MULTIPLIER);
             hero1.sendKilledNotification(hero2);
             hero1.gainExperience(experiencePointsGain);
-        }
-
-        if (hero1.isDead() && hero2.isDead()) {
+        } else if (hero1.isDead() && hero2.isDead()) {
+            int experiencePointsGain = Math.max(0, Constants.BASE_GAIN_EXPERIENCE
+                    - (hero1.getLevel() - hero2.getLevel()) * Constants.GAIN_EXPERIENCE_MULTIPLIER);
+            int experiencePointsGain2 = Math.max(0, Constants.BASE_GAIN_EXPERIENCE
+                    - (hero2.getLevel() - hero1.getLevel()) * Constants.GAIN_EXPERIENCE_MULTIPLIER);
             hero1.sendKilledNotification(hero2);
             hero2.sendKilledNotification(hero1);
+            hero1.gainExperience(experiencePointsGain);
+            hero2.gainExperience(experiencePointsGain2);
         }
+
     }
 
     public void play() {
-
         for (int i = 0; i < rounds.size(); ++i) {
-            System.out.println("ROUND" + i);
-//            System.out.println(heroes.get(44).getStats());
             gameOutput.addLine(String.format("~~ Round %d ~~", i + 1));
             String round = rounds.get(i);
             for (int j = 0; j < heroes.size(); ++j) {
@@ -82,7 +71,6 @@ public final class Game {
                 if (!hero.isDead()) {
                     if (!hero.isStunned()) {
                         hero.applyOvertime();
-                        hero.selectStrategy();
                         hero.applyStrategy();
                         hero.move(move);
                     } else {

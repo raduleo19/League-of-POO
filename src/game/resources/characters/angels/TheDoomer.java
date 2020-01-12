@@ -11,13 +11,13 @@ import game.resources.characters.heroes.rogue.Rogue;
 import game.resources.characters.heroes.wizard.Wizard;
 import game.resources.common.Constants;
 
-public class TheDoomer extends Angel {
-    public TheDoomer(int line, int column) {
+public final class TheDoomer extends Angel {
+    public TheDoomer(final int line, final int column) {
         super(line, column);
     }
 
     @Override
-    public void applyBuff(Knight knight) {
+    public void applyBuff(final Knight knight) {
         if (!knight.isDead()) {
             sendHitNotification(knight);
             sendKilledNotification(knight);
@@ -26,7 +26,7 @@ public class TheDoomer extends Angel {
     }
 
     @Override
-    public void applyBuff(Pyromancer pyromancer) {
+    public void applyBuff(final Pyromancer pyromancer) {
         if (!pyromancer.isDead()) {
             sendHitNotification(pyromancer);
             sendKilledNotification(pyromancer);
@@ -35,7 +35,7 @@ public class TheDoomer extends Angel {
     }
 
     @Override
-    public void applyBuff(Rogue rogue) {
+    public void applyBuff(final Rogue rogue) {
         if (!rogue.isDead()) {
             sendHitNotification(rogue);
             sendKilledNotification(rogue);
@@ -44,7 +44,7 @@ public class TheDoomer extends Angel {
     }
 
     @Override
-    public void applyBuff(Wizard wizard) {
+    public void applyBuff(final Wizard wizard) {
         if (!wizard.isDead()) {
             sendHitNotification(wizard);
             sendKilledNotification(wizard);

@@ -11,13 +11,13 @@ import game.resources.characters.heroes.rogue.Rogue;
 import game.resources.characters.heroes.wizard.Wizard;
 import game.resources.common.Constants;
 
-public class Spawner extends Angel {
-    public Spawner(int line, int column) {
+public final class Spawner extends Angel {
+    public Spawner(final int line, final int column) {
         super(line, column);
     }
 
     @Override
-    public void applyBuff(Knight knight) {
+    public void applyBuff(final Knight knight) {
         if (knight.isDead()) {
             knight.setHealthPoints(Constants.SPAWNER_HP_KNIGHT);
             sendHelpedNotification(knight);
@@ -26,7 +26,7 @@ public class Spawner extends Angel {
     }
 
     @Override
-    public void applyBuff(Pyromancer pyromancer) {
+    public void applyBuff(final Pyromancer pyromancer) {
         if (pyromancer.isDead()) {
             pyromancer.setHealthPoints(Constants.SPAWNER_HP_PYROMANCER);
             sendHelpedNotification(pyromancer);
@@ -35,7 +35,7 @@ public class Spawner extends Angel {
     }
 
     @Override
-    public void applyBuff(Rogue rogue) {
+    public void applyBuff(final Rogue rogue) {
         if (rogue.isDead()) {
             rogue.setHealthPoints(Constants.SPAWNER_HP_ROGUE);
             sendHelpedNotification(rogue);
@@ -44,7 +44,7 @@ public class Spawner extends Angel {
     }
 
     @Override
-    public void applyBuff(Wizard wizard) {
+    public void applyBuff(final Wizard wizard) {
         if (wizard.isDead()) {
             wizard.setHealthPoints(Constants.SPAWNER_HP_WIZARD);
             sendHelpedNotification(wizard);

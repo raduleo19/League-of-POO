@@ -47,12 +47,14 @@ public abstract class Hero implements IHeroObservable {
         this.id = id;
     }
 
-    public void setObserver(IObserver observer) {
+    public final void setObserver(final IObserver observer) {
         this.observer = observer;
     }
 
     public abstract void selectStrategy();
-    public void applyStrategy() {
+
+    public final void applyStrategy() {
+        selectStrategy();
         strategy.applyStrategy(this);
     }
 
@@ -99,13 +101,8 @@ public abstract class Hero implements IHeroObservable {
         int damage = 0;
         int rawDamage = 0;
 
-
-//        System.out.print(other.healthPoints);
         for (Ability ability : abilities) {
             float abilityRawDamage = ability.getDamage(other);
-//            System.out.println(abilityRawDamage * (other.requestRaceModifier(ability)
-//                    + buff.getBuff()));
-
 
             float newModifier = 1.0f;
             if (other.requestRaceModifier(ability) != 1.0f) {
@@ -113,30 +110,17 @@ public abstract class Hero implements IHeroObservable {
                         + buff.getBuff();
             }
 
-//            System.out.println(ability.getClass().getSimpleName() + ' ' + newModifier);;
             float abilityDamage = Math.round(Math.round(abilityRawDamage) * this
                     .getLandModifier()) * newModifier;
-//
+
             rawDamage += Math.round(abilityRawDamage * this.getLandModifier());
             damage += Math.round(abilityDamage);
-////            System.out.println(abilityDamage);
-////            System.out.print("Damage:" + Math.round(abilityDamage) + ' ');
-//
-//
-//            System.out.println(
-//                    this.toString() + " give " + abilityDamage + " to " + other.toString());
         }
+
         other.receiveDamage(damage);
-//        System.out.println(" " + damage + ' ' + other.healthPoints);
+
         int deflectionDamage = other.getDeflectionDamage(this, rawDamage);
         this.receiveDamage(deflectionDamage);
-//        if (this.getId() == 44 || other.getId() == 44 || this.getId() == 35 || hero2.getId() ==
-//        35) {
-//            if (deflectionDamage != 0) {
-//                System.out.println("DEFLECTION:" + deflectionDamage);
-//                System.out.println("RAW DMG:" + rawDamage);
-//            }
-//        }
     }
 
     public final int getDeflectionDamage(final Hero other, final int receivedRawDamage) {
@@ -162,7 +146,7 @@ public abstract class Hero implements IHeroObservable {
         return healthPoints;
     }
 
-    public void setHealthPoints(int healthPoints) {
+    public final void setHealthPoints(final int healthPoints) {
         this.healthPoints = healthPoints;
     }
 
@@ -171,22 +155,20 @@ public abstract class Hero implements IHeroObservable {
     }
 
     public final void receiveLevelBonus() {
+        this.level++;
+        sendLevelUpNotification();
         if (!this.isDead()) {
-            this.level++;
-            sendLevelUpNotification();
-            for (Ability ability : abilities) {
-                ability.levelUp();
-            }
             this.healthPoints = this.getMaxHealthPoints();
         }
+
     }
 
-    public void sendLevelUpNotification() {
+    public final void sendLevelUpNotification() {
         observer.receiveNotification(
                 String.format("%s reached level %d", this.toString(), this.getLevel()));
     }
 
-    public void sendKilledNotification(Hero other) {
+    public final void sendKilledNotification(final Hero other) {
         observer.receiveNotification(String.format("Player %s was killed by %s", other.toString(),
                 this.toString()));
     }
@@ -196,7 +178,7 @@ public abstract class Hero implements IHeroObservable {
         receiveLevelBonus();
     }
 
-    public void setExperiencePoints(int experiencePoints) {
+    public final void setExperiencePoints(final int experiencePoints) {
         this.experiencePoints = experiencePoints;
     }
 
@@ -230,19 +212,15 @@ public abstract class Hero implements IHeroObservable {
         return Map.getInstance().getLandType(this.line, this.column);
     }
 
-    public Buff getBuff() {
+    public final Buff getBuff() {
         return buff;
     }
 
-    public final void increaseHealthPoints(int value) {
+    public final void increaseHealthPoints(final int value) {
         healthPoints = Math.min(getMaxHealthPoints(), healthPoints + value);
     }
 
-    public final void decreaseHealthPoints(int value) {
+    public final void decreaseHealthPoints(final int value) {
         healthPoints -= value;
-    }
-
-    public int getId() {
-        return id;
     }
 }

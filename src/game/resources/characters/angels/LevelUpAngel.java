@@ -11,13 +11,13 @@ import game.resources.characters.heroes.rogue.Rogue;
 import game.resources.characters.heroes.wizard.Wizard;
 import game.resources.common.Constants;
 
-public class LevelUpAngel extends Angel {
-    public LevelUpAngel(int line, int column) {
+public final class LevelUpAngel extends Angel {
+    public LevelUpAngel(final int line, final int column) {
         super(line, column);
     }
 
     @Override
-    public void applyBuff(Knight knight) {
+    public void applyBuff(final Knight knight) {
         if (!knight.isDead()) {
             sendHelpedNotification(knight);
             knight.getBuff().increaseBuff(Constants.LEVEL_UP_ANGEL_DAMAGE_BONUS_KNIGHT);
@@ -26,7 +26,7 @@ public class LevelUpAngel extends Angel {
     }
 
     @Override
-    public void applyBuff(Pyromancer pyromancer) {
+    public void applyBuff(final Pyromancer pyromancer) {
         if (!pyromancer.isDead()) {
             sendHelpedNotification(pyromancer);
             pyromancer.getBuff().increaseBuff(Constants.LEVEL_UP_ANGEL_DAMAGE_BONUS_PYROMANCER);
@@ -35,7 +35,7 @@ public class LevelUpAngel extends Angel {
     }
 
     @Override
-    public void applyBuff(Rogue rogue) {
+    public void applyBuff(final Rogue rogue) {
         if (!rogue.isDead()) {
             sendHelpedNotification(rogue);
             rogue.getBuff().increaseBuff(Constants.LEVEL_UP_ANGEL_DAMAGE_BONUS_ROGUE);
@@ -44,7 +44,7 @@ public class LevelUpAngel extends Angel {
     }
 
     @Override
-    public void applyBuff(Wizard wizard) {
+    public void applyBuff(final Wizard wizard) {
         if (!wizard.isDead()) {
             sendHelpedNotification(wizard);
             wizard.getBuff().increaseBuff(Constants.LEVEL_UP_ANGEL_DAMAGE_BONUS_WIZARD);

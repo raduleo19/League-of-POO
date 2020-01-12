@@ -11,13 +11,13 @@ import game.resources.characters.heroes.rogue.Rogue;
 import game.resources.characters.heroes.wizard.Wizard;
 import game.resources.common.Constants;
 
-public class XPAngel extends Angel {
-    public XPAngel(int line, int column) {
+public final class XPAngel extends Angel {
+    public XPAngel(final int line, final int column) {
         super(line, column);
     }
 
     @Override
-    public void applyBuff(Knight knight) {
+    public void applyBuff(final Knight knight) {
         if (!knight.isDead()) {
             sendHelpedNotification(knight);
             knight.gainExperience(Constants.XP_ANGEL_BONUS_XP_KNIGHT);
@@ -25,7 +25,7 @@ public class XPAngel extends Angel {
     }
 
     @Override
-    public void applyBuff(Pyromancer pyromancer) {
+    public void applyBuff(final Pyromancer pyromancer) {
         if (!pyromancer.isDead()) {
             sendHelpedNotification(pyromancer);
             pyromancer.gainExperience(Constants.XP_ANGEL_BONUS_XP_PYROMANCER);
@@ -33,7 +33,7 @@ public class XPAngel extends Angel {
     }
 
     @Override
-    public void applyBuff(Rogue rogue) {
+    public void applyBuff(final Rogue rogue) {
         if (!rogue.isDead()) {
             sendHelpedNotification(rogue);
             rogue.gainExperience(Constants.XP_ANGEL_BONUS_XP_ROGUE);
@@ -41,7 +41,7 @@ public class XPAngel extends Angel {
     }
 
     @Override
-    public void applyBuff(Wizard wizard) {
+    public void applyBuff(final Wizard wizard) {
         if (!wizard.isDead()) {
             sendHelpedNotification(wizard);
             wizard.gainExperience(Constants.XP_ANGEL_BONUS_XP_WIZARD);

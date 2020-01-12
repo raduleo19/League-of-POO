@@ -21,7 +21,7 @@ public final class Slam extends Ability {
     @Override
     public float getDamage(final Hero other) {
         other.setOvertime(1, true, 0);
-        return Constants.SLAM_BASE_DAMAGE + this.level * Constants.SLAM_LEVEL_MULTIPLIER;
+        return Constants.SLAM_BASE_DAMAGE + this.hero.getLevel() * Constants.SLAM_LEVEL_MULTIPLIER;
     }
 
     @Override

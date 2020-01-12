@@ -25,11 +25,15 @@ public final class Pyromancer extends Hero {
 
     @Override
     public void selectStrategy() {
-        if (this.getMaxHealthPoints() / 4 < this.getHealthPoints()
-                && this.getHealthPoints() < this.getMaxHealthPoints() / 3) {
-            strategy = new AttackStrategy(4, 0.7f);
-        } else if (this.getHealthPoints() < this.getMaxHealthPoints() / 4) {
-            strategy = new DefenseStrategy(3, 0.3f);
+        if (this.getMaxHealthPoints() / Constants.PYROMANCER_MIN_HP < this.getHealthPoints()
+                && this.getHealthPoints()
+                < this.getMaxHealthPoints() / Constants.PYROMANCER_MAX_HP) {
+            strategy = new AttackStrategy(Constants.PYROMANCER_ATTACK_HP,
+                    Constants.PYROMANCER_ATTACK_BUFF);
+        } else if (this.getHealthPoints()
+                < this.getMaxHealthPoints() / Constants.PYROMANCER_MIN_HP) {
+            strategy = new DefenseStrategy(Constants.PYROMANCER_DEFENSE_HP,
+                    Constants.PYROMANCER_DEFENSE_BUFF);
         } else {
             strategy = new NormalStrategy();
         }
@@ -63,7 +67,7 @@ public final class Pyromancer extends Hero {
     }
 
     @Override
-    public void requestBuff(Angel angel) {
+    public void requestBuff(final Angel angel) {
         angel.applyBuff(this);
     }
 }

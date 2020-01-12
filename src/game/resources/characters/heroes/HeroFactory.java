@@ -22,7 +22,7 @@ public final class HeroFactory {
         return instance;
     }
 
-    public Hero getHero(final String type, final int line, final int column, int id) {
+    public Hero getHero(final String type, final int line, final int column, final int id) {
         if (type.equals(Constants.KNIGHT)) {
             return new Knight(line, column, id);
         } else if (type.equals(Constants.PYROMANCER)) {

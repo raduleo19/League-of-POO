@@ -12,11 +12,8 @@ public final class GameOutput {
     public GameOutput() {
         this.output = new ArrayList<>();
     }
-    public GameOutput(final ArrayList<String> output) {
-        this.output = output;
-    }
 
-    public void addLine(String message) {
+    public void addLine(final String message) {
         output.add(message);
     }
 

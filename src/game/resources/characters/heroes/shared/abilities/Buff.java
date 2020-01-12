@@ -4,7 +4,7 @@
 
 package game.resources.characters.heroes.shared.abilities;
 
-public class Buff {
+public final class Buff {
     private float buff;
 
     public Buff() {
@@ -15,15 +15,11 @@ public class Buff {
         return buff;
     }
 
-    public void setBuff(float buff) {
-        this.buff = buff;
-    }
-
-    public void increaseBuff(float buff) {
+    public void increaseBuff(final float buff) {
         this.buff += buff;
     }
 
-    public void decreaseBuff(float buff) {
+    public void decreaseBuff(final float buff) {
         this.buff -= buff;
     }
 }

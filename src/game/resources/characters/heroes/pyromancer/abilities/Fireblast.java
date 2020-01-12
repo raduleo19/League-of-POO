@@ -20,7 +20,8 @@ public final class Fireblast extends Ability {
 
     @Override
     public float getDamage(final Hero other) {
-        return Constants.FIREBLAST_BASE_DAMAGE + this.level * Constants.FIREBLAST_LEVEL_MULTIPLIER;
+        return Constants.FIREBLAST_BASE_DAMAGE
+                + this.hero.getLevel() * Constants.FIREBLAST_LEVEL_MULTIPLIER;
     }
 
     @Override
